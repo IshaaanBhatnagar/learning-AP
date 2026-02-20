@@ -877,11 +877,48 @@
 
   .number-label { font-size: 14px; color: var(--muted); line-height: 1.4; }
 
+  .sources-footer {
+    padding: 40px 60px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .sources-footer h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--muted);
+  }
+
+  .sources-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sources-list li {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .sources-list a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .sources-list a:hover {
+    text-decoration: underline;
+  }
+
   @media (max-width: 768px) {
     .hero, .section { padding: 60px 24px; }
     .nav { padding: 0 16px; }
     .transform-grid { grid-template-columns: 1fr; }
     .transform-divider { display: none; }
+    .sources-footer { padding: 30px 24px; }
   }
 </style>
 </head>
@@ -1008,7 +1045,7 @@
     <div class="timeline-step" onclick="toggleStep(this)">
       <div class="step-num">Step 04</div>
       <div class="step-title">3-Way Matching <span class="step-toggle">▾</span></div>
-      <div class="step-body">The AP team manually pulls the original Purchase Order (PO) from the procurement system and the Goods Receipt Note (GRN) from the warehouse system, then compares all three documents line by line. Does the invoice price match the PO? Does the quantity match what was received? Are the payment terms correct? Any discrepancy — even a rounding difference of ₹0.50 — creates an exception that can sit unresolved for days while teams investigate. This is the most labor-intensive step and the biggest source of delays.
+      <div class="step-body">The AP team manually pulls the original Purchase Order (PO) from the procurement system and the receiving report from the warehouse system, then compares all three documents line by line. Does the invoice price match the PO? Does the quantity match what was received? Are the payment terms correct? Any discrepancy — even a rounding difference of $0.50 — creates an exception that can sit unresolved for days while teams investigate. This is the most labor-intensive step and the biggest source of delays.
         <span class="pill pill-red">⚠️ Exception rate: 15–30% · Each exception takes 30–60 min</span>
       </div>
     </div>
@@ -1066,7 +1103,7 @@
       <div class="transform-item before">PDF / paper invoice arrives in email. No structure, no standard format. Manual routing required.</div>
       <div class="transform-item before">AP clerk manually keys all data into ERP. Error-prone, time-consuming, expensive.</div>
       <div class="transform-item before">Manual GL coding with limited context. Frequent reclassifications at month-end close.</div>
-      <div class="transform-item before">Human manually cross-checks PO, GRN, and Invoice. 15–30% exception rate, each requiring investigation.</div>
+      <div class="transform-item before">Human manually cross-checks PO, receiving report, and Invoice. 15–30% exception rate, each requiring investigation.</div>
       <div class="transform-item before">Email approval chains averaging 8–14 days. Forgotten, forwarded, lost in inboxes.</div>
       <div class="transform-item before">Invoice takes 14+ days to process. Early payment discount windows are long closed.</div>
       <div class="transform-item before">Duplicate payment risk with poor upstream data quality. Manual reconciliation required.</div>
@@ -1168,8 +1205,8 @@
     <div class="concept-card" onclick="toggleConcept(this)">
       <div class="concept-icon">🔄</div>
       <div class="concept-name">3-Way Matching <span class="concept-toggle">▾</span></div>
-      <div class="concept-short">Validating an invoice against its Purchase Order and Goods Receipt Note.</div>
-      <div class="concept-full">Compares three documents: the Purchase Order (what was agreed), the Goods Receipt Note (what was actually delivered), and the Invoice (what the supplier is charging). All three must align within defined tolerances for auto-approval. Any discrepancy creates an exception requiring human investigation. Automating this step is the single biggest lever for improving touchless processing rates — the core ROI of AP automation.</div>
+      <div class="concept-short">Validating an invoice against its Purchase Order and receiving report.</div>
+      <div class="concept-full">Compares three documents: the Purchase Order (what was agreed), the receiving report (what was actually delivered), and the Invoice (what the supplier is charging). All three must align within defined tolerances for auto-approval. Any discrepancy creates an exception requiring human investigation. Automating this step is the single biggest lever for improving touchless processing rates — the core ROI of AP automation.</div>
     </div>
 
     <div class="concept-card" onclick="toggleConcept(this)">
@@ -1403,6 +1440,17 @@
   </div>
 </section>
 
+<footer class="sources-footer">
+  <h3>Sources &amp; References</h3>
+  <ul class="sources-list">
+    <li><a href="https://resolvepay.com/blog/13-statistics-that-quantify-cost-per-invoice-in-manual-vs-automated-flows" target="_blank">13 Statistics That Quantify Cost per Invoice in Manual vs Automated Flows</a> — Resolve Pay</li>
+    <li><a href="https://nanonets.com/blog/cost-of-processing-an-invoice/" target="_blank">How Much Does It Cost to Process an Invoice in 2025?</a> — Nanonets</li>
+    <li><a href="https://www.docuclipper.com/blog/accounts-payable-statistics/" target="_blank">59 Accounts Payable Statistics for 2025</a> — DocuClipper</li>
+    <li><a href="https://www.mysa.io/blogs/what-is-the-cost-of-processing-an-invoice-manually-in-2024-and-reduction-strategies" target="_blank">Cost of Processing an Invoice Manually in 2025</a> — MySA</li>
+    <li><a href="https://www.bottomline.com/resources/blog/hidden-and-not-so-hidden-costs-of-manual-accounts-payable" target="_blank">The Hidden and Not-So-Hidden Costs of Manual Accounts Payable</a> — Bottomline</li>
+  </ul>
+</footer>
+
 <script>
 // SECTION NAVIGATION
 const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders'];
@@ -1435,7 +1483,7 @@ const workflows = {
     { icon:'📧', label:'Receive', title:'Invoice Receipt', body:'A PDF or paper invoice arrives in the AP team\'s email inbox. No standardization — every supplier uses their own template and layout. Manual routing to the right processor begins. Multiple email aliases, no priority tracking, no automatic categorization. On high-volume days, invoices sit unseen for hours.', metrics:[{v:'PDF / Paper',l:'format'},{v:'2–4 hrs',l:'routing time'},{v:'High',l:'error risk'}] },
     { icon:'⌨️', label:'Enter Data', title:'Manual Data Capture', body:'An AP clerk reads each invoice and manually types every field into the ERP — invoice number, date, supplier name and tax ID, line items, tax amounts, total. OCR tools help but still require human verification at ~85–90% accuracy. This single step accounts for 40–50% of total AP processing cost.', metrics:[{v:'10–20 min',l:'per invoice'},{v:'$4–6',l:'cost per invoice'},{v:'1–5%',l:'data error rate'}] },
     { icon:'🏷️', label:'GL Code', title:'GL Coding & Cost Centre', body:'The invoice must be assigned to the right General Ledger account, cost centre, and department. Without context from the PO, the AP team often guesses. Miscodings lead to reclassifications at month-end that waste accounting time and distort financial reporting.', metrics:[{v:'8–15%',l:'reclassification rate'},{v:'5–10 min',l:'per invoice'}] },
-    { icon:'🔍', label:'3-Way Match', title:'Manual 3-Way Matching', body:'The AP team pulls the Purchase Order from procurement and the Goods Receipt Note from the warehouse system, then manually compares all three line by line. Any discrepancy — even a ₹0.50 rounding difference — creates an exception. Each exception requires investigation, supplier contact, and re-processing. This is the biggest labor bottleneck.', metrics:[{v:'15–30%',l:'exception rate'},{v:'30–60 min',l:'per exception'}] },
+    { icon:'🔍', label:'3-Way Match', title:'Manual 3-Way Matching', body:'The AP team pulls the Purchase Order from procurement and the receiving report from the warehouse system, then manually compares all three line by line. Any discrepancy — even a $0.50 rounding difference — creates an exception. Each exception requires investigation, supplier contact, and re-processing. This is the biggest labor bottleneck.', metrics:[{v:'15–30%',l:'exception rate'},{v:'30–60 min',l:'per exception'}] },
     { icon:'✉️', label:'Approve', title:'Email Approval Chains', body:'Matched invoices are emailed through an approval hierarchy. Department heads, finance managers, CFO for large amounts. People go on leave, forget, forward to the wrong person. Average invoice approval time: 8–14 days. During that time, the invoice sits idle — generating no value for either party.', metrics:[{v:'8–14 days',l:'avg. approval time'},{v:'3–7 emails',l:'per invoice'}] },
     { icon:'📅', label:'Schedule', title:'Payment Scheduling', body:'Once approved, the invoice is scheduled based on payment terms (Net 30, Net 60). Because processing took 14 days, all early payment discount windows are closed. Finance has limited visibility into what\'s due when, making cash flow forecasting difficult.', metrics:[{v:'< 20%',l:'discounts captured'},{v:'Limited',l:'cash visibility'}] },
     { icon:'💳', label:'Pay', title:'Payment Execution', body:'Payment is executed via bank transfer or cheque. Remittance advice is sent to the supplier. Duplicate payments — paying the same invoice twice — are a real risk when upstream data quality is poor. Industry estimates: 0.1–0.5% of total spend is duplicated annually.', metrics:[{v:'0.1–0.5%',l:'duplicate risk'},{v:'Hours',l:'reconciliation time'}] },
@@ -1445,7 +1493,7 @@ const workflows = {
     { icon:'🔗', label:'Receive', title:'Structured eInvoice Delivery', body:'A standardized XML invoice (UBL 2.1, CII, or EDIFACT) arrives directly in the ERP or AP platform via Peppol network or clearance API. In ZATCA, the invoice arrives pre-stamped by the government. Zero inbox management, zero manual routing, zero email handling.', metrics:[{v:'XML / UBL',l:'format'},{v:'Real-time',l:'delivery'},{v:'Near zero',l:'error risk'}] },
     { icon:'🤖', label:'Auto-Ingest', title:'Zero-Touch Data Capture', body:'All invoice fields are auto-populated into the ERP from the structured XML. No manual typing, no OCR verification. Invoice number, supplier tax ID, line items, tax breakdown, totals — all read programmatically in seconds. Processing cost drops from $15 to under $2 per invoice.', metrics:[{v:'0',l:'manual fields entered'},{v:'< $2',l:'cost per invoice'},{v:'Seconds',l:'processing time'}] },
     { icon:'🧠', label:'Auto-Code', title:'AI-Assisted GL Coding', body:'ML models trained on historical coding patterns auto-assign GL accounts, cost centres, and project codes. Recurring suppliers are auto-coded; first-time invoices get AI-suggested codes. The model gets smarter with every invoice processed. Finance only reviews genuine edge cases.', metrics:[{v:'80–95%',l:'auto-code rate'},{v:'< 2%',l:'reclassification rate'}] },
-    { icon:'⚡', label:'3-Way Match', title:'Automated 3-Way Matching', body:'The platform programmatically compares Invoice ↔ PO ↔ GRN across all fields in milliseconds. Invoices within tolerance auto-approve immediately with zero human involvement. Only genuine discrepancies escalate as exceptions — pre-diagnosed with root cause context so the AP team spends time solving, not finding.', metrics:[{v:'70–85%',l:'touchless rate'},{v:'Milliseconds',l:'match time'},{v:'5–15%',l:'exception rate'}] },
+    { icon:'⚡', label:'3-Way Match', title:'Automated 3-Way Matching', body:'The platform programmatically compares Invoice ↔ PO ↔ receiving report across all fields in milliseconds. Invoices within tolerance auto-approve immediately with zero human involvement. Only genuine discrepancies escalate as exceptions — pre-diagnosed with root cause context so the AP team spends time solving, not finding.', metrics:[{v:'70–85%',l:'touchless rate'},{v:'Milliseconds',l:'match time'},{v:'5–15%',l:'exception rate'}] },
     { icon:'✅', label:'Approve', title:'Rule-Based Approvals', body:'Approval workflows are driven by configurable business rules. Invoices under threshold from pre-approved vendors auto-approve. Those above threshold route to specific approvers with all context pre-loaded and one-click actions available. No email chains, no chasing, no ambiguity.', metrics:[{v:'Same day',l:'avg. approval time'},{v:'60–80%',l:'auto-approval rate'}] },
     { icon:'💡', label:'Optimize', title:'Dynamic Discounting', body:'With invoices processed in hours, early payment windows are accessible. Finance evaluates each invoice against cash position: pay early for a discount, pay standard, or stretch. Dynamic discounting at 2/10 Net 30 yields a 36%+ annualized return on capital deployed — a major treasury value driver that didn\'t exist in the manual world.', metrics:[{v:'> 80%',l:'discounts captured'},{v:'36%+',l:'annualized return'},{v:'Real-time',l:'cash visibility'}] },
     { icon:'💳', label:'Pay', title:'Optimized Payment Execution', body:'Automated duplicate detection blocks double payments before execution. Payment status can be reported back through the eInvoicing network — required in France\'s PDP model. Supplier remittance is automated. Finance has full, real-time cash flow visibility across the entire AP portfolio.', metrics:[{v:'99.9%+',l:'duplicate prevention'},{v:'Automated',l:'reconciliation'}] },
