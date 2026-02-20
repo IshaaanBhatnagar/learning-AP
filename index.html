@@ -2650,14 +2650,37 @@
 // SECTION NAVIGATION
 const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders','strategy','pricing','edgecases'];
 
+const hashMap = {
+  'WhatisAP': 'what',
+  'TraditionalFlow': 'traditional',
+  'Transformation': 'transformation',
+  'Workflow': 'workflow',
+  'KeyConcepts': 'concepts',
+  'Markets': 'markets',
+  'Stakeholders': 'stakeholders',
+  'WhyNotBuildAP': 'strategy',
+  'APCosts': 'pricing',
+  'EdgeCases': 'edgecases'
+};
 
-function showSection(id) {
+const idToHash = Object.fromEntries(Object.entries(hashMap).map(([k, v]) => [v, k]));
+
+function showSection(id, updateHash) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-item')[sectionIds.indexOf(id)].classList.add('active');
+  if (updateHash !== false) window.location.hash = idToHash[id] || id;
   document.getElementById('main-nav').scrollIntoView({ behavior: 'smooth' });
 }
+
+function loadFromHash() {
+  const hash = window.location.hash.slice(1);
+  if (hash && hashMap[hash]) showSection(hashMap[hash], false);
+}
+
+window.addEventListener('hashchange', loadFromHash);
+window.addEventListener('DOMContentLoaded', loadFromHash);
 
 // TIMELINE
 function toggleStep(el) {
