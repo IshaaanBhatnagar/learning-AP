@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accounts Payable × eInvoicing</title>
+<title>Clear · Don't Build AP, Connect to It</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -667,7 +667,12 @@
     transition: max-height 0.4s ease, padding 0.3s;
   }
 
-  .concept-card.open .concept-full { max-height: 400px; padding-top: 12px; border-top: 1px solid var(--border); margin-top: 12px; }
+  .concept-card.open .concept-full { max-height: 600px; overflow-y: auto; padding-top: 12px; border-top: 1px solid var(--border); margin-top: 12px; }
+  .concept-full ol { padding-left: 20px; margin: 0; }
+  .concept-full ol li { font-size: 14px; color: var(--muted2); line-height: 1.6; margin-bottom: 4px; }
+  .concept-full ol li strong { color: var(--text); font-weight: 600; }
+  .concept-full .edge-subhead { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); margin: 12px 0 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .concept-full .edge-subhead:first-child { margin-top: 0; }
 
   /* MARKETS */
   .markets-grid {
@@ -893,21 +898,25 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-label">Finance Operations · Deep Dive</div>
-  <h1>Accounts<br>Payable <span>×</span><br>eInvoicing</h1>
-  <p class="hero-desc">A complete breakdown of how AP works, how eInvoicing transforms every step, and what it means across your global markets.</p>
+  <div class="hero-label">Clear · Product Strategy</div>
+  <h1>Don't Build AP.<br><span>Connect</span> to It.</h1>
+  <p class="hero-desc">Why Clear should build an intelligent eInvoice connector — not a full Accounts Payable system. The case for multi-channel delivery into existing AP solutions, backed by market data, competitive analysis, and 410+ edge cases you'd have to solve.</p>
   <div class="hero-stats">
     <div class="stat">
-      <span class="stat-num">$15</span>
-      <span class="stat-label">Cost per manual invoice</span>
+      <span class="stat-num">410+</span>
+      <span class="stat-label">AP edge cases to solve</span>
     </div>
     <div class="stat">
-      <span class="stat-num">85%</span>
-      <span class="stat-label">Touchless rate possible</span>
+      <span class="stat-num">3–5 yrs</span>
+      <span class="stat-label">To build competitive AP</span>
     </div>
     <div class="stat">
-      <span class="stat-num">8</span>
-      <span class="stat-label">Steps in AP lifecycle</span>
+      <span class="stat-num">$15M+</span>
+      <span class="stat-label">Investment to reach parity</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">6 mo</span>
+      <span class="stat-label">To ship a connector</span>
     </div>
   </div>
 </section>
@@ -921,7 +930,7 @@
   <div class="nav-item" onclick="showSection('concepts')">05 Key Concepts</div>
   <div class="nav-item" onclick="showSection('markets')">06 Your Markets</div>
   <div class="nav-item" onclick="showSection('stakeholders')">07 Stakeholder Map</div>
-  <div class="nav-item" onclick="showSection('strategy')">08 Build vs Connect</div>
+  <div class="nav-item" onclick="showSection('strategy')">08 Why Not Build AP</div>
   <div class="nav-item" onclick="showSection('pricing')">09 AP Software Costs</div>
   <div class="nav-item" onclick="showSection('edgecases')">10 Edge Cases (410+)</div>
 </nav>
@@ -1406,21 +1415,127 @@
   </div>
 </section>
 
-<!-- 8. BUILD VS CONNECT -->
+<!-- 8. WHY CLEAR SHOULD NOT BUILD AP -->
 <section class="section" id="strategy">
   <div class="section-header">
     <div class="section-tag">Product Strategy</div>
-    <h2 class="section-title">Build AP Workflow vs Connect to Existing Solutions</h2>
-    <p class="section-sub">Should you build a full AP workflow from scratch, or build connectors to the AP solutions enterprises already use? The answer shapes everything — go-to-market, pricing, and engineering investment.</p>
+    <h2 class="section-title">Why Clear Should Not Build AP</h2>
+    <p class="section-sub">Clear's strategic advantage is eInvoicing compliance at scale. Building a full AP system would mean competing with decades-old incumbents on solved problems while diverting resources from what actually differentiates. The right play: build a connector that pushes eInvoices into existing AP systems via multiple delivery channels.</p>
   </div>
 
-  <div class="transform-grid">
+  <!-- The Core Thesis -->
+  <div class="info-box" style="background:var(--surface); border:1px solid var(--border); border-top: 4px solid var(--accent4);">
+    <div class="info-box-title">The Core Thesis</div>
+    <p>Every enterprise already has an AP system — SAP, Oracle, Coupa, Sage, NetSuite, Dynamics. They will <strong style="color:var(--accent4)">never rip it out</strong>. The switching costs are massive, the procurement cycles are 12–18 months, and AP is deeply embedded in their ERP, chart of accounts, approval workflows, and payment infrastructure. Clear doesn't need to own the AP workflow. Clear needs to be the <strong style="color:var(--accent)">smartest pipe into it</strong> — an intelligent connector that pushes compliant eInvoices into any AP system, through any channel the buyer requires.</p>
+  </div>
+
+  <!-- ============ DIMENSION 1: EDGE CASES ============ -->
+  <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-top:60px; margin-bottom:8px;">1. The 410+ Edge Cases You'd Have to Solve</h3>
+  <p style="color:var(--muted2); font-size:15px; margin-bottom:24px; max-width:700px;">Building AP means owning every edge case in the invoice lifecycle. Not just the happy path — the combinatorial explosion of real-world scenarios that break systems. <a href="#" onclick="showSection('edgecases'); return false;" style="color:var(--accent); text-decoration:none; font-weight:500;">See all 410+ edge cases →</a></p>
+
+  <div class="cards-grid">
+    <div class="card" style="border-top:3px solid var(--accent4)">
+      <div class="card-icon">📄</div>
+      <div class="card-name">Invoice Ingestion (43 edge cases)</div>
+      <div class="card-desc">Handwritten invoices, multi-page merging, borderless tables, mixed-language documents, RTL scripts, decimal separator ambiguity. Building OCR/AI extraction that handles all of this is a multi-year, ML-heavy investment.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent4)">
+      <div class="card-icon">⚖️</div>
+      <div class="card-name">3-Way Matching (52 edge cases)</div>
+      <div class="card-desc">Partial deliveries, retroactive price changes, UOM mismatches, blanket PO releases, tolerance stacking. The matching engine alone is a product-within-a-product requiring deep ERP integration.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent4)">
+      <div class="card-icon">🧮</div>
+      <div class="card-name">Tax Complexity (47 edge cases)</div>
+      <div class="card-desc">Reverse charge VAT, US use tax, Indian TDS, Brazilian multi-tax withholding, line-level vs. header-level rounding. Every jurisdiction has its own rules — and they change constantly.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent4)">
+      <div class="card-icon">💳</div>
+      <div class="card-name">Payments (29 edge cases)</div>
+      <div class="card-desc">ACH return codes, cross-border routing, escheatment, payment netting, stale-dated checks. Building a payment engine means becoming a payments company — a different business entirely.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent4)">
+      <div class="card-icon">✅</div>
+      <div class="card-name">Approval Workflows (20 edge cases)</div>
+      <div class="card-desc">Circular delegation, committee approvals, split-entity routing, budget enforcement, escalation timeouts. Every enterprise has unique approval hierarchies that took years to configure in their ERP.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent4)">
+      <div class="card-icon">🔌</div>
+      <div class="card-name">ERP Integration (16 edge cases)</div>
+      <div class="card-desc">SAP blocked invoices, custom Z-fields, idempotency failures, Oracle subledger timing, NetSuite multi-subsidiary. If you build AP, you still need to integrate with every ERP — except now you're competing with it.</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.15); margin-top:20px;">
+    <div class="info-box-title" style="color:var(--accent4);">The Combinatorial Problem</div>
+    <p>These 410+ edge cases don't occur in isolation — they <strong style="color:var(--text)">combine</strong>. A single invoice can simultaneously involve multi-language OCR + partial delivery + UOM mismatch + reverse charge VAT + FX conversion + split approval + early discount expiry + e-invoicing mandate compliance. This is why the industry average for touchless processing is only <strong style="color:var(--accent4)">30–40%</strong>, and why incumbents have spent decades (and hundreds of millions) getting to where they are. Building AP means solving all of this from scratch. A connector means letting the existing AP system handle it — while Clear focuses on what it does best.</p>
+  </div>
+
+  <!-- ============ DIMENSION 2: TIME TO BUILD ============ -->
+  <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-top:60px; margin-bottom:8px;">2. Time to Build: 3–5 Years to Feature Parity</h3>
+  <p style="color:var(--muted2); font-size:15px; margin-bottom:24px; max-width:700px;">A production-grade AP system isn't a 6-month project. Here's a realistic engineering timeline to reach competitive parity — not innovation, just table stakes.</p>
+
+  <div class="timeline">
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Year 1</div>
+      <div class="step-title">Core Invoice Processing <span class="step-toggle">▾</span></div>
+      <div class="step-body">OCR/AI extraction engine, basic field mapping, invoice ingestion from email/PDF/XML. Simple duplicate detection. Manual GL coding. Basic approval routing (linear chains only). No 3-way matching, no payment execution, no multi-entity support. <strong>Result:</strong> A demo-able prototype that can't handle real enterprise volume or complexity.
+        <span class="pill pill-red">⚠️ Not sellable to enterprises yet</span>
+      </div>
+    </div>
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Year 2</div>
+      <div class="step-title">Matching, Approvals, and ERP Connectors <span class="step-toggle">▾</span></div>
+      <div class="step-body">3-way matching engine with tolerance configuration. Configurable multi-level approval workflows with delegation. First ERP connectors (SAP, Oracle, NetSuite). Multi-currency support. Credit note handling. Basic accruals. <strong>Result:</strong> Usable for mid-market companies with simple AP needs. Still can't compete on enterprise features.
+        <span class="pill pill-red">⚠️ Mid-market only — enterprise gaps remain</span>
+      </div>
+    </div>
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Year 3</div>
+      <div class="step-title">Enterprise Features and Compliance <span class="step-toggle">▾</span></div>
+      <div class="step-body">Multi-entity/multi-subsidiary support. Intercompany accounting. Withholding tax engine (US 1099, Indian TDS, Brazilian ISS/PIS/COFINS). SOX-compliant audit trails. Payment execution (ACH, wire, virtual card). Vendor master management. Sanctions screening integration. <strong>Result:</strong> Starting to be competitive — but still behind on depth, edge case coverage, and reporting.
+        <span class="pill pill-red">⚠️ 3 years invested, still catching up</span>
+      </div>
+    </div>
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Year 4–5</div>
+      <div class="step-title">Polish, Scale, and Long-Tail Edge Cases <span class="step-toggle">▾</span></div>
+      <div class="step-body">Dynamic discounting engine. AI-powered GL coding. Advanced analytics and dashboards. Landed cost allocation. Rebate tracking. Construction/progress billing. Consignment invoicing. Performance at enterprise scale (100K+ invoices/month). Multi-country tax engine maintenance. Security certifications (SOC 2, ISO 27001). <strong>Result:</strong> Competitive product — but you've spent 4–5 years and the market has moved.
+        <span class="pill pill-green">✓ Finally competitive — but at what cost?</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ DIMENSION 3: RESOURCES AND COST ============ -->
+  <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-top:60px; margin-bottom:8px;">3. Resources and Cost: $15M–$30M+ to Reach Parity</h3>
+  <p style="color:var(--muted2); font-size:15px; margin-bottom:24px; max-width:700px;">Building AP isn't just engineering time — it's a full product organization with domain expertise, QA, compliance, and customer support.</p>
+
+  <div class="numbers-row">
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent4)">30–50</div>
+      <div class="number-label">Engineers needed (backend, frontend, ML, integrations)</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent4)">8–12</div>
+      <div class="number-label">Domain specialists (tax, accounting, compliance, payments)</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent4)">$4M–$8M</div>
+      <div class="number-label">Annual team cost (salaries + infrastructure)</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent4)">$15–30M+</div>
+      <div class="number-label">Total investment to reach competitive parity</div>
+    </div>
+  </div>
+
+  <div class="transform-grid" style="margin-top:30px;">
     <div class="transform-col">
-      <div class="transform-col-header before-header">Build Full AP Workflow</div>
-      <div class="transform-item before">Competing head-on with SAP, Oracle, Coupa, Sage — decades of entrenched AP functionality with deep feature sets.</div>
-      <div class="transform-item before">Enterprises won't rip out their ERP's AP module. Switching costs are enormous, and procurement cycles stretch 12–18 months.</div>
-      <div class="transform-item before">The AP workflow itself (receive, match, approve, pay) is well-solved. There's no defensible moat in rebuilding commodity functionality.</div>
-      <div class="transform-item before">Massive engineering investment to reach feature parity before you can even start selling. Years of catch-up.</div>
+      <div class="transform-col-header before-header">Build Full AP — Cost Breakdown</div>
+      <div class="transform-item before"><strong style="color:var(--text)">Engineering:</strong> 30–50 engineers across OCR/AI, matching, workflows, payments, ERP integrations, multi-currency, tax engine, reporting — at $120–200K/yr fully loaded</div>
+      <div class="transform-item before"><strong style="color:var(--text)">Domain Expertise:</strong> Tax accountants, AP operations consultants, compliance specialists, payment processing experts — people who cost $150–250K/yr and are hard to hire</div>
+      <div class="transform-item before"><strong style="color:var(--text)">Infrastructure:</strong> SOC 2 / ISO 27001 certification, PCI compliance for payments, multi-region hosting for data residency, disaster recovery — $500K–$1M/yr</div>
+      <div class="transform-item before"><strong style="color:var(--text)">QA &amp; Support:</strong> AP is finance-critical — bugs mean incorrect payments, tax miscalculations, audit failures. Enterprise-grade QA and 24/7 support are non-negotiable</div>
     </div>
 
     <div class="transform-divider">
@@ -1431,45 +1546,224 @@
     </div>
 
     <div class="transform-col">
-      <div class="transform-col-header after-header">Connect to Existing AP Solutions</div>
-      <div class="transform-item after">Zero-friction adoption — "works with your existing ERP" is a fundamentally easier sell than "replace your AP system."</div>
-      <div class="transform-item after">Faster time to market. Build an integration layer, not an entire product. Start generating revenue while competitors are still building.</div>
-      <div class="transform-item after">The eInvoicing compliance mandate is the wedge. You don't need to own the whole AP stack to capture the highest-value parts.</div>
-      <div class="transform-item after">Engineering focused on differentiation — intelligence, compliance, cross-market normalization — not commodity workflow features.</div>
+      <div class="transform-col-header after-header">Build Connector — Cost Breakdown</div>
+      <div class="transform-item after"><strong style="color:var(--text)">Engineering:</strong> 8–15 engineers focused on eInvoicing compliance, delivery channel adapters (Peppol, API, Email, SFTP), format normalization, and ERP push connectors</div>
+      <div class="transform-item after"><strong style="color:var(--text)">Domain Expertise:</strong> eInvoicing regulatory specialists (which Clear already has) — no need to hire AP operations, tax accounting, or payment processing experts</div>
+      <div class="transform-item after"><strong style="color:var(--text)">Infrastructure:</strong> Lighter compliance footprint — no payment processing means no PCI. Standard SOC 2 and data residency. $150–300K/yr</div>
+      <div class="transform-item after"><strong style="color:var(--text)">QA &amp; Support:</strong> Smaller surface area to test and support. The AP system handles the finance-critical logic. Clear handles delivery and compliance — its core competency</div>
     </div>
   </div>
 
-  <div class="info-box" style="background:var(--surface); border:1px solid var(--border); border-top: 4px solid var(--accent);">
-    <div class="info-box-title">The Recommendation: Intelligent Middleware</div>
-    <p>The connector approach doesn't mean being a dumb pipe. The differentiation is the <strong style="color:var(--accent)">intelligence layer between the eInvoicing network and the ERP</strong> — that's where you own the value:</p>
+  <div class="numbers-row" style="margin-top:20px;">
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent2)">8–15</div>
+      <div class="number-label">Engineers needed for connector approach</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent2)">$1.5M–$3M</div>
+      <div class="number-label">Annual team cost for connector approach</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent2)">6–12 mo</div>
+      <div class="number-label">Time to first revenue-generating connector</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent2)">70–80%</div>
+      <div class="number-label">Cost savings vs. building full AP</div>
+    </div>
   </div>
 
-  <div class="cards-grid" style="margin-top:20px;">
-    <div class="card" style="border-top:3px solid var(--accent)">
-      <div class="card-icon">🧠</div>
-      <div class="card-name">Auto-Matching &amp; Exception Triage</div>
-      <div class="card-desc">AI-powered matching and exception resolution that sits between the eInvoicing network and the ERP. The AP team gets pre-diagnosed exceptions with suggested resolutions — not raw data dumps.</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--accent4)">
-      <div class="card-icon">🛡️</div>
-      <div class="card-name">Duplicate Detection</div>
-      <div class="card-desc">Catch duplicates before they hit the ERP, not after. A pre-processing intelligence layer that prevents problems rather than reporting them downstream.</div>
+  <!-- ============ DIMENSION 4: MAINTENANCE ============ -->
+  <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-top:60px; margin-bottom:8px;">4. Ongoing Maintenance: The Costs Never Stop</h3>
+  <p style="color:var(--muted2); font-size:15px; margin-bottom:24px; max-width:700px;">Building AP is not a one-time investment. The maintenance burden grows every year as regulations change, ERPs evolve, and customers demand more.</p>
+
+  <div class="cards-grid">
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="card-icon">📜</div>
+      <div class="card-name">Tax &amp; Regulatory Changes</div>
+      <div class="card-desc">VAT rates change. Withholding tax thresholds update. New e-invoicing mandates launch (Poland KSeF, France B2B, Romania, Malaysia). Every country change means updating the tax engine, testing, and rolling out — a permanent engineering tax on the team.</div>
     </div>
     <div class="card" style="border-top:3px solid var(--accent3)">
-      <div class="card-icon">💡</div>
-      <div class="card-name">Dynamic Discounting Recommendations</div>
-      <div class="card-desc">Surface early payment discount opportunities with ROI context to the treasury team. Only possible when invoices are processed fast enough — which the eInvoicing layer enables.</div>
+      <div class="card-icon">🔧</div>
+      <div class="card-name">ERP Version Upgrades</div>
+      <div class="card-desc">SAP ECC to S/4HANA. Oracle EBS to Fusion. Dynamics GP to Business Central. Every major ERP migration breaks existing integrations. If you build AP, you maintain deep bidirectional integrations with every ERP version — not just push connectors.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="card-icon">🔒</div>
+      <div class="card-name">Security &amp; Compliance Audits</div>
+      <div class="card-desc">AP handles financial data and payment credentials. Annual SOC 2 audits, penetration testing, GDPR data subject requests, PCI recertification. The compliance surface area of a full AP system is 5–10x that of a delivery connector.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="card-icon">🐛</div>
+      <div class="card-name">Edge Case Support Tickets</div>
+      <div class="card-desc">Every new customer brings their own AP configuration: custom approval hierarchies, unique tolerance rules, industry-specific workflows (construction retention, consignment, self-billing). Each becomes a support ticket that requires deep product knowledge to resolve.</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:var(--surface); border:1px solid var(--border); margin-top:20px;">
+    <div class="info-box-title">Maintenance Rule of Thumb</div>
+    <p>Enterprise software typically requires <strong style="color:var(--text)">15–25% of the original build cost annually</strong> for maintenance, updates, and support. On a $20M AP build, that's <strong style="color:var(--accent4)">$3M–$5M per year, every year, forever</strong> — before adding a single new feature. A connector with a smaller surface area costs a fraction of that to maintain.</p>
+  </div>
+
+  <!-- ============ DIMENSION 5: MARKET COMPETITION ============ -->
+  <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-top:60px; margin-bottom:8px;">5. Market Competition: Decades of Incumbency</h3>
+  <p style="color:var(--muted2); font-size:15px; margin-bottom:24px; max-width:700px;">The AP automation market is mature, crowded, and dominated by vendors who have spent 15–25 years building feature-complete platforms. Entering this market head-on means competing on their terms.</p>
+
+  <div class="cards-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+    <div class="card" style="border-top:3px solid var(--accent); text-align:center;">
+      <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px;">Coupa</div>
+      <div style="font-size:12px; color:var(--accent); font-weight:600; margin-bottom:10px;">GARTNER LEADER</div>
+      <div class="card-desc">$6B+ acquisition by Thoma Bravo. Full BSM platform. 2,000+ enterprise customers. Deep SAP/Oracle connectors. 15+ years in market.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent); text-align:center;">
+      <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px;">Basware</div>
+      <div style="font-size:12px; color:var(--accent); font-weight:600; margin-bottom:10px;">GARTNER LEADER</div>
+      <div class="card-desc">30+ years in AP automation. Peppol founding member. 1M+ connected businesses. $180M+ revenue. Deep European regulatory expertise.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent); text-align:center;">
+      <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px;">Esker</div>
+      <div style="font-size:12px; color:var(--accent); font-weight:600; margin-bottom:10px;">GARTNER LEADER</div>
+      <div class="card-desc">AI-driven document automation. 25+ years in market. $200M+ revenue. Deep OCR/AI extraction. Strong mid-market and enterprise presence.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent); text-align:center;">
+      <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px;">Medius</div>
+      <div style="font-size:12px; color:var(--accent); font-weight:600; margin-bottom:10px;">GARTNER LEADER</div>
+      <div class="card-desc">Autonomous AP platform. Formerly Wax Digital + ReadSoft heritage. Strong on touchless processing. Growing aggressively in mid-market.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--muted); text-align:center;">
+      <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px;">SAP</div>
+      <div style="font-size:12px; color:var(--muted2); font-weight:600; margin-bottom:10px;">EMBEDDED IN ERP</div>
+      <div class="card-desc">AP is native to S/4HANA. 400,000+ customers globally. No company will replace SAP's AP module with Clear's — they'll supplement it.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--muted); text-align:center;">
+      <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px;">Oracle</div>
+      <div style="font-size:12px; color:var(--muted2); font-weight:600; margin-bottom:10px;">EMBEDDED IN ERP</div>
+      <div class="card-desc">Oracle Fusion Cloud AP is deeply integrated with procurement, GL, and cash management. 430,000+ customers. The AP module comes free with the ERP.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--muted); text-align:center;">
+      <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px;">Tipalti</div>
+      <div style="font-size:12px; color:var(--muted2); font-weight:600; margin-bottom:10px;">$8B VALUATION</div>
+      <div class="card-desc">End-to-end AP + global payments. 4,000+ customers. Strong in tech/digital economy. Raised $550M+. Purpose-built for AP from day one.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--muted); text-align:center;">
+      <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px;">Bill.com</div>
+      <div style="font-size:12px; color:var(--muted2); font-weight:600; margin-bottom:10px;">$7B+ MARKET CAP</div>
+      <div class="card-desc">470,000+ businesses. SMB-focused AP + AR. Public company (NYSE: BILL). Massive network effects. Dominates small business AP.</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.15); margin-top:20px;">
+    <div class="info-box-title" style="color:var(--accent4);">The Competitive Reality</div>
+    <p>These companies have collectively invested <strong style="color:var(--text)">billions of dollars and decades of engineering time</strong> building AP systems. They have thousands of customers providing feedback, massive training data for ML models, and deep integration partnerships with every major ERP. Clear entering this market as a new AP vendor would be bringing a knife to a gunfight. But Clear entering as an <strong style="color:var(--accent)">eInvoicing connector that feeds into all of these systems</strong>? That's a partner play, not a competitive one — and it's dramatically easier to sell.</p>
+  </div>
+
+  <!-- ============ DIMENSION 6: DELIVERY CHANNELS ============ -->
+  <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-top:60px; margin-bottom:8px;">6. The Connector Architecture: Multi-Channel eInvoice Delivery</h3>
+  <p style="color:var(--muted2); font-size:15px; margin-bottom:24px; max-width:700px;">Clear's value is being the intelligent routing layer that takes an eInvoice and delivers it to the buyer's AP system through whatever channel they support. Not every buyer is on Peppol. Not every buyer has an API. The connector must meet buyers where they are.</p>
+
+  <div class="cards-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
+    <div class="card" style="border-top:3px solid var(--accent2)">
+      <div class="card-icon">🔗</div>
+      <div class="card-name">eInvoicing Networks</div>
+      <div class="card-desc" style="margin-bottom:12px;">Push structured XML via Peppol, ZATCA Fatoora, India IRP, KSeF, or country-specific networks. The highest-fidelity channel — structured data, government-validated, zero manual intervention on the buyer side.</div>
+      <div style="font-size:12px; color:var(--accent2); font-weight:600;">HIGHEST VALUE — FULLY STRUCTURED</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent)">
+      <div class="card-icon">🔌</div>
+      <div class="card-name">Direct API Push</div>
+      <div class="card-desc" style="margin-bottom:12px;">Push invoice data directly into the buyer's ERP or AP system via REST/SOAP API. SAP, Oracle, NetSuite, Dynamics all have invoice posting APIs. Pre-mapped fields, auto-coded, ready for matching on arrival.</div>
+      <div style="font-size:12px; color:var(--accent); font-weight:600;">HIGH VALUE — PRE-INTEGRATED</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="card-icon">📧</div>
+      <div class="card-name">Email with Structured Attachment</div>
+      <div class="card-desc" style="margin-bottom:12px;">Send a human-readable PDF with an embedded structured XML (Factur-X / ZUGFeRD hybrid format) to the buyer's AP inbox. Their AP automation tool extracts the XML; humans can read the PDF. Works with any buyer.</div>
+      <div style="font-size:12px; color:var(--accent3); font-weight:600;">MEDIUM VALUE — UNIVERSAL REACH</div>
+    </div>
+    <div class="card" style="border-top:3px solid #a78bfa">
+      <div class="card-icon">📁</div>
+      <div class="card-name">SFTP / EDI Drop</div>
+      <div class="card-desc" style="margin-bottom:12px;">Drop invoice files (XML, CSV, EDIFACT) into the buyer's SFTP server or EDI mailbox. Common in manufacturing, retail, and healthcare where legacy B2B integrations dominate. Clear normalizes into whatever format the buyer's system expects.</div>
+      <div style="font-size:12px; color:#a78bfa; font-weight:600;">LEGACY COMPATIBLE — BROAD REACH</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--muted)">
+      <div class="card-icon">🌐</div>
+      <div class="card-name">Buyer Portal</div>
+      <div class="card-desc" style="margin-bottom:12px;">For buyers without any integration capability, provide a web portal where they can view, download, and acknowledge received eInvoices. Smallest buyers, simplest interface. Useful for SME buyers in mandate-driven markets.</div>
+      <div style="font-size:12px; color:var(--muted2); font-weight:600;">FALLBACK — NO INTEGRATION NEEDED</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--muted)">
+      <div class="card-icon">📄</div>
+      <div class="card-name">PDF Email (Fallback)</div>
+      <div class="card-desc" style="margin-bottom:12px;">For non-mandate markets or buyers who refuse structured formats — a clean, branded PDF invoice emailed to the AP inbox. The lowest-tech channel, but ensures 100% buyer coverage regardless of their technical capability.</div>
+      <div style="font-size:12px; color:var(--muted2); font-weight:600;">MINIMUM — 100% COVERAGE</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:var(--surface); border:1px solid var(--border); border-top: 4px solid var(--accent); margin-top:20px;">
+    <div class="info-box-title">The Multi-Channel Value Proposition</div>
+    <p>The power of the connector approach is that Clear becomes the <strong style="color:var(--accent)">single point of invoice issuance</strong> for the supplier, regardless of what the buyer's AP system can accept. The supplier issues one eInvoice through Clear. Clear's routing engine determines the optimal delivery channel based on the buyer's capabilities — Peppol for connected buyers, API for integrated ERPs, hybrid PDF+XML for email-only buyers, SFTP for legacy systems. <strong style="color:var(--text)">One supplier action, every buyer reached.</strong></p>
+  </div>
+
+  <!-- ============ DIMENSION 7: STRATEGIC POSITION ============ -->
+  <h3 style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; margin-top:60px; margin-bottom:8px;">7. Where Clear Wins: The Intelligence Layer</h3>
+  <p style="color:var(--muted2); font-size:15px; margin-bottom:24px; max-width:700px;">The connector approach doesn't mean being a dumb pipe. The differentiation is the intelligence layer between the eInvoicing network and the buyer's AP system — that's where Clear owns the value.</p>
+
+  <div class="cards-grid">
+    <div class="card" style="border-top:3px solid var(--accent)">
+      <div class="card-icon">🧠</div>
+      <div class="card-name">Pre-Validation &amp; Exception Prevention</div>
+      <div class="card-desc">Validate invoices against PO data, tax rules, and compliance requirements before they enter the buyer's AP system. Catch errors at the source — duplicate detection, tax rate validation, PO matching — so the buyer's AP team gets clean data, not raw problems.</div>
     </div>
     <div class="card" style="border-top:3px solid var(--accent2)">
       <div class="card-icon">🌍</div>
       <div class="card-name">Cross-Market Compliance Normalization</div>
-      <div class="card-desc">ZATCA clearance, Peppol delivery, KSeF polling, France PDP lifecycle — all abstracted into one clean, normalized feed that the ERP consumes identically regardless of source market.</div>
+      <div class="card-desc">ZATCA clearance, Peppol delivery, KSeF polling, France PDP lifecycle, India IRP — all abstracted into one clean, normalized feed. The buyer's ERP receives identically structured data regardless of which country the invoice originated from.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="card-icon">📊</div>
+      <div class="card-name">Supplier Compliance Analytics</div>
+      <div class="card-desc">Dashboard showing which suppliers are e-invoicing compliant, which are at risk, and which need onboarding. Proactive compliance management — not reactive firefighting. This is data that lives outside the AP system and only Clear can provide.</div>
+    </div>
+    <div class="card" style="border-top:3px solid #a78bfa">
+      <div class="card-icon">🔄</div>
+      <div class="card-name">Format Translation Engine</div>
+      <div class="card-desc">Translate between eInvoice formats automatically — UBL to CII, Peppol BIS to ZATCA XML, EN 16931 to country-specific schemas. The buyer's ERP gets data in exactly the format it expects, regardless of how the supplier issued it.</div>
     </div>
   </div>
 
-  <div class="info-box" style="background:var(--surface2); border:1px solid var(--border);">
-    <div class="info-box-title">The Exception: SMEs</div>
-    <p>The one scenario where building more AP workflow makes sense is for <strong style="color:var(--text)">small and mid-size businesses who don't have a proper AP system at all</strong>. For them, a lightweight, eInvoicing-native AP workflow could be compelling — but that's a different market segment with very different pricing, margins, and go-to-market.</p>
+  <!-- ============ SUMMARY ============ -->
+  <div style="margin-top:60px; padding:30px 32px; background:linear-gradient(135deg, rgba(37,99,235,0.04), rgba(5,150,105,0.04)); border:1px solid var(--border); border-radius:16px; border-left:4px solid var(--accent);">
+    <h3 style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:16px;">The Bottom Line</h3>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+      <div>
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent4); margin-bottom:8px;">Build AP</div>
+        <ul style="list-style:none; padding:0; margin:0;">
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent4);">✗</span> 3–5 years to feature parity</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent4);">✗</span> $15–30M+ total investment</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent4);">✗</span> 410+ edge cases to solve and maintain</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent4);">✗</span> Competing with Coupa, SAP, Basware, Esker</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent4);">✗</span> $3–5M/yr perpetual maintenance burden</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent4);">✗</span> "Replace your AP system" — hardest enterprise sell</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent2); margin-bottom:8px;">Build Connector</div>
+        <ul style="list-style:none; padding:0; margin:0;">
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent2);">✓</span> 6–12 months to first revenue</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent2);">✓</span> $3–5M total investment to v1</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent2);">✓</span> Let AP systems handle their edge cases</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent2);">✓</span> Partner with AP vendors, not compete</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent2);">✓</span> Focused maintenance on delivery + compliance</li>
+          <li style="font-size:14px; color:var(--muted2); line-height:1.8; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--accent2);">✓</span> "Works with your existing AP" — easiest sell</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:var(--surface2); border:1px solid var(--border); margin-top:20px;">
+    <div class="info-box-title">The Exception: SMEs Without AP Systems</div>
+    <p>The one scenario where building lightweight AP workflow makes sense is for <strong style="color:var(--text)">small and mid-size businesses who don't have a proper AP system at all</strong>. For them, a lightweight, eInvoicing-native AP workflow could be compelling — receive, approve, pay. But that's a different market segment with very different pricing ($50–200/mo), margins, and go-to-market. It should be evaluated as a separate product bet, not conflated with the enterprise connector strategy.</p>
   </div>
 </section>
 
@@ -1560,27 +1854,62 @@
   </div>
 
   <div class="info-box" style="background:var(--surface); border:1px solid var(--border); margin-top:16px; border-left: 3px solid var(--accent);">
-    <div class="info-box-title">Gartner Magic Quadrant for AP Applications (2025)</div>
-    <p>Gartner released their first-ever Magic Quadrant for Accounts Payable Applications, evaluating 14 vendors on Ability to Execute and Completeness of Vision. The four <strong style="color:var(--text);">Leaders</strong> are:</p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:10px; margin-top:14px;">
-      <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent);">
-        <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Basware</div>
-        <div style="font-size:13px; color:var(--muted);">E2E AP &amp; procurement</div>
-      </div>
-      <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent);">
-        <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Coupa</div>
-        <div style="font-size:13px; color:var(--muted);">BSM platform, enterprise focus</div>
-      </div>
-      <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent);">
-        <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Esker</div>
-        <div style="font-size:13px; color:var(--muted);">AI-driven document automation</div>
-      </div>
-      <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent);">
-        <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Medius</div>
-        <div style="font-size:13px; color:var(--muted);">Autonomous AP platform</div>
+    <div class="info-box-title">Gartner Magic Quadrant for AP Applications (March 2025)</div>
+    <p>Gartner's <strong style="color:var(--text);">inaugural</strong> Magic Quadrant for Accounts Payable Applications — replacing the previous Market Guide — evaluated <strong style="color:var(--text);">14 vendors</strong> on Ability to Execute and Completeness of Vision. Published March 19, 2025.</p>
+
+    <div style="margin-top:18px;">
+      <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">Leaders — Highest on both axes</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px;">
+        <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent);">
+          <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Basware</div>
+          <div style="font-size:12px; color:var(--muted);">30+ yrs in AP. Peppol founding member. 2.2B invoices processed. E2E AP &amp; procurement.</div>
+        </div>
+        <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent);">
+          <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Coupa</div>
+          <div style="font-size:12px; color:var(--muted);">Highest on Ability to Execute. $6B+ Thoma Bravo acquisition. Full BSM platform.</div>
+        </div>
+        <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent);">
+          <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Esker</div>
+          <div style="font-size:12px; color:var(--muted);">AI-driven document automation. 25+ yrs. $200M+ revenue. Strong mid-market and enterprise.</div>
+        </div>
+        <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent);">
+          <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Medius</div>
+          <div style="font-size:12px; color:var(--muted);">Autonomous AP. ReadSoft heritage. Strong on touchless processing. Growing mid-market.</div>
+        </div>
       </div>
     </div>
-    <p style="margin-top:14px;">This replaces the previous Market Guide for AP Invoice Automation Solutions. Notably, vendors like SAP Concur, Tipalti, and HighRadius were evaluated but did not place in the Leaders quadrant — signalling that the competitive landscape is not dominated by the biggest names alone.</p>
+
+    <div style="margin-top:18px;">
+      <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#a78bfa; margin-bottom:10px;">Visionaries — Strong vision, building execution</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px;">
+        <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid #a78bfa;">
+          <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Airbase (Paylocity)</div>
+          <div style="font-size:12px; color:var(--muted);">Only Visionary. Modern spend management platform. Acquired by Paylocity in 2024.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent3); margin-bottom:10px;">Niche Players — Focused capability, narrower scope</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:8px;">
+        <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent3);">
+          <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">SoftCo</div>
+          <div style="font-size:12px; color:var(--muted);">AP automation with P2P focus. Strong in government and public sector.</div>
+        </div>
+        <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent3);">
+          <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">Quadient</div>
+          <div style="font-size:12px; color:var(--muted);">Cloud AP automation. AI-powered capture. Mid-market focus.</div>
+        </div>
+        <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent3);">
+          <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700;">+ ~7 others evaluated</div>
+          <div style="font-size:12px; color:var(--muted);">Likely includes Tipalti, Stampli, AvidXchange, SAP Concur, and others — specific placements not publicly disclosed.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px; padding:14px 18px; background:var(--bg); border-radius:8px;">
+      <p style="font-size:14px; color:var(--muted2);"><strong style="color:var(--text);">What this means for Clear:</strong> The AP market is mature enough for Gartner to formalize a Magic Quadrant. Four Leaders have decades of investment and thousands of customers. Competing here means competing with them. Connecting to them means partnering — and the compliance mandate is the wedge that gets Clear into every one of these ecosystems.</p>
+    </div>
   </div>
 
   <div class="info-box" style="background:var(--surface2); border:1px solid var(--border); margin-top:16px;">
@@ -1623,10 +1952,61 @@
       <div class="concept-name">1. Invoice Ingestion &amp; OCR <span style="font-size:13px; font-weight:400; color:var(--muted);">(43)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Handwritten invoices, multi-page merging, borderless tables, decimal separator ambiguity, RTL languages, mixed-language documents.</div>
       <div class="concept-full">
-        <strong>Document chaos:</strong> Handwritten invoices, faxed with degraded resolution, photographed with phone cameras at odd angles, password-protected PDFs, carbon copies with bleed-through, watermarks obscuring data, dot matrix printing.<br><br>
-        <strong>Table extraction:</strong> Borderless tables relying on whitespace, merged cells, multi-line descriptions in one row, nested sub-line items, line items wrapping across page breaks, columns with identical headers.<br><br>
-        <strong>Field ambiguity:</strong> Multiple dates (invoice/delivery/due/tax point), currency symbol collision ($ = USD/CAD/AUD/SGD), decimal separator confusion (1.234,56 vs 1,234.56), amounts in words vs digits that don't match, PO number embedded in a sentence rather than a field.<br><br>
-        <strong>Localization:</strong> Non-Latin scripts (CJK, Thai, Devanagari), mixed-language invoices (header in French, line items in English), date format ambiguity (01/02/2025), country-specific address formats.
+        <div class="edge-subhead">Document Format Chaos</div>
+        <ol start="1">
+          <li><strong>Handwritten invoices</strong> &mdash; OCR fails on varied handwriting styles, smudged ink</li>
+          <li><strong>Mixed typed/handwritten invoices</strong> &mdash; e.g. printed template with handwritten amounts or PO numbers scrawled in margins</li>
+          <li><strong>Faxed invoices</strong> with degraded resolution, skewed alignment, and thermal paper artifacts</li>
+          <li><strong>Photographed invoices</strong> (phone camera) with perspective distortion, shadows, partial cropping</li>
+          <li><strong>Multi-page invoices</strong> where line items span pages but headers/footers repeat &mdash; system must merge pages into one logical document</li>
+          <li><strong>Single PDF containing multiple invoices</strong> &mdash; must detect document boundaries</li>
+          <li><strong>Invoice embedded in email body</strong> (not as attachment) &mdash; plain text invoice vs HTML-formatted</li>
+          <li><strong>Password-protected or encrypted PDF</strong> attachments</li>
+          <li><strong>Invoices in image formats</strong> (JPEG, TIFF, BMP) vs structured formats (PDF, XML, EDI)</li>
+          <li><strong>Scanned at odd angles</strong>, upside down, or sideways requiring rotation detection</li>
+          <li><strong>Carbon copy / NCR paper</strong> invoices where multiple layers bleed through</li>
+          <li><strong>Invoices with stamps, approval signatures, or stickers</strong> overlaying critical data fields</li>
+          <li><strong>Watermarked invoices</strong> (&ldquo;COPY&rdquo;, &ldquo;DUPLICATE&rdquo;, &ldquo;DRAFT&rdquo;) where watermark obscures text</li>
+          <li><strong>Invoices printed on colored paper</strong> reducing OCR contrast</li>
+          <li><strong>Dot matrix printed invoices</strong> with poor character definition</li>
+        </ol>
+        <div class="edge-subhead">Table and Line Item Extraction</div>
+        <ol start="16">
+          <li><strong>Borderless tables</strong> &mdash; no grid lines, relying solely on whitespace alignment</li>
+          <li><strong>Merged cells</strong> in line item tables (e.g. description spanning two rows)</li>
+          <li><strong>Multi-line descriptions</strong> within a single line item row</li>
+          <li><strong>Nested sub-line items</strong> (e.g. kit components listed under a parent SKU)</li>
+          <li><strong>Invoices with multiple tables</strong> &mdash; line items table, tax summary table, bank details table</li>
+          <li><strong>Dynamic column layouts</strong> &mdash; same vendor uses different column orders across invoices</li>
+          <li><strong>Missing column headers</strong> entirely &mdash; system must infer from context</li>
+          <li><strong>Line items that wrap across page break</strong> &mdash; last item on page 1 continues on page 2</li>
+          <li><strong>Sparse tables</strong> where not every cell has a value (e.g. no unit price, only total)</li>
+          <li><strong>Columns with identical headers</strong> (e.g. two &ldquo;Amount&rdquo; columns &mdash; one net, one gross)</li>
+          <li><strong>Right-to-left languages</strong> (Arabic, Hebrew) where table reading direction reverses</li>
+        </ol>
+        <div class="edge-subhead">Field Extraction Ambiguity</div>
+        <ol start="27">
+          <li><strong>Multiple dates on invoice</strong>: invoice date, delivery date, due date, tax point date &mdash; which is which?</li>
+          <li><strong>Multiple reference numbers</strong>: PO number, delivery note number, contract number, customer reference, vendor&rsquo;s internal reference</li>
+          <li><strong>Invoice number vs. credit note number</strong> ambiguity on the same document</li>
+          <li><strong>Tax registration numbers</strong> confused with invoice numbers (both are numeric strings)</li>
+          <li><strong>Currency symbol ambiguity</strong>: &ldquo;$&rdquo; could mean USD, CAD, AUD, SGD, HKD</li>
+          <li><strong>Decimal separator confusion</strong>: &ldquo;1.234,56&rdquo; (European) vs &ldquo;1,234.56&rdquo; (US/UK) &mdash; same digits, different amounts</li>
+          <li><strong>Amounts in words vs. digits</strong> that don&rsquo;t match (fraud indicator or OCR error?)</li>
+          <li><strong>Negative amounts</strong> represented differently: parentheses, minus sign, &ldquo;CR&rdquo; suffix</li>
+          <li><strong>Tax-inclusive vs. tax-exclusive</strong> line item prices &mdash; not always stated explicitly</li>
+          <li><strong>&ldquo;Total&rdquo; that includes shipping/freight</strong> vs &ldquo;Subtotal&rdquo; that doesn&rsquo;t &mdash; naming varies by vendor</li>
+          <li><strong>PO number embedded in a sentence</strong> (&ldquo;Re: Your order PO-2024-0891 dated...&rdquo;) rather than a labeled field</li>
+          <li><strong>Vendor name on invoice differs from legal entity name</strong> in vendor master (trade name vs. registered name)</li>
+        </ol>
+        <div class="edge-subhead">Language and Localization</div>
+        <ol start="39">
+          <li><strong>Invoices in non-Latin scripts</strong>: Chinese, Japanese, Korean, Thai, Devanagari</li>
+          <li><strong>Mixed-language invoices</strong>: header in French, line items in English, footer in Dutch</li>
+          <li><strong>Field labels in local language</strong>: &ldquo;Facture&rdquo; (French), &ldquo;Rechnung&rdquo; (German), &ldquo;Faktura&rdquo; (Polish) must map to standard fields</li>
+          <li><strong>Date format varies</strong>: DD/MM/YYYY vs MM/DD/YYYY vs YYYY-MM-DD &mdash; &ldquo;01/02/2025&rdquo; is ambiguous</li>
+          <li><strong>Address formats</strong> vary wildly by country (Japan: prefecture before city; US: state after city)</li>
+        </ol>
       </div>
     </div>
 
@@ -1635,9 +2015,42 @@
       <div class="concept-name">2. Duplicate Detection <span style="font-size:13px; font-weight:400; color:var(--muted);">(27)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Invoice number normalization failures, vendor identity fragmentation, false positives on recurring invoices and installment payments.</div>
       <div class="concept-full">
-        <strong>Number normalization:</strong> Leading zeros ("00001234" vs "1234"), prefix inconsistency ("INV-1234" vs "1234"), case sensitivity, OCR misreads (lowercase L vs digit 1), vendor reusing numbers annually or after system migration.<br><br>
-        <strong>Vendor identity:</strong> Same vendor with multiple IDs across plants, trade name vs legal name ("FedEx" vs "Federal Express Corporation"), post-M&amp;A name coexistence, regional office variants.<br><br>
-        <strong>False positives:</strong> Recurring monthly invoices with similar amounts, installment payments on one contract, multiple partial delivery invoices against same PO, credit note + replacement invoice, pro-forma followed by final invoice, same vendor/amount/date but different services, vendor submitting via both email and portal.
+        <div class="edge-subhead">Invoice Number Normalization Failures</div>
+        <ol start="44">
+          <li><strong>Leading zeros</strong>: &ldquo;00001234&rdquo; vs &ldquo;1234&rdquo; &mdash; same or different?</li>
+          <li><strong>Prefixes/suffixes inconsistently included</strong>: &ldquo;INV-1234&rdquo; vs &ldquo;1234&rdquo; vs &ldquo;INV1234&rdquo;</li>
+          <li><strong>Spaces and hyphens</strong>: &ldquo;INV 1234&rdquo; vs &ldquo;INV-1234&rdquo; vs &ldquo;INV1234&rdquo;</li>
+          <li><strong>Case sensitivity</strong>: &ldquo;inv-1234A&rdquo; vs &ldquo;INV-1234a&rdquo;</li>
+          <li><strong>Special characters</strong>: &ldquo;INV/2024/1234&rdquo; vs &ldquo;INV_2024_1234&rdquo;</li>
+          <li><strong>Vendor reuses invoice numbers annually</strong> &mdash; &ldquo;1234&rdquo; from 2023 and &ldquo;1234&rdquo; from 2024 are different invoices</li>
+          <li><strong>Vendor resets invoice sequence</strong> after system migration &mdash; new &ldquo;001&rdquo; is not the same as old &ldquo;001&rdquo;</li>
+          <li><strong>Manual entry typo</strong>: &ldquo;1O24&rdquo; (letter O) vs &ldquo;1024&rdquo; (digit zero)</li>
+          <li><strong>OCR misread</strong>: &ldquo;INV-l234&rdquo; (lowercase L) vs &ldquo;INV-1234&rdquo; (digit one)</li>
+        </ol>
+        <div class="edge-subhead">Vendor Identity Fragmentation</div>
+        <ol start="53">
+          <li><strong>Same vendor, multiple vendor IDs</strong>: &ldquo;ABC Corp&rdquo; in one plant, &ldquo;ABC Corporation&rdquo; in another</li>
+          <li><strong>Trade name vs. legal name</strong>: &ldquo;FedEx&rdquo; vs &ldquo;Federal Express Corporation&rdquo;</li>
+          <li><strong>Vendor name with punctuation variants</strong>: &ldquo;ACME, LLC&rdquo; vs &ldquo;ACME LLC&rdquo; vs &ldquo;ACME L.L.C.&rdquo;</li>
+          <li><strong>Parent company vs. subsidiary</strong>: &ldquo;Dell Inc.&rdquo; vs &ldquo;Dell Technologies&rdquo; vs &ldquo;Dell Computer Corp&rdquo;</li>
+          <li><strong>Post-M&amp;A vendor identity</strong>: vendor was acquired, old and new names coexist during transition</li>
+          <li><strong>Regional office variants</strong>: &ldquo;Deloitte US&rdquo; vs &ldquo;Deloitte LLP&rdquo; vs &ldquo;Deloitte &amp; Touche&rdquo;</li>
+          <li><strong>Same vendor, different remit-to addresses</strong> &mdash; legitimate (multiple bank accounts) or fraud?</li>
+          <li><strong>Vendor and customer are the same entity</strong> (buying from and selling to the same company)</li>
+        </ol>
+        <div class="edge-subhead">Legitimate &ldquo;Duplicates&rdquo; (False Positives)</div>
+        <ol start="61">
+          <li><strong>Recurring monthly invoices</strong> with similar amounts &mdash; not duplicates</li>
+          <li><strong>Installment payments</strong> on a single contract &mdash; same vendor, similar amounts, different invoices</li>
+          <li><strong>Multiple invoices for partial deliveries</strong> against the same PO &mdash; same PO reference, different invoice numbers</li>
+          <li><strong>Credit note + replacement invoice</strong> &mdash; looks like duplicate of original but is a correction</li>
+          <li><strong>Pro-forma invoice followed by final invoice</strong> &mdash; same details, different document types</li>
+          <li><strong>Consolidated invoice replacing multiple individual invoices</strong> &mdash; overlapping line items</li>
+          <li><strong>Vendor resubmits invoice after correction</strong> with same invoice number but different amount</li>
+          <li><strong>Same vendor, same amount, same date</strong> but different services (e.g. two $500 consulting invoices for different projects)</li>
+          <li><strong>Invoice submitted by both vendor (email) and buying department (portal upload)</strong> &mdash; same document entered twice</li>
+          <li><strong>EDI invoice and paper invoice</strong> for same transaction &mdash; vendor sends both as backup</li>
+        </ol>
       </div>
     </div>
 
@@ -1646,11 +2059,74 @@
       <div class="concept-name">3. Three-Way / N-Way Matching <span style="font-size:13px; font-weight:400; color:var(--muted);">(52)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Partial deliveries, retroactive price changes, UOM mismatches (cases vs eaches), blanket PO releases, tolerance stacking across lines.</div>
       <div class="concept-full">
-        <strong>Quantity mismatches:</strong> Partial delivery (PO 1000, received 800, invoiced 800), over-delivery, goods rejected at quality inspection, returns in transit, consignment not "received" until consumed, free samples inflating quantities.<br><br>
-        <strong>Price mismatches:</strong> Retroactive contract renegotiation, volume discount thresholds hit mid-PO, tiered pricing, spot pricing for commodities, fuel surcharges not on PO, minimum order charges, currency conversion between PO and invoice.<br><br>
-        <strong>UOM mismatches:</strong> Cases vs eaches (12x off), metric vs imperial (kg vs lb), hours vs days, pallets vs units vs packs, vendor-specific UOM codes that don't map to buyer's ERP.<br><br>
-        <strong>PO issues:</strong> Wrong PO referenced, PO doesn't exist (verbal auth), PO from different entity, closed/cancelled PO, single invoice referencing multiple POs, blanket PO with no line detail.<br><br>
-        <strong>Tolerance:</strong> Different tolerances per vendor/commodity, line-level vs total tolerance, percentage vs absolute, tolerance stacking (many small discrepancies aggregating), zero-tolerance government contracts.
+        <div class="edge-subhead">Quantity Mismatches</div>
+        <ol start="71">
+          <li><strong>Partial delivery</strong>: PO for 1000 units, only 800 received, invoice for 800 &mdash; match or hold?</li>
+          <li><strong>Over-delivery</strong>: received 1050 but PO says 1000 &mdash; accept overage or reject?</li>
+          <li><strong>Partial delivery with partial invoice</strong>: 500 of 1000 received, invoice for 500, then another 300 received, invoice for 300 &mdash; multiple receipts against one PO line</li>
+          <li><strong>Goods received in multiple shipments</strong> but vendor sends single consolidated invoice</li>
+          <li><strong>Single shipment but vendor sends multiple invoices</strong> (one per SKU)</li>
+          <li><strong>Quantity received but some rejected</strong> at quality inspection &mdash; invoice is for shipped quantity, not accepted quantity</li>
+          <li><strong>Returns in transit</strong>: goods sent back but return receipt not yet processed when invoice arrives</li>
+          <li><strong>Consignment inventory</strong>: goods are on-site but not &ldquo;received&rdquo; until consumed &mdash; when does the PO match?</li>
+          <li><strong>Free samples or bonus items</strong> included in shipment but not on PO &mdash; inflates received quantity</li>
+        </ol>
+        <div class="edge-subhead">Price Mismatches</div>
+        <ol start="80">
+          <li><strong>Retroactive price change</strong>: contract renegotiated after PO was issued &mdash; invoice reflects new price, PO has old price</li>
+          <li><strong>Volume discount kicks in</strong>: unit price drops after cumulative order threshold is reached mid-PO</li>
+          <li><strong>Tiered pricing</strong>: first 100 units at $10, next 100 at $8 &mdash; invoice correctly calculates but doesn&rsquo;t match flat PO price</li>
+          <li><strong>Promotional/seasonal pricing</strong> applied by vendor but PO was created at standard price</li>
+          <li><strong>Price per unit vs. price per case/pack</strong> &mdash; PO says $12/case (12 units), invoice says $1/unit</li>
+          <li><strong>Contractual price escalation clause</strong> (e.g. CPI-linked) &mdash; price changed legitimately between PO and invoice</li>
+          <li><strong>Spot pricing</strong> for commodities &mdash; PO price was estimate, invoice reflects actual market price at delivery date</li>
+          <li><strong>Surcharges added</strong>: fuel surcharge, environmental levy, hazmat fee &mdash; not on original PO</li>
+          <li><strong>Minimum order charge</strong>: PO below minimum, vendor adds surcharge</li>
+          <li><strong>Currency conversion between PO and invoice</strong>: PO in EUR, invoice in USD &mdash; exchange rate difference</li>
+          <li><strong>Rounding differences</strong> between PO calculation and invoice calculation at different decimal precisions</li>
+        </ol>
+        <div class="edge-subhead">Unit of Measure Mismatches</div>
+        <ol start="91">
+          <li><strong>Cases vs. eaches</strong>: PO in &ldquo;cases&rdquo; (12/case), invoice in &ldquo;each&rdquo; &mdash; quantities look 12x off</li>
+          <li><strong>Metric vs. imperial</strong>: PO in kilograms, invoice in pounds</li>
+          <li><strong>Metric tons vs. kilograms</strong>: PO says 5 MT, invoice says 5000 kg &mdash; same or needs conversion validation?</li>
+          <li><strong>Hours vs. days</strong>: PO for 5 consulting days, invoice for 40 hours</li>
+          <li><strong>Packs vs. units vs. pallets</strong>: multiple levels of UOM hierarchy</li>
+          <li><strong>Vendor uses their own UOM code</strong> that doesn&rsquo;t map to buyer&rsquo;s ERP UOM table</li>
+        </ol>
+        <div class="edge-subhead">PO Reference Issues</div>
+        <ol start="97">
+          <li><strong>Invoice references wrong PO number</strong> &mdash; typo or deliberately applied to wrong PO</li>
+          <li><strong>Invoice references PO that doesn&rsquo;t exist</strong> in buyer&rsquo;s system (legacy PO, verbal authorization)</li>
+          <li><strong>Invoice references PO from different legal entity</strong> in the group</li>
+          <li><strong>Invoice references PO that is closed/cancelled</strong> &mdash; goods received before cancellation took effect</li>
+          <li><strong>Single invoice references multiple POs</strong> &mdash; must split and match across POs</li>
+          <li><strong>Single PO line matches to multiple invoice lines</strong> (vendor breaks down what buyer consolidated)</li>
+          <li><strong>Blanket PO with no line-level detail</strong> &mdash; only a &ldquo;not to exceed&rdquo; amount, no specific quantities or prices to match</li>
+          <li><strong>Release orders against blanket PO</strong> &mdash; invoice references release number, not master PO</li>
+          <li><strong>Framework agreement</strong> where actual POs are generated per call-off &mdash; invoice may reference either</li>
+        </ol>
+        <div class="edge-subhead">Goods Receipt Complexities</div>
+        <ol start="106">
+          <li><strong>GR posted to wrong PO line</strong> &mdash; warehouse selected wrong item code</li>
+          <li><strong>GR quantity includes damaged goods</strong> not yet formally rejected</li>
+          <li><strong>GR posted in wrong UOM</strong> &mdash; received as &ldquo;each&rdquo; but should be &ldquo;case&rdquo;</li>
+          <li><strong>GR reversal</strong> after invoice already matched &mdash; unwinds the 3-way match</li>
+          <li><strong>GR for services</strong>: how do you &ldquo;receive&rdquo; consulting hours? &mdash; service entry sheet vs. timesheet vs. milestone sign-off</li>
+          <li><strong>Partial GR with tolerance</strong>: received 98 of 100 &mdash; within tolerance for GR, but does the invoice for 100 pass?</li>
+          <li><strong>GR posted in future period</strong> (post-dated) &mdash; invoice arrives referencing receipt not yet in system</li>
+        </ol>
+        <div class="edge-subhead">Tolerance Threshold Challenges</div>
+        <ol start="113">
+          <li><strong>Different tolerances per vendor</strong>: strategic vendor gets 5%, tail spend vendor gets 0%</li>
+          <li><strong>Different tolerances per commodity</strong>: raw materials 2%, office supplies 10%</li>
+          <li><strong>Tolerance on total vs. line level</strong>: total within tolerance but individual lines are off</li>
+          <li><strong>Percentage tolerance vs. absolute amount tolerance</strong>: 2% or $50, whichever is greater</li>
+          <li><strong>Tolerance stacking</strong>: multiple small within-tolerance discrepancies that aggregate to a material difference</li>
+          <li><strong>Zero-tolerance items</strong>: regulated goods, government contracts &mdash; no discrepancy acceptable</li>
+          <li><strong>Tolerance on quantity vs. tolerance on price</strong>: which applies when both are off?</li>
+          <li><strong>Negative tolerance</strong> (under-invoicing): vendor invoices less than expected &mdash; suspicious?</li>
+        </ol>
       </div>
     </div>
 
@@ -1659,11 +2135,76 @@
       <div class="concept-name">4. Non-PO &amp; Special Invoice Types <span style="font-size:13px; font-weight:400; color:var(--muted);">(49)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Credit/debit notes, self-billing, consignment, construction progress billing with retention, prepayments, utility bills, emergency purchases.</div>
       <div class="concept-full">
-        <strong>Non-PO invoices:</strong> Utilities, rent, legal fees, insurance, government licenses, SaaS auto-renewals, emergency purchases before PO created.<br><br>
-        <strong>Credit notes:</strong> Full reversal, partial for returns, credit exceeding original invoice, credit on already-paid invoice, no reference to original, applied across multiple invoices, in different currency, vendor issues credit AND deducts from next invoice (double credit risk).<br><br>
-        <strong>Self-billing (ERS):</strong> Generated at wrong PO price, goods receipt reversed after invoice generated, tax calculation on buyer-generated invoice, vendor disputes the amount.<br><br>
-        <strong>Construction:</strong> Milestone billing with % completion validation, retention/retainage (5-10% withheld until completion), back-charges, change orders re-baselining prior invoices, subcontractor lien waivers.<br><br>
-        <strong>Prepayments:</strong> Asset vs expense recording, partial application against final invoice, FX difference on application, vendor never delivers, tax treatment varies by jurisdiction.
+        <div class="edge-subhead">Non-PO Invoices</div>
+        <ol start="121">
+          <li><strong>Utility bills</strong> &mdash; no PO, variable amounts, must route to facilities manager</li>
+          <li><strong>Rent and lease payments</strong> &mdash; recurring, no PO, different approval chain</li>
+          <li><strong>Legal fees</strong> &mdash; no PO, often high value, requires partner-level approval</li>
+          <li><strong>Insurance premiums</strong> &mdash; annual, no PO, must be coded to correct entity</li>
+          <li><strong>Government fees, licenses, permits</strong> &mdash; no PO, compliance-critical</li>
+          <li><strong>Travel and expense reimbursements</strong> submitted as vendor invoices</li>
+          <li><strong>Subscription/SaaS renewals</strong> &mdash; auto-renewed, no PO issued, invoice arrives unexpectedly</li>
+          <li><strong>Emergency purchases</strong> &mdash; goods received before PO created (after-the-fact PO)</li>
+          <li><strong>Executive purchases</strong> made on personal credit card, vendor invoices the company</li>
+        </ol>
+        <div class="edge-subhead">Credit Notes and Adjustments</div>
+        <ol start="130">
+          <li><strong>Full credit note</strong> reversing an entire invoice &mdash; must link back to original</li>
+          <li><strong>Partial credit note</strong> for returned goods &mdash; reduces balance on specific invoice</li>
+          <li><strong>Credit note that exceeds the original invoice</strong> &mdash; net refund owed to buyer</li>
+          <li><strong>Credit note references an invoice already paid</strong> &mdash; creates vendor debit balance</li>
+          <li><strong>Credit note with no reference to original invoice</strong> &mdash; which invoice does it apply to?</li>
+          <li><strong>Credit note applied across multiple invoices</strong> &mdash; allocation logic needed</li>
+          <li><strong>Credit note in different currency</strong> than original invoice &mdash; FX gain/loss on credit</li>
+          <li><strong>Disputed invoice</strong> where partial credit note is issued &mdash; dispute resolution tracking</li>
+          <li><strong>Vendor issues credit note but also deducts from next invoice</strong> &mdash; double credit risk</li>
+          <li><strong>Credit note for price adjustment</strong> (not return) &mdash; no quantity change, only amount</li>
+        </ol>
+        <div class="edge-subhead">Debit Notes</div>
+        <ol start="140">
+          <li><strong>Buyer-initiated debit note</strong> for quality defects &mdash; reduces amount owed</li>
+          <li><strong>Debit note for short delivery</strong> &mdash; buyer claims goods not received</li>
+          <li><strong>Debit note for penalty/liquidated damages</strong> &mdash; contractual SLA miss</li>
+          <li><strong>Debit note offset against future invoices</strong> &mdash; running balance tracking</li>
+          <li><strong>Debit note disputed by vendor</strong> &mdash; resolution workflow needed</li>
+        </ol>
+        <div class="edge-subhead">Self-Billing / Evaluated Receipt Settlement (ERS)</div>
+        <ol start="145">
+          <li><strong>Self-billing invoice generated at wrong PO price</strong> &mdash; PO was amended after receipt</li>
+          <li><strong>Self-billing when goods receipt is reversed</strong> &mdash; invoice already generated, must void</li>
+          <li><strong>Self-billing with partial receipts</strong> &mdash; frequency of auto-invoice generation (daily? weekly?)</li>
+          <li><strong>Tax calculation on self-billed invoice</strong> &mdash; buyer must apply correct tax rate on behalf of vendor</li>
+          <li><strong>Self-billing for services</strong> &mdash; how to trigger without goods receipt? (service confirmation required)</li>
+          <li><strong>Vendor disputes self-billed amount</strong> &mdash; reconciliation and dispute resolution</li>
+          <li><strong>Self-billing across multiple legal entities</strong> &mdash; which entity generates the self-billed invoice?</li>
+        </ol>
+        <div class="edge-subhead">Consignment Invoices</div>
+        <ol start="152">
+          <li><strong>Consignment stock consumed but not reported</strong> &mdash; timing lag between consumption and invoice</li>
+          <li><strong>Consignment stock counted incorrectly</strong> &mdash; discrepancy between buyer&rsquo;s and vendor&rsquo;s records</li>
+          <li><strong>Consignment replenishment invoice</strong> vs. consumption invoice &mdash; different triggers</li>
+          <li><strong>Consignment stock damaged or obsolete</strong> &mdash; who bears the cost?</li>
+        </ol>
+        <div class="edge-subhead">Construction and Progress Billing</div>
+        <ol start="156">
+          <li><strong>Milestone-based invoicing</strong> &mdash; invoice for 30% completion, but how to validate actual progress?</li>
+          <li><strong>Retention/retainage</strong>: withhold 5-10% of each progress payment until final completion</li>
+          <li><strong>Retention release</strong> &mdash; triggered by certificate of completion, separate approval chain</li>
+          <li><strong>Back-charges</strong> &mdash; buyer deducts remediation costs from contractor payment</li>
+          <li><strong>Change orders</strong> &mdash; scope increased mid-project, PO amended, prior invoices need re-baselining</li>
+          <li><strong>Disputed completion percentage</strong> &mdash; contractor claims 80%, project manager says 65%</li>
+          <li><strong>Subcontractor lien waivers</strong> &mdash; required before releasing payment to prime contractor</li>
+        </ol>
+        <div class="edge-subhead">Prepayments and Advances</div>
+        <ol start="163">
+          <li><strong>Advance payment</strong> made before goods/services delivered &mdash; recorded as asset, not expense</li>
+          <li><strong>Prepayment applied against final invoice</strong> &mdash; deduction from invoice total</li>
+          <li><strong>Partial prepayment application</strong>: $10K advance against $25K invoice &mdash; $15K balance due</li>
+          <li><strong>Prepayment in different currency</strong> than final invoice &mdash; FX difference on application</li>
+          <li><strong>Vendor never delivers</strong> after prepayment &mdash; recovery/refund process</li>
+          <li><strong>Multiple prepayments against one contract</strong> &mdash; tracking cumulative application</li>
+          <li><strong>Prepayment tax treatment</strong>: VAT on prepayment vs. VAT on final invoice &mdash; depends on jurisdiction</li>
+        </ol>
       </div>
     </div>
 
@@ -1672,10 +2213,64 @@
       <div class="concept-name">5. Tax Complexity <span style="font-size:13px; font-weight:400; color:var(--muted);">(47)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Reverse charge VAT, US use tax self-assessment, Indian TDS, Brazilian multi-tax withholding, line-level vs header-level rounding.</div>
       <div class="concept-full">
-        <strong>VAT/GST:</strong> Reverse charge on cross-border B2B, domestic reverse charge for specific sectors, partial exemption, VAT on imports, intra-community supply, multiple rates on one invoice, invoice missing required VAT fields (can't recover input VAT), triangulation (A→B→C, goods ship A→C).<br><br>
-        <strong>US Sales &amp; Use Tax:</strong> Use tax self-assessment when vendor didn't charge, expired exemption certificates, nexus complexity, tax on shipping (varies by state), marketplace facilitator rules, multi-state allocation, manufacturing exemptions, drop-ship scenarios.<br><br>
-        <strong>Withholding Tax:</strong> US backup withholding (24%), 1099 threshold tracking, 1042-S for foreign vendors (30% unless treaty), Indian TDS rates varying by service type/vendor status/PAN availability, Brazilian ISS/PIS/COFINS/CSLL (multiple taxes at different rates), gross-up clauses, WHT on advance payments.<br><br>
-        <strong>Rounding:</strong> Line-level vs header-level tax calculation gives different results, penny differences, tax on tax in some jurisdictions, composite rates, cash vs accrual VAT accounting, vendor applied wrong rate.
+        <div class="edge-subhead">VAT / GST</div>
+        <ol start="170">
+          <li><strong>Reverse charge mechanism</strong>: buyer must self-assess VAT on cross-border B2B purchases within the EU</li>
+          <li><strong>Domestic reverse charge</strong> for specific sectors (e.g. UK construction, scrap metal)</li>
+          <li><strong>Partial exemption</strong>: buyer makes both taxable and exempt supplies &mdash; only partial VAT recovery</li>
+          <li><strong>VAT on imports</strong> &mdash; charged at customs, must reconcile with vendor invoice that shows 0% VAT</li>
+          <li><strong>Intra-community supply</strong> &mdash; zero-rated in seller&rsquo;s country, reverse charged in buyer&rsquo;s country</li>
+          <li><strong>Place of supply rules</strong>: services taxed where supplier is located, or where customer is located? (depends on service type)</li>
+          <li><strong>Multiple VAT rates on one invoice</strong>: standard rate (20%), reduced rate (5%), zero-rated, exempt &mdash; different rates for different line items</li>
+          <li><strong>Invoice doesn&rsquo;t meet VAT invoice requirements</strong> &mdash; missing vendor VAT number, wrong rate applied &mdash; cannot recover input VAT</li>
+          <li><strong>Simplified VAT invoice</strong> (under threshold) vs. full VAT invoice &mdash; different required fields</li>
+          <li><strong>Pro-rata VAT recovery</strong> for mixed-use assets (e.g. company car used for business and personal)</li>
+          <li><strong>VAT grouping</strong>: multiple legal entities in a VAT group &mdash; intercompany invoices exempt</li>
+          <li><strong>VAT on free supplies / deemed supplies</strong>: goods given away but VAT is still due</li>
+          <li><strong>Bad debt relief</strong>: VAT previously paid on an invoice that customer never pays</li>
+          <li><strong>Import VAT deferment schemes</strong> (e.g. UK Postponed VAT Accounting) &mdash; no upfront VAT payment at border</li>
+          <li><strong>Flat-rate VAT scheme</strong> for small businesses &mdash; fixed percentage, no input VAT recovery</li>
+          <li><strong>Triangulation</strong>: A sells to B, B sells to C, goods ship directly from A to C &mdash; which country&rsquo;s VAT applies?</li>
+        </ol>
+        <div class="edge-subhead">US Sales &amp; Use Tax</div>
+        <ol start="186">
+          <li><strong>Use tax self-assessment</strong>: vendor didn&rsquo;t charge sales tax, buyer must accrue use tax &mdash; AP must determine if purchase is taxable</li>
+          <li><strong>Exemption certificates</strong>: buyer claims exemption but certificate is expired or for wrong state</li>
+          <li><strong>Nexus complexity</strong>: vendor has nexus in some states but not others &mdash; tax may or may not appear on invoice</li>
+          <li><strong>Tax on shipping</strong>: taxable in some states (TX, NY), exempt in others (CA with conditions)</li>
+          <li><strong>Tax on digital goods</strong>: varies by state and sometimes by type of digital product</li>
+          <li><strong>Marketplace facilitator rules</strong>: third-party marketplace collected tax &mdash; vendor invoice should not also charge tax</li>
+          <li><strong>Multi-state allocation</strong>: single invoice for services performed across multiple states &mdash; which state&rsquo;s tax applies?</li>
+          <li><strong>Sales tax holidays</strong>: purchase during tax-free period &mdash; invoice should reflect zero tax</li>
+          <li><strong>Manufacturing exemption</strong>: raw materials exempt from sales tax in many states, but vendor charged it anyway</li>
+          <li><strong>Drop-ship tax scenarios</strong>: vendor ships directly to customer&rsquo;s customer &mdash; whose exemption certificate applies?</li>
+        </ol>
+        <div class="edge-subhead">Withholding Tax (WHT)</div>
+        <ol start="196">
+          <li><strong>US backup withholding (24%)</strong>: vendor hasn&rsquo;t provided TIN or W-9 &mdash; buyer must withhold</li>
+          <li><strong>1099 reporting thresholds</strong>: payments under $600 typically not reported, but must track cumulative across year</li>
+          <li><strong>1042-S for foreign vendors</strong>: 30% withholding unless tax treaty reduces rate &mdash; must have valid W-8BEN</li>
+          <li><strong>Tax treaty rate determination</strong>: requires analysis of vendor&rsquo;s country, entity type, and income type</li>
+          <li><strong>Different WHT rates for different payment types</strong>: services vs. royalties vs. interest &mdash; same vendor</li>
+          <li><strong>WHT on part of the invoice</strong>: only the service component is subject to WHT, not the goods component</li>
+          <li><strong>Indian TDS (Tax Deducted at Source)</strong>: rates vary by service type, vendor status, threshold levels, and PAN availability</li>
+          <li><strong>Brazilian ISS/PIS/COFINS/CSLL</strong>: multiple taxes withheld at different rates &mdash; extremely granular</li>
+          <li><strong>WHT rate changes mid-contract</strong>: legislative change affects future payments but not already-issued invoices</li>
+          <li><strong>Gross-up clauses</strong>: contract says vendor receives net amount &mdash; buyer must gross up and bear the tax</li>
+          <li><strong>WHT on advance payments</strong>: tax event is at payment, not at invoice &mdash; must calculate at disbursement time</li>
+          <li><strong>WHT certificates</strong>: many countries require buyer to issue tax withholding certificate to vendor &mdash; e.g. India TDS certificate (Form 16A)</li>
+          <li><strong>Vendor disputes WHT deduction</strong>: claims treaty benefit buyer didn&rsquo;t apply</li>
+        </ol>
+        <div class="edge-subhead">Tax Rounding and Calculation</div>
+        <ol start="209">
+          <li><strong>Line-level vs. header-level tax calculation</strong>: applying tax rate to each line and summing vs. applying to subtotal gives different results due to rounding</li>
+          <li><strong>Penny differences</strong>: vendor calculates $0.01 different from buyer&rsquo;s system &mdash; accept or reject?</li>
+          <li><strong>Tax on tax</strong>: some jurisdictions charge provincial tax on base + federal tax</li>
+          <li><strong>Composite tax rates</strong>: single displayed rate that is actually a combination of multiple taxes</li>
+          <li><strong>Tax point date differs from invoice date</strong>: VAT due based on earlier of invoice date or payment date in some jurisdictions</li>
+          <li><strong>Cash vs. accrual VAT accounting</strong>: tax reported when invoice issued vs. when paid &mdash; affects AP matching</li>
+          <li><strong>Vendor applied wrong tax rate</strong>: invoice shows 20% VAT but should be 5% reduced rate &mdash; pay gross or net?</li>
+        </ol>
       </div>
     </div>
 
@@ -1684,9 +2279,32 @@
       <div class="concept-name">6. Currency &amp; FX <span style="font-size:13px; font-weight:400; color:var(--muted);">(20)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Triangular conversion, realized/unrealized FX gains, hyperinflationary currencies, intercompany elimination mismatches.</div>
       <div class="concept-full">
-        <strong>Multi-currency:</strong> Invoice currency differs from PO currency, payment currency differs from both, exchange rate at invoice date vs payment date vs GR date, rate source disagreement (ECB vs Reuters), fixed-rate contracts overriding live rates, dual-denomination invoices, conversion rounding (sum of converted lines ≠ converted sum).<br><br>
-        <strong>FX impact:</strong> Realized gains/losses at payment (P&amp;L), unrealized at period-end revaluation (balance sheet), hyperinflationary currencies (significant movement between invoice and payment), triangular conversion (CHF→EUR→USD path selection).<br><br>
-        <strong>Multi-entity:</strong> Cross-entity invoices (addressed to A, received by B), intercompany recharges, transfer pricing validation, elimination imbalances from FX, different charts of accounts, different fiscal calendars, different base currencies requiring constant revaluation.
+        <div class="edge-subhead">Multi-Currency Invoice Processing</div>
+        <ol start="216">
+          <li><strong>Invoice currency differs from PO currency</strong>: PO in EUR, invoice in GBP &mdash; which rate to use for matching?</li>
+          <li><strong>Invoice currency differs from payment currency</strong>: invoice in JPY, paying in USD</li>
+          <li><strong>Exchange rate at invoice date vs. payment date vs. GR date</strong> &mdash; different rates for each</li>
+          <li><strong>Realized FX gain/loss</strong>: rate at payment differs from rate at invoice posting &mdash; P&amp;L impact</li>
+          <li><strong>Unrealized FX gain/loss</strong>: revaluation at period-end before payment &mdash; balance sheet impact</li>
+          <li><strong>Exchange rate source disagreement</strong>: buyer uses ECB rate, vendor uses Reuters rate &mdash; small but persistent differences</li>
+          <li><strong>Triangular currency conversion</strong>: invoice in CHF, PO in EUR, payment in USD &mdash; which path to convert?</li>
+          <li><strong>Fixed exchange rate contracts</strong>: vendor and buyer agreed on a fixed rate regardless of market &mdash; system must override live rates</li>
+          <li><strong>Hyperinflationary currencies</strong>: Venezuelan Bolivar, Turkish Lira &mdash; rates can move significantly between invoice and payment</li>
+          <li><strong>Dual-denomination invoices</strong>: show amounts in both local currency and USD &mdash; which is the legal amount?</li>
+          <li><strong>Currency conversion rounding</strong>: multi-line invoice where each line is converted individually &mdash; sum of converted lines doesn&rsquo;t equal converted sum</li>
+        </ol>
+        <div class="edge-subhead">Multi-Entity / Intercompany</div>
+        <ol start="227">
+          <li><strong>Cross-entity invoice</strong>: invoice addressed to Entity A but goods received by Entity B &mdash; who pays?</li>
+          <li><strong>Intercompany recharges</strong>: Entity A pays vendor, then recharges Entity B &mdash; intercompany AP/AR must balance</li>
+          <li><strong>Transfer pricing</strong>: intercompany invoices must use arm&rsquo;s-length prices &mdash; AP must validate</li>
+          <li><strong>Intercompany elimination on consolidation</strong>: AP in one entity and AR in another must net to zero &mdash; FX differences cause imbalances</li>
+          <li><strong>Shared services center</strong> processes AP for all entities &mdash; must maintain entity-level segregation</li>
+          <li><strong>Intercompany netting</strong>: multiple invoices between entities &mdash; settle net difference only</li>
+          <li><strong>Different chart of accounts</strong> across entities &mdash; same expense coded differently</li>
+          <li><strong>Different fiscal calendars</strong> across entities &mdash; entity A closed the period, entity B hasn&rsquo;t</li>
+          <li><strong>Different base currencies</strong> across entities &mdash; intercompany balances require constant revaluation</li>
+        </ol>
       </div>
     </div>
 
@@ -1695,9 +2313,32 @@
       <div class="concept-name">7. Approval Workflows <span style="font-size:13px; font-weight:400; color:var(--muted);">(20)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Circular delegation, committee approval, split-entity approval, early payment discount expiring during approval cycle.</div>
       <div class="concept-full">
-        <strong>Routing logic:</strong> Amount changes after initial routing (now exceeds threshold), approver terminated, approver on extended leave without delegation, delegation chain (A→B→C, does C have authority?), circular delegation (A→B→A), committee approval (2 of 3 required), conditional approval at exact boundary ($10K), split coding requiring multiple department heads.<br><br>
-        <strong>Context changes:</strong> Cost center changed after approval, retrospective approval months later (approver moved departments), PO already approved — does invoice need separate approval?, auto-approve vendor with abnormally high invoice, budget exceeded.<br><br>
-        <strong>Escalation:</strong> Timer during weekends/holidays, escalation ladder exhausted (everyone on leave), reminder fatigue (50+ pending), discount expiring during cycle, approval recalled after downstream actions taken, system outage during window.
+        <div class="edge-subhead">Routing Logic Edge Cases</div>
+        <ol start="236">
+          <li><strong>Invoice amount changes after initial routing</strong>: coder adds a line, total now exceeds next approval threshold</li>
+          <li><strong>Approver no longer employed</strong>: terminated but still in approval chain &mdash; invoice stuck</li>
+          <li><strong>Approver on extended leave</strong> (maternity, medical) &mdash; delegation not set up</li>
+          <li><strong>Delegation chain</strong>: A delegates to B, B also goes on leave and delegates to C &mdash; does C have authority?</li>
+          <li><strong>Circular delegation</strong>: A delegates to B, B accidentally delegates back to A</li>
+          <li><strong>Approval by committee</strong>: requires 2 of 3 directors to approve &mdash; partial approval state</li>
+          <li><strong>Conditional approval</strong>: &ldquo;approved if under $10K, otherwise escalate&rdquo; &mdash; amount is exactly $10,000</li>
+          <li><strong>Split coding across departments</strong>: invoice split 60/40 between marketing and IT &mdash; both department heads must approve</li>
+          <li><strong>Cost center changed after approval</strong>: original approver&rsquo;s authority doesn&rsquo;t cover new cost center</li>
+          <li><strong>Retrospective approval</strong>: goods received and consumed, invoice arrives months later &mdash; normal approver has moved departments</li>
+          <li><strong>Approval required but PO was already approved</strong> &mdash; is PO approval sufficient, or does invoice need separate approval?</li>
+          <li><strong>Vendor on &ldquo;auto-approve&rdquo; list but invoice amount is abnormally high</strong> &mdash; should it still auto-approve?</li>
+          <li><strong>Multi-entity approval</strong>: invoice costs split across legal entities &mdash; each entity&rsquo;s controller must approve their portion</li>
+          <li><strong>Budget exceeded</strong>: approver has authority but their department budget is exhausted &mdash; should system block?</li>
+        </ol>
+        <div class="edge-subhead">Escalation and Timeout</div>
+        <ol start="250">
+          <li><strong>Escalation timer during weekends/holidays</strong> &mdash; should clock pause?</li>
+          <li><strong>Escalation to approver who is also on leave</strong> &mdash; escalation ladder exhausted</li>
+          <li><strong>Reminder fatigue</strong>: approver receives 50+ pending approvals &mdash; high-value items buried</li>
+          <li><strong>Time-sensitive invoices</strong>: early payment discount expires during approval cycle</li>
+          <li><strong>Approval recalled/revoked</strong> after given &mdash; approver changes mind, but downstream actions already taken</li>
+          <li><strong>System outage during approval window</strong> &mdash; audit trail gap</li>
+        </ol>
       </div>
     </div>
 
@@ -1706,10 +2347,48 @@
       <div class="concept-name">8. Payment Processing <span style="font-size:13px; font-weight:400; color:var(--muted);">(29)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Discount on partial payment, ACH return codes, stale-dated checks, escheatment, payment netting, cross-border intermediary fees.</div>
       <div class="concept-full">
-        <strong>Terms &amp; discounts:</strong> 2/10 Net 30 — calculated from invoice date, receipt date, or GR date? Discount on partial payment, conflicting terms (PO vs invoice vs master agreement), end-of-month calculation ambiguity, net vs gross method accounting.<br><br>
-        <strong>Execution:</strong> Payment run includes voided invoice, partial payments with balance tracking, wrong bank account (old details), sanctions screening hold, wrong currency sent, file format errors (bad IBAN/SWIFT), duplicate batch submitted to bank, ACH returns (insufficient funds, account closed, unauthorized), wire cutoff times, cross-border intermediary fees reducing received amount, payment netting against AR.<br><br>
-        <strong>Checks:</strong> Stale-dated (uncashed 180+ days), lost in mail, altered payee fraud, positive pay mismatches, escheatment/unclaimed property obligations (dormancy periods vary by state).<br><br>
-        <strong>Prepayment:</strong> Advance exceeds final invoice, multiple prepayments across multiple invoices, tax implications, cross-fiscal-year timing.
+        <div class="edge-subhead">Payment Terms and Discounts</div>
+        <ol start="256">
+          <li><strong>2/10 Net 30</strong>: discount period calculation &mdash; from invoice date, receipt date, or goods receipt date?</li>
+          <li><strong>Discount on partial payment</strong>: pay half the invoice &mdash; is discount on the paid portion or forfeited entirely?</li>
+          <li><strong>Discount terms on credit note</strong>: does the discount period reset?</li>
+          <li><strong>Conflicting payment terms</strong>: PO says Net 60, invoice says Net 30, master agreement says 2/10 Net 45 &mdash; which governs?</li>
+          <li><strong>End-of-month terms</strong>: &ldquo;Net 30 EOM&rdquo; &mdash; invoice dated Jan 15, payment due end of February or end of March?</li>
+          <li><strong>Payment term override</strong>: vendor requests early payment due to cash flow issues &mdash; ad hoc term change</li>
+          <li><strong>Discount not taken</strong>: recorded at gross, discount expired &mdash; must write off as lost discount</li>
+          <li><strong>Net method accounting</strong>: recorded at net, discount not taken &mdash; must record additional expense</li>
+        </ol>
+        <div class="edge-subhead">Payment Execution</div>
+        <ol start="264">
+          <li><strong>Payment run includes voided invoice</strong> &mdash; void processed after payment file generated but before bank execution</li>
+          <li><strong>Partial payment</strong>: paying $8K of $10K invoice &mdash; how is the $2K balance tracked?</li>
+          <li><strong>Payment to wrong bank account</strong>: vendor changed bank details, old details in master data</li>
+          <li><strong>Payment blocked for sanctions screening</strong>: vendor name matches OFAC SDN list &mdash; false positive?</li>
+          <li><strong>Payment in wrong currency</strong>: USD sent instead of EUR &mdash; bank may reject or auto-convert at unfavorable rate</li>
+          <li><strong>Payment file format errors</strong>: incorrect IBAN, SWIFT code truncated, beneficiary name too long</li>
+          <li><strong>Duplicate payment run</strong>: same batch submitted twice to bank &mdash; bank may process both</li>
+          <li><strong>Payment rejected by bank</strong>: insufficient funds, account closed, incorrect details &mdash; must reprocess</li>
+          <li><strong>ACH return codes</strong>: R01 (insufficient funds), R02 (account closed), R03 (no account), R10 (unauthorized) &mdash; each needs different remediation</li>
+          <li><strong>Wire payment cutoff times</strong>: initiated at 4:45 PM, bank cutoff is 4:30 PM &mdash; payment won&rsquo;t go until next day</li>
+          <li><strong>Cross-border payment routing</strong>: intermediary bank fees deducted from amount &mdash; vendor receives less than invoiced</li>
+          <li><strong>Payment netting</strong>: vendor is also a customer &mdash; net AP against AR &mdash; legal and tax implications</li>
+        </ol>
+        <div class="edge-subhead">Check-Specific Issues</div>
+        <ol start="276">
+          <li><strong>Stale-dated check</strong>: uncashed for 180+ days &mdash; must void and potentially reissue</li>
+          <li><strong>Check lost in mail</strong>: vendor claims non-receipt &mdash; void and reissue with stop payment</li>
+          <li><strong>Check fraud</strong>: altered payee name or amount &mdash; bank liability vs. company liability</li>
+          <li><strong>Positive Pay mismatch</strong>: check amount or payee doesn&rsquo;t match bank&rsquo;s positive pay file &mdash; bank rejects</li>
+          <li><strong>Void after bank reconciliation</strong>: check already cleared &mdash; must reverse and investigate</li>
+          <li><strong>Escheatment obligation</strong>: uncashed check triggers unclaimed property reporting &mdash; dormancy periods vary by state (1-5 years)</li>
+        </ol>
+        <div class="edge-subhead">Prepayment and Advance Complications</div>
+        <ol start="282">
+          <li><strong>Prepayment exceeds final invoice</strong>: advance was $15K, final invoice is $12K &mdash; $3K refund or credit</li>
+          <li><strong>Multiple prepayments, multiple invoices</strong>: complex allocation of which advance applies to which invoice</li>
+          <li><strong>Prepayment tax implications</strong>: some jurisdictions require VAT on prepayment, then adjustment on final invoice</li>
+          <li><strong>Prepayment in one fiscal year, invoice in next</strong> &mdash; asset recognition timing</li>
+        </ol>
       </div>
     </div>
 
@@ -1718,9 +2397,30 @@
       <div class="concept-name">9. Period-End &amp; Accounting <span style="font-size:13px; font-weight:400; color:var(--muted);">(18)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Stale GR/IR items, accrual reversal failures, GL miscoding, capitalization thresholds, intercompany timing mismatches.</div>
       <div class="concept-full">
-        <strong>Accruals:</strong> Invoice received after period close (expense belongs to prior period), accrual posted but invoice never arrives, auto-reversal fails (double-counted), accrual amount doesn't match actual invoice, multiple months of accruals to unwind, year-end reversal shows negative expense before invoice posts.<br><br>
-        <strong>GR/IR:</strong> Clearing account doesn't clear (balance grows monthly), stale items 6+ months old with no invoice (write-off decision), intercompany accrual timing imbalance at consolidation.<br><br>
-        <strong>GL coding:</strong> CAPEX coded as OPEX (audit finding), split allocation across 20+ cost centers with rounding residuals, closed/expired project codes, budget not available, AI suggestion disagrees with historical pattern, capitalization threshold edge ($4,950 item + $100 follow-up = over $5K threshold).
+        <div class="edge-subhead">Accruals and Cutoff</div>
+        <ol start="286">
+          <li><strong>Invoice received after period close</strong>: expense belongs to prior period but posting period is locked</li>
+          <li><strong>Accrual posted but invoice never arrives</strong>: stale accrual sitting on balance sheet &mdash; when to reverse?</li>
+          <li><strong>Accrual reversal missed</strong>: new period opens, auto-reversal fails &mdash; expense double-counted</li>
+          <li><strong>Accrual amount doesn&rsquo;t match actual invoice</strong>: estimated $10K, invoice is $12K &mdash; $2K variance in current period</li>
+          <li><strong>Multiple periods of accruals for one invoice</strong>: goods received in January, invoice in March &mdash; two months of accruals to unwind</li>
+          <li><strong>Accrual for GR/IR (goods received, invoice received)</strong>: receipt posted but invoice not yet received &mdash; accrual on clearing account</li>
+          <li><strong>GR/IR clearing account doesn&rsquo;t clear</strong>: receipt and invoice have matching issues &mdash; balance grows month over month</li>
+          <li><strong>Stale GR/IR items</strong>: goods received 6+ months ago, no invoice ever received &mdash; write-off decision</li>
+          <li><strong>Year-end accrual reversal</strong>: reversed on Jan 1, but invoice doesn&rsquo;t arrive until March &mdash; Q1 shows negative expense before invoice posts</li>
+          <li><strong>Intercompany accrual timing</strong>: Entity A accrues, Entity B hasn&rsquo;t processed the intercompany invoice yet &mdash; imbalance at consolidation</li>
+        </ol>
+        <div class="edge-subhead">GL Coding and Allocation</div>
+        <ol start="296">
+          <li><strong>Wrong GL code</strong>: invoice coded to CAPEX instead of OPEX &mdash; audit finding, journal entry correction needed</li>
+          <li><strong>Split allocation across 20+ cost centers</strong>: complex pro-rata calculation, rounding residuals</li>
+          <li><strong>Project/WBS code that has closed or expired</strong>: system rejects posting</li>
+          <li><strong>Budget not available on target cost center</strong>: posting blocked, requires budget transfer first</li>
+          <li><strong>GL account valid in one entity but not another</strong>: shared chart of accounts with entity-specific restrictions</li>
+          <li><strong>Coding suggestion by AI disagrees with historical pattern</strong>: new vendor, new expense type &mdash; no precedent</li>
+          <li><strong>Reallocation after posting</strong>: expense needs to move to different cost center &mdash; reversal and repost required</li>
+          <li><strong>Capitalization threshold</strong>: invoice for $4,950, threshold is $5,000 &mdash; expense it, but what if next invoice for same asset is $100?</li>
+        </ol>
       </div>
     </div>
 
@@ -1729,8 +2429,29 @@
       <div class="concept-name">10. Vendor Master Data <span style="font-size:13px; font-weight:400; color:var(--muted);">(17)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">BEC bank change fraud, post-M&amp;A consolidation, one-time vendors, sanctioned party screening, duplicate vendor records.</div>
       <div class="concept-full">
-        <strong>Onboarding:</strong> Vendor has multiple legal entities, TIN validation fails, sanctioned country screening, sole proprietor SSN vs EIN, international vendor with no US tax ID (W-8BEN), government entity special terms, bank details in incompatible format, procurement onboarded but AP never notified.<br><br>
-        <strong>Maintenance:</strong> Bank account change (legitimate vs BEC fraud — how to verify?), address change affecting 1099 reporting, vendor merged (consolidate IDs + history), vendor acquired by competitor, inactive vendor with open invoices, duplicate records across departments, master data sync failure between systems, legal form change ("Ltd" to "PLC"), one-time/ad-hoc vendors not in master data.
+        <div class="edge-subhead">Onboarding Challenges</div>
+        <ol start="304">
+          <li><strong>Vendor has multiple legal entities</strong>: which entity to onboard &mdash; or all of them?</li>
+          <li><strong>Vendor TIN/tax ID validation fails</strong>: ID format wrong, ID doesn&rsquo;t match name in government database</li>
+          <li><strong>Vendor in sanctioned country or on denied party list</strong>: screening hits at onboarding</li>
+          <li><strong>Vendor is a sole proprietor</strong>: SSN vs EIN confusion, privacy concerns with storing SSN</li>
+          <li><strong>International vendor with no US tax ID</strong>: W-8BEN required, but vendor doesn&rsquo;t understand or respond</li>
+          <li><strong>Vendor is a government entity</strong>: special payment terms, exempt from withholding, unique documentation</li>
+          <li><strong>Vendor provides bank details in format buyer&rsquo;s system can&rsquo;t store</strong>: local account format vs. IBAN</li>
+          <li><strong>Vendor onboarded by procurement but AP team was never notified</strong> &mdash; invoice arrives for unknown vendor</li>
+        </ol>
+        <div class="edge-subhead">Maintenance and Lifecycle</div>
+        <ol start="312">
+          <li><strong>Vendor bank account change</strong>: legitimate change vs. BEC fraud &mdash; how to verify?</li>
+          <li><strong>Vendor address change</strong>: old address on invoice, new address in master data &mdash; which to use for 1099?</li>
+          <li><strong>Vendor merged with another vendor</strong>: two vendor IDs must be consolidated &mdash; open invoices, payment history</li>
+          <li><strong>Vendor acquired by competitor</strong>: payment now goes to entity buyer may not want to do business with</li>
+          <li><strong>Vendor status changed to &ldquo;inactive&rdquo; but open invoices remain</strong>: pay or reject?</li>
+          <li><strong>Duplicate vendor records created by different departments</strong>: same vendor, different vendor IDs, different bank details &mdash; which is authoritative?</li>
+          <li><strong>Vendor master data sync failure between procurement system and ERP</strong>: data out of sync &mdash; invoice rejected</li>
+          <li><strong>Vendor changes legal form</strong>: &ldquo;ABC Ltd&rdquo; becomes &ldquo;ABC PLC&rdquo; &mdash; new vendor or update existing?</li>
+          <li><strong>One-time vendors / ad hoc vendors</strong>: invoices from vendors not in master data &mdash; manual override workflow needed</li>
+        </ol>
       </div>
     </div>
 
@@ -1739,8 +2460,31 @@
       <div class="concept-name">11. Fraud &amp; Compliance <span style="font-size:13px; font-weight:400; color:var(--muted);">(19)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Ghost vendors, invoice splitting below thresholds, deepfake CFO calls, SOX segregation of duties, OFAC screening false positives.</div>
       <div class="concept-full">
-        <strong>Invoice fraud:</strong> Ghost vendor created by insider, billing scheme with kickback, invoice splitting to stay below approval threshold, BEC with spoofed vendor domain requesting bank change, deepfake voice call from "CFO", altered PDF metadata, phantom goods with buyer-vendor collusion, shell company with no physical presence, round-tripping schemes.<br><br>
-        <strong>Compliance:</strong> SOX segregation of duties (approver can't also pay), FCPA/anti-bribery flags for high-risk countries, OFAC/EU/UN sanctions screening, conflict minerals reporting, AML for large payments to new vendors, right-to-audit clause tracking, GDPR/CCPA on vendor personal data, record retention (7-10+ years by jurisdiction), complete audit trail for every change.
+        <div class="edge-subhead">Invoice Fraud</div>
+        <ol start="321">
+          <li><strong>Ghost vendor fraud</strong>: fictional vendor created by insider employee to generate payments</li>
+          <li><strong>Billing scheme</strong>: real vendor, real employee, inflated invoices with kickback</li>
+          <li><strong>Invoice splitting</strong>: $25K invoice split into five $5K invoices to stay below approval threshold</li>
+          <li><strong>Vendor impersonation via BEC</strong>: email from &ldquo;vendor&rdquo; with spoofed domain requesting bank change</li>
+          <li><strong>Deepfake voice call</strong>: &ldquo;CFO&rdquo; calls AP to authorize urgent wire transfer</li>
+          <li><strong>Altered invoice PDF</strong>: amount changed from $1,000 to $10,000 in metadata but visual looks correct</li>
+          <li><strong>Phantom goods</strong>: invoice for goods never ordered or delivered &mdash; collusion between buyer and vendor</li>
+          <li><strong>Duplicate vendor payment</strong>: same invoice paid twice, second payment redirected to fraudster&rsquo;s account</li>
+          <li><strong>Shell company vendor</strong>: vendor has no physical address, no web presence, sole customer is the buyer</li>
+          <li><strong>Round-tripping</strong>: company pays vendor, vendor pays it back as revenue &mdash; fictitious revenue scheme</li>
+        </ol>
+        <div class="edge-subhead">Compliance Requirements</div>
+        <ol start="331">
+          <li><strong>SOX compliance</strong>: segregation of duties &mdash; person who approves can&rsquo;t also pay; person who creates vendor can&rsquo;t also approve invoices</li>
+          <li><strong>FCPA / Anti-bribery</strong>: payments to vendors in high-risk countries flagged for additional review</li>
+          <li><strong>Sanctions screening (OFAC, EU, UN)</strong>: vendor name, bank, or country triggers a match &mdash; hold payment</li>
+          <li><strong>Conflict minerals reporting</strong>: invoices for electronics components &mdash; vendor must certify mineral sourcing</li>
+          <li><strong>Anti-money laundering (AML)</strong>: large payments to new vendors in cash or to unusual jurisdictions</li>
+          <li><strong>Right to audit clause</strong>: contract allows buyer to audit vendor&rsquo;s books &mdash; AP must track which contracts have this</li>
+          <li><strong>Data privacy (GDPR, CCPA)</strong>: vendor master data contains personal data &mdash; deletion requests, access requests</li>
+          <li><strong>Record retention requirements</strong>: invoices must be kept for 7 years (varies by jurisdiction) &mdash; some countries require 10+ years</li>
+          <li><strong>Audit trail completeness</strong>: every change to invoice, approval, coding, payment must be logged with timestamp and user</li>
+        </ol>
       </div>
     </div>
 
@@ -1749,8 +2493,30 @@
       <div class="concept-name">12. E-Invoicing &amp; Regulatory <span style="font-size:13px; font-weight:400; color:var(--muted);">(18)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Italy SDI, India GST IRN, Poland KSeF, Peppol routing failures, digital signature verification, cross-border platform conflicts.</div>
       <div class="concept-full">
-        <strong>Country mandates:</strong> Italy SDI real-time clearance, India GST e-invoicing with IRN, Mexico CFDI digital stamp, Brazil NF-e with state-by-state rules, Saudi ZATCA Phase 2 API, Poland KSeF (Feb 2026), France B2B phased from Sept 2026, Germany mandatory reception (Jan 2025), Belgium B2B (Jan 2026), Israel real-time validation above NIS thresholds.<br><br>
-        <strong>Technical:</strong> Peppol access point downtime, schema validation failures against EN 16931, expired digital signature certificates, e-invoice AND paper invoice for same transaction (duplicate risk), government platform rejects invoice (number is "burned"), cross-border platform conflicts (seller on SDI, buyer on Chorus Pro), 10+ year archiving in specific formats, credit note schema differences.
+        <div class="edge-subhead">Country-Specific E-Invoicing Mandates</div>
+        <ol start="340">
+          <li><strong>Italy SDI</strong>: all B2B invoices must go through government clearance platform (Fattura Elettronica) &mdash; real-time validation</li>
+          <li><strong>India GST e-invoicing</strong>: mandatory for businesses above threshold &mdash; IRN (Invoice Reference Number) from government portal required before invoice is valid</li>
+          <li><strong>Mexico CFDI</strong>: all invoices must be digitally stamped by authorized provider &mdash; reject any invoice without valid CFDI</li>
+          <li><strong>Brazil NF-e</strong>: electronic fiscal invoice with unique access key &mdash; complex state-by-state rules</li>
+          <li><strong>Saudi Arabia ZATCA</strong>: Phase 2 requires API integration with government platform &mdash; invoices validated in near-real-time</li>
+          <li><strong>Poland KSeF</strong>: centralized e-invoice platform mandated Feb 2026 &mdash; all invoices must be issued through it</li>
+          <li><strong>France Factur-X / Chorus Pro</strong>: B2G already mandatory, B2B phased from Sept 2026 &mdash; hybrid format (PDF + XML)</li>
+          <li><strong>Germany</strong>: mandatory e-invoice reception from Jan 2025, phased issuing through 2028</li>
+          <li><strong>Belgium</strong>: B2B mandate from Jan 2026 &mdash; soft landing period with suspended penalties</li>
+          <li><strong>Israel</strong>: real-time validation required for B2B invoices above NIS 10K (Jan 2026), NIS 5K (June 2026) &mdash; 40%+ tax impact if non-compliant invoice accepted</li>
+        </ol>
+        <div class="edge-subhead">E-Invoicing Technical Edge Cases</div>
+        <ol start="350">
+          <li><strong>Peppol network routing</strong>: buyer and seller must be on compatible networks &mdash; what if vendor&rsquo;s access point is down?</li>
+          <li><strong>Schema validation failures</strong>: invoice XML doesn&rsquo;t conform to EN 16931 or country-specific schema &mdash; rejected at gateway</li>
+          <li><strong>Digital signature verification failure</strong>: certificate expired, wrong signing algorithm, tampered document</li>
+          <li><strong>E-invoice and paper invoice for same transaction</strong>: vendor sends both &mdash; duplicate risk</li>
+          <li><strong>E-invoice rejected by government platform</strong>: must be corrected and resubmitted &mdash; original invoice number is &ldquo;burned&rdquo;</li>
+          <li><strong>Cross-border e-invoicing</strong>: seller in Italy (SDI), buyer in France (Chorus Pro) &mdash; which platform governs?</li>
+          <li><strong>E-invoice archiving requirements</strong>: some countries require 10+ years of digital storage in specific formats</li>
+          <li><strong>E-invoicing for credit notes</strong>: must reference original invoice in structured format &mdash; different schema rules</li>
+        </ol>
       </div>
     </div>
 
@@ -1759,8 +2525,28 @@
       <div class="concept-name">13. ERP Integration <span style="font-size:13px; font-weight:400; color:var(--muted);">(16)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">SAP blocked invoices, idempotency failures, custom Z-fields, character encoding, ERP migration breaking all integrations.</div>
       <div class="concept-full">
-        <strong>Data mapping:</strong> Vendor ID format mismatch (alphanumeric vs numeric), GL account hierarchy mapping, tax code translation tables, cost center renumbered in ERP, PO sync lag (invoice arrives before PO visible), currency code format (ISO alpha vs numeric), date format transposition, accented character encoding failures.<br><br>
-        <strong>ERP-specific:</strong> SAP MIRO blocked invoices sitting without visibility, SAP parked vs posted confusion, Oracle Fusion subledger timing gap, NetSuite multi-subsidiary assignment, ERP upgrade (ECC→S/4HANA) requiring full integration rebuild, duplicate API calls creating duplicates (idempotency), rate limiting/throttling, custom Z-fields not supported by standard integration.
+        <div class="edge-subhead">Data Mapping and Sync</div>
+        <ol start="358">
+          <li><strong>Vendor ID format mismatch</strong>: AP system uses alphanumeric, ERP uses numeric-only &mdash; mapping table breaks</li>
+          <li><strong>GL account mapping</strong>: AP system has flat chart of accounts, ERP has hierarchical &mdash; mapping is lossy</li>
+          <li><strong>Tax code mapping</strong>: AP system extracts &ldquo;20% VAT&rdquo;, ERP expects tax code &ldquo;V1&rdquo; &mdash; requires translation table</li>
+          <li><strong>Cost center renumbered in ERP</strong>: AP system still using old codes &mdash; invoices post to wrong center</li>
+          <li><strong>PO sync lag</strong>: PO created in ERP but not yet synced to AP system &mdash; invoice arrives before PO is visible</li>
+          <li><strong>Currency code mismatch</strong>: AP system uses &ldquo;USD&rdquo;, ERP uses &ldquo;840&rdquo; (ISO numeric) &mdash; mapping needed</li>
+          <li><strong>Date format incompatibility</strong>: AP sends DD/MM/YYYY, ERP expects MM/DD/YYYY &mdash; dates get transposed</li>
+          <li><strong>Character encoding issues</strong>: vendor name has accented characters (e.g., &ldquo;M&uuml;ller&rdquo; vs &ldquo;Muller&rdquo;) &mdash; causes matching failures or duplicate records</li>
+        </ol>
+        <div class="edge-subhead">ERP-Specific Issues</div>
+        <ol start="366">
+          <li><strong>SAP MIRO blocked invoices</strong>: invoice blocked for payment due to GR/IR mismatch &mdash; sits in blocked queue without visibility</li>
+          <li><strong>SAP parked vs. posted documents</strong>: parked documents don&rsquo;t generate accounting entries &mdash; confusion about what&rsquo;s &ldquo;in the system&rdquo;</li>
+          <li><strong>Oracle Fusion subledger accounting</strong>: journal entries not transferred to GL until accounting program runs &mdash; timing gap</li>
+          <li><strong>NetSuite multi-subsidiary</strong>: vendor bill must be assigned to correct subsidiary &mdash; wrong subsidiary = intercompany chaos</li>
+          <li><strong>ERP upgrade/migration</strong>: AP automation tool integrated with SAP ECC, company migrates to S/4HANA &mdash; all integrations must be rebuilt</li>
+          <li><strong>Idempotency failures</strong>: duplicate API call creates duplicate invoice in ERP &mdash; must handle retries gracefully</li>
+          <li><strong>ERP rate limits</strong>: AP automation pushes too many invoices too fast &mdash; API throttled, invoices queued</li>
+          <li><strong>Custom fields in ERP</strong>: client has custom fields (Z-fields in SAP) that standard integration doesn&rsquo;t support</li>
+        </ol>
       </div>
     </div>
 
@@ -1769,7 +2555,16 @@
       <div class="concept-name">14. Landed Costs &amp; Trade <span style="font-size:13px; font-weight:400; color:var(--muted);">(8)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Customs duty allocation, Incoterms, retroactive tariffs, anti-dumping duties, duty drawback, bonded warehouse timing.</div>
       <div class="concept-full">
-        Customs duty invoices arriving separately from vendor invoice (must allocate across line items), broker fees/port handling/insurance from third parties linked to original PO, Incoterms determining cost allocation (DDP vs EXW vs CIF), tariff rate changes after PO issued with goods in transit, anti-dumping duties applied retroactively, free trade agreement preferential rates requiring certificates of origin, duty drawback tracking for re-exported goods, bonded warehouse timing differences.
+        <ol start="374">
+          <li><strong>Customs duty invoice arrives separately from vendor invoice</strong>: must allocate duty across line items from original PO</li>
+          <li><strong>Broker fees, port handling, insurance</strong>: separate invoices from third parties that must be linked to original purchase</li>
+          <li><strong>Incoterms determine cost allocation</strong>: DDP (seller bears all) vs. EXW (buyer bears all) vs. CIF (split at port) &mdash; affects which costs buyer should see on invoice</li>
+          <li><strong>Tariff rate changes after PO issued</strong>: goods in transit when tariff increases &mdash; who bears the cost?</li>
+          <li><strong>Anti-dumping duties</strong>: applied retroactively to specific vendors/countries &mdash; additional cost not on original invoice</li>
+          <li><strong>Free trade agreement preferential rates</strong>: vendor must provide certificate of origin &mdash; if missing, full duty applies</li>
+          <li><strong>Duty drawback</strong>: goods imported and then re-exported &mdash; duty refund must be tracked and claimed</li>
+          <li><strong>Bonded warehouse</strong>: goods stored without duty payment until released &mdash; invoice timing differs from delivery timing</li>
+        </ol>
       </div>
     </div>
 
@@ -1778,7 +2573,15 @@
       <div class="concept-name">15. Rebates &amp; Retrospective Adjustments <span style="font-size:13px; font-weight:400; color:var(--muted);">(7)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Volume rebates, retrospective price reductions across months of invoices, vendor-funded marketing deductions.</div>
       <div class="concept-full">
-        Volume rebate tracking across all YTD invoices, retrospective price reduction applied to 6 months of history (recalculate + debit notes), monthly rebate accrual vs actual year-end variance, rebate vs discount (different accounting treatment), vendor-funded marketing deductions disputed by vendor, settlement discount recalculation after credit note adjusts invoice, supplier price protection credits on unsold inventory.
+        <ol start="382">
+          <li><strong>Volume rebate</strong>: cumulative purchases exceed threshold &mdash; vendor owes buyer a rebate &mdash; must track across all invoices year-to-date</li>
+          <li><strong>Retrospective price reduction</strong>: renegotiated price applies to all invoices from the last 6 months &mdash; must recalculate and issue debit notes</li>
+          <li><strong>Rebate accrual</strong>: estimate rebate monthly based on projected volume &mdash; actual may differ at year-end</li>
+          <li><strong>Rebate vs. discount</strong>: rebate is after-the-fact, discount is at time of purchase &mdash; different accounting treatment</li>
+          <li><strong>Vendor-funded marketing deductions</strong>: buyer deducts co-op marketing spend from vendor payments &mdash; vendor disputes deduction amount</li>
+          <li><strong>Settlement discount recalculation</strong>: took early payment discount, but invoice amount was later adjusted by credit note &mdash; discount recalculation needed</li>
+          <li><strong>Supplier price protection</strong>: vendor retroactively lowers price on inventory buyer hasn&rsquo;t sold yet &mdash; credit issued</li>
+        </ol>
       </div>
     </div>
 
@@ -1787,7 +2590,15 @@
       <div class="concept-name">16. Recurring &amp; Subscriptions <span style="font-size:13px; font-weight:400; color:var(--muted);">(7)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Unauthorized auto-renewals, true-up invoices, multi-year prepaid amortization, mid-period cancellation credits.</div>
       <div class="concept-full">
-        Auto-renewed license nobody authorized (dispute/cancellation process), price increase on renewal with no PO for new amount, prorated first invoice for mid-month start, quarterly true-up invoices adjusting estimated monthly usage, cancellation credit for unused portion of period, $120K multi-year prepaid needing amortization (not full expense), license transfer between entities changing invoice coding.
+        <ol start="389">
+          <li><strong>Auto-renewed license</strong>: invoice arrives but nobody authorized renewal &mdash; dispute and cancellation process</li>
+          <li><strong>Price increase on renewal</strong>: last year $10K, this year $12K &mdash; no PO for new amount</li>
+          <li><strong>Prorated charges</strong>: subscription started mid-month &mdash; first invoice is partial period</li>
+          <li><strong>True-up invoices</strong>: estimated usage billed monthly, actual usage trued up quarterly &mdash; adjustment invoices</li>
+          <li><strong>Cancellation credit</strong>: cancelled mid-period &mdash; credit for unused portion</li>
+          <li><strong>Multi-year prepaid contract</strong>: $120K for 3 years &mdash; must amortize as prepaid expense, not expense all at once</li>
+          <li><strong>License transfer between entities</strong>: subscription originally for Entity A, transferred to Entity B &mdash; invoice coding must change</li>
+        </ol>
       </div>
     </div>
 
@@ -1796,7 +2607,23 @@
       <div class="concept-name">17. Long-Tail Edge Cases <span style="font-size:13px; font-weight:400; color:var(--muted);">(15)</span> <span class="concept-toggle">▾</span></div>
       <div class="concept-short">Vendor bankruptcy, deceased sole proprietors, zero-value invoices, retroactive regulatory changes, statute of limitations.</div>
       <div class="concept-full">
-        Invoice from deceased sole proprietor (estate/executor identification), vendor bankrupt mid-delivery with prepayment made (insolvency claim), natural disaster destroying physical invoices, court order freezing payments to specific vendor, retroactive tax rate changes affecting all invoices in period, dual reporting currency requirements, sanctions added to existing vendor mid-contract (goods in transit), legal hold preserving all vendor documents as evidence, negative invoices (net credit balance in AP aging), zero-value invoices rejected by system ($0.00 warranty replacement), unsolicited goods (legal treatment varies), corporate restructuring making buyer entity defunct, time zone differences at period cutoff, penny test deposits processed as real invoices, statute of limitations on 3-year-old invoice claims.
+        <ol start="396">
+          <li><strong>Invoice from deceased sole proprietor</strong>: no entity to pay &mdash; estate/executor must be identified</li>
+          <li><strong>Vendor goes bankrupt mid-delivery</strong>: goods partially received, prepayment made &mdash; priority claim in insolvency proceedings</li>
+          <li><strong>Natural disaster destroys physical invoices</strong>: original documents lost &mdash; vendor must reissue, but how to avoid duplicate payment?</li>
+          <li><strong>Regulatory hold on payment</strong>: court order freezes payments to specific vendor &mdash; must quarantine without losing the payable</li>
+          <li><strong>Retroactive regulatory change</strong>: tax rate changed retroactively by government &mdash; all invoices in affected period must be adjusted</li>
+          <li><strong>Dual reporting currency</strong> (e.g., EU country pre-euro adoption): every transaction recorded in both local currency and EUR</li>
+          <li><strong>Sanctions added to existing vendor mid-contract</strong>: active PO, goods in transit &mdash; can&rsquo;t pay, can&rsquo;t return goods</li>
+          <li><strong>Vendor sues buyer</strong>: legal hold &mdash; all documents related to vendor must be preserved, AP records become evidence</li>
+          <li><strong>Negative invoice</strong> (net credit balance): vendor owes buyer money &mdash; how does this appear in AP aging?</li>
+          <li><strong>Zero-value invoice</strong>: legitimate (e.g., warranty replacement) but systems may reject $0.00 invoices</li>
+          <li><strong>Invoice for goods never ordered</strong>: unsolicited goods &mdash; legal treatment varies by jurisdiction (some: keep without paying)</li>
+          <li><strong>Split entity / corporate restructuring</strong>: buyer company splits into two &mdash; vendor invoices reference old entity that no longer exists</li>
+          <li><strong>Time zone differences for cutoffs</strong>: invoice dated Dec 31 in vendor&rsquo;s time zone is Jan 1 in buyer&rsquo;s time zone</li>
+          <li><strong>Penny test deposits</strong>: vendor sends $0.01 to verify bank details &mdash; must not be processed as real invoice</li>
+          <li><strong>Statute of limitations on payment claims</strong>: vendor submits invoice 3 years after service &mdash; legally enforceable? Varies by jurisdiction</li>
+        </ol>
       </div>
     </div>
 
