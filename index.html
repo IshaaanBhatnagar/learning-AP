@@ -959,6 +959,7 @@
   <div class="nav-item" onclick="showSection('markets')">06 Your Markets</div>
   <div class="nav-item" onclick="showSection('stakeholders')">07 Stakeholder Map</div>
   <div class="nav-item" onclick="showSection('strategy')">08 Build vs Connect</div>
+  <div class="nav-item" onclick="showSection('pricing')">09 AP Software Costs</div>
 </nav>
 
 <!-- 1. WHAT IS AP -->
@@ -1508,6 +1509,94 @@
   </div>
 </section>
 
+<!-- 9. AP SOFTWARE COSTS -->
+<section class="section" id="pricing">
+  <div class="section-header">
+    <div class="section-tag">Market Landscape</div>
+    <h2 class="section-title">What AP Automation Software Actually Costs</h2>
+    <p class="section-sub">Pricing varies dramatically by company size, invoice volume, and feature depth. Here's what organizations are paying across tiers — and what they get for it.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card" style="border-top:3px solid var(--accent2)">
+      <div class="card-icon">🏪</div>
+      <div class="card-name">Small Business</div>
+      <div class="card-desc" style="margin-bottom:14px;">Invoice digitization, OCR, and basic payment approvals. Focused on eliminating manual data entry for teams processing a few hundred invoices per month.</div>
+      <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; margin-bottom:10px;">
+        <div style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; color:var(--accent2);">$2K – $10K<span style="font-size:14px; font-weight:400; color:var(--muted);"> /year</span></div>
+      </div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.6;">
+        <strong style="color:var(--text);">Typical vendors:</strong> Bill.com (~$45/user/month), Zoho, QuickBooks AP modules
+      </div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--accent)">
+      <div class="card-icon">🏢</div>
+      <div class="card-name">Mid-Sized</div>
+      <div class="card-desc" style="margin-bottom:14px;">OCR with AI-powered extraction, configurable approval routing, and ERP integration. Designed for teams scaling AP across multiple departments or entities.</div>
+      <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; margin-bottom:10px;">
+        <div style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; color:var(--accent);">$10K – $30K<span style="font-size:14px; font-weight:400; color:var(--muted);"> /year</span></div>
+      </div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.6;">
+        <strong style="color:var(--text);">Typical vendors:</strong> Stampli, Tipalti (from ~$99/month), AvidXchange
+      </div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="card-icon">🏗️</div>
+      <div class="card-name">Large Enterprise</div>
+      <div class="card-desc" style="margin-bottom:14px;">End-to-end automation with 3-way matching, full audit trails, real-time reporting, and multi-entity support. High-volume operations processing tens of thousands of invoices monthly.</div>
+      <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; margin-bottom:10px;">
+        <div style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; color:var(--accent3);">$30K – $50K+<span style="font-size:14px; font-weight:400; color:var(--muted);"> /year</span></div>
+      </div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.6;">
+        <strong style="color:var(--text);">Typical vendors:</strong> Coupa, SAP Concur, AvidXchange Enterprise (custom quotes)
+      </div>
+    </div>
+
+    <div class="card" style="border-top:3px solid #a78bfa">
+      <div class="card-icon">🤖</div>
+      <div class="card-name">Enterprise with AI</div>
+      <div class="card-desc" style="margin-bottom:14px;">AI-driven capture, intelligent exception handling, fraud and duplicate payment detection, predictive analytics, and dynamic discounting. Touchless AP at scale with advanced controls.</div>
+      <div style="padding:12px 16px; background:var(--surface2); border-radius:8px; margin-bottom:10px;">
+        <div style="font-family:'Syne',sans-serif; font-size:22px; font-weight:700; color:#a78bfa;">$40K – $100K+<span style="font-size:14px; font-weight:400; color:var(--muted);"> /year</span></div>
+      </div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.6;">
+        <strong style="color:var(--text);">Typical vendors:</strong> HighRadius, Coupa Advanced, SAP S/4HANA (custom quotes)
+      </div>
+    </div>
+  </div>
+
+  <div class="numbers-row">
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent4)">$10–15</div>
+      <div class="number-label">Cost per invoice — manual processing</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent2)">$2–4</div>
+      <div class="number-label">Cost per invoice — with AP automation</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent)">74%</div>
+      <div class="number-label">Average processing cost reduction</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent3)">&lt; 1 yr</div>
+      <div class="number-label">Typical payback period</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:var(--surface); border:1px solid var(--border); margin-top:40px;">
+    <div class="info-box-title">What's Not Included in the Sticker Price</div>
+    <p>Implementation, ERP integration, and change management are typically additional — ranging from <strong style="color:var(--text);">$5K–$50K+</strong> depending on ERP complexity (SAP/Oracle integrations are on the higher end). Cloud-based solutions generally have lower implementation costs than on-premise deployments. Per-transaction fees for payment execution (ACH, wire, virtual card) are also common on top of the subscription.</p>
+  </div>
+
+  <div class="info-box" style="background:var(--surface2); border:1px solid var(--border); margin-top:16px;">
+    <div class="info-box-title">Pricing Transparency Is Rare</div>
+    <p>Only Bill.com publishes pricing openly ($45/user/month). Most mid-market and enterprise vendors — Stampli, AvidXchange, Tipalti, Coupa, SAP — require custom quotes. This makes comparison shopping difficult and gives vendors with transparent, predictable pricing a meaningful sales advantage.</p>
+  </div>
+</section>
+
 <footer class="sources-footer">
   <h3>Sources &amp; References</h3>
   <ul class="sources-list">
@@ -1516,12 +1605,13 @@
     <li><a href="https://www.docuclipper.com/blog/accounts-payable-statistics/" target="_blank">59 Accounts Payable Statistics for 2025</a> — DocuClipper</li>
     <li><a href="https://www.mysa.io/blogs/what-is-the-cost-of-processing-an-invoice-manually-in-2024-and-reduction-strategies" target="_blank">Cost of Processing an Invoice Manually in 2025</a> — MySA</li>
     <li><a href="https://www.bottomline.com/resources/blog/hidden-and-not-so-hidden-costs-of-manual-accounts-payable" target="_blank">The Hidden and Not-So-Hidden Costs of Manual Accounts Payable</a> — Bottomline</li>
+    <li><a href="https://www.quadient.com/en/blog/how-much-does-accounts-payable-ap-automation-cost" target="_blank">Accounts Payable Automation Cost in 2025: Pricing, Ranges, and ROI</a> — Quadient</li>
   </ul>
 </footer>
 
 <script>
 // SECTION NAVIGATION
-const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders','strategy'];
+const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders','strategy','pricing'];
 
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
