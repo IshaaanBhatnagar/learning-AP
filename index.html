@@ -1529,28 +1529,45 @@
     </div>
   </div>
 
-  <div class="transform-grid" style="margin-top:30px;">
-    <div class="transform-col">
-      <div class="transform-col-header before-header">Build Full AP — Cost Breakdown</div>
-      <div class="transform-item before"><strong style="color:var(--text)">Engineering:</strong> 30–50 engineers across OCR/AI, matching, workflows, payments, ERP integrations, multi-currency, tax engine, reporting — at $120–200K/yr fully loaded</div>
-      <div class="transform-item before"><strong style="color:var(--text)">Domain Expertise:</strong> Tax accountants, AP operations consultants, compliance specialists, payment processing experts — people who cost $150–250K/yr and are hard to hire</div>
-      <div class="transform-item before"><strong style="color:var(--text)">Infrastructure:</strong> SOC 2 / ISO 27001 certification, PCI compliance for payments, multi-region hosting for data residency, disaster recovery — $500K–$1M/yr</div>
-      <div class="transform-item before"><strong style="color:var(--text)">QA &amp; Support:</strong> AP is finance-critical — bugs mean incorrect payments, tax miscalculations, audit failures. Enterprise-grade QA and 24/7 support are non-negotiable</div>
+  <div class="cards-grid" style="margin-top:30px; grid-template-columns: 1fr 1fr;">
+    <div class="card" style="border-top:3px solid var(--accent4);">
+      <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--accent4); margin-bottom:16px;">Build Full AP — Cost Breakdown</div>
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Engineering</div>
+        <div style="font-size:14px; color:var(--muted2); line-height:1.6;">30–50 engineers across OCR/AI, matching, workflows, payments, ERP integrations, multi-currency, tax engine, reporting — at $120–200K/yr fully loaded</div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Domain Expertise</div>
+        <div style="font-size:14px; color:var(--muted2); line-height:1.6;">Tax accountants, AP operations consultants, compliance specialists, payment processing experts — people who cost $150–250K/yr and are hard to hire</div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Infrastructure</div>
+        <div style="font-size:14px; color:var(--muted2); line-height:1.6;">SOC 2 / ISO 27001 certification, PCI compliance for payments, multi-region hosting for data residency, disaster recovery — $500K–$1M/yr</div>
+      </div>
+      <div>
+        <div style="font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">QA &amp; Support</div>
+        <div style="font-size:14px; color:var(--muted2); line-height:1.6;">AP is finance-critical — bugs mean incorrect payments, tax miscalculations, audit failures. Enterprise-grade QA and 24/7 support are non-negotiable</div>
+      </div>
     </div>
 
-    <div class="transform-divider">
-      <div class="arrow-cell">vs</div>
-      <div class="arrow-cell">vs</div>
-      <div class="arrow-cell">vs</div>
-      <div class="arrow-cell">vs</div>
-    </div>
-
-    <div class="transform-col">
-      <div class="transform-col-header after-header">Build Connector — Cost Breakdown</div>
-      <div class="transform-item after"><strong style="color:var(--text)">Engineering:</strong> 8–15 engineers focused on eInvoicing compliance, delivery channel adapters (Peppol, API, Email, SFTP), format normalization, and ERP push connectors</div>
-      <div class="transform-item after"><strong style="color:var(--text)">Domain Expertise:</strong> eInvoicing regulatory specialists (which Clear already has) — no need to hire AP operations, tax accounting, or payment processing experts</div>
-      <div class="transform-item after"><strong style="color:var(--text)">Infrastructure:</strong> Lighter compliance footprint — no payment processing means no PCI. Standard SOC 2 and data residency. $150–300K/yr</div>
-      <div class="transform-item after"><strong style="color:var(--text)">QA &amp; Support:</strong> Smaller surface area to test and support. The AP system handles the finance-critical logic. Clear handles delivery and compliance — its core competency</div>
+    <div class="card" style="border-top:3px solid var(--accent2);">
+      <div style="font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--accent2); margin-bottom:16px;">Build Connector — Cost Breakdown</div>
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Engineering</div>
+        <div style="font-size:14px; color:var(--muted2); line-height:1.6;">8–15 engineers focused on eInvoicing compliance, delivery channel adapters (Peppol, API, Email, SFTP), format normalization, and ERP push connectors</div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Domain Expertise</div>
+        <div style="font-size:14px; color:var(--muted2); line-height:1.6;">eInvoicing regulatory specialists (which Clear already has) — no need to hire AP operations, tax accounting, or payment processing experts</div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Infrastructure</div>
+        <div style="font-size:14px; color:var(--muted2); line-height:1.6;">Lighter compliance footprint — no payment processing means no PCI. Standard SOC 2 and data residency. $150–300K/yr</div>
+      </div>
+      <div>
+        <div style="font-size:12px; font-weight:600; color:var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">QA &amp; Support</div>
+        <div style="font-size:14px; color:var(--muted2); line-height:1.6;">Smaller surface area to test and support. The AP system handles the finance-critical logic. Clear handles delivery and compliance — its core competency</div>
+      </div>
     </div>
   </div>
 
