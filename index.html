@@ -33,11 +33,10 @@
   }
 
   .hero {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 80px 60px;
+    padding: 48px 60px 36px;
     position: relative;
     overflow: hidden;
   }
@@ -66,7 +65,7 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -86,7 +85,7 @@
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 
   .hero h1 span {
@@ -96,9 +95,9 @@
   .hero-desc {
     max-width: 540px;
     color: var(--muted2);
-    font-size: 18px;
-    line-height: 1.75;
-    margin-bottom: 48px;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 24px;
   }
 
   .hero-stats {
@@ -111,7 +110,7 @@
 
   .stat-num {
     font-family: 'Syne', sans-serif;
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
     color: var(--accent);
     line-height: 1;
@@ -119,38 +118,6 @@
 
   .stat-label { font-size: 14px; color: var(--muted); letter-spacing: 0.03em; }
 
-  .scroll-hint {
-    position: absolute;
-    bottom: 40px; left: 60px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--muted);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .scroll-line {
-    width: 40px; height: 1px;
-    background: var(--muted);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .scroll-line::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -40px;
-    width: 40px; height: 1px;
-    background: var(--accent);
-    animation: scroll-anim 2s ease-in-out infinite;
-  }
-
-  @keyframes scroll-anim {
-    0% { left: -40px; }
-    100% { left: 40px; }
-  }
 
   .nav {
     position: sticky;
@@ -942,10 +909,6 @@
       <span class="stat-num">8</span>
       <span class="stat-label">Steps in AP lifecycle</span>
     </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    Scroll to explore
   </div>
 </section>
 
