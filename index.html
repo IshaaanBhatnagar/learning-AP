@@ -923,6 +923,7 @@
   <div class="nav-item" onclick="showSection('stakeholders')">07 Stakeholder Map</div>
   <div class="nav-item" onclick="showSection('strategy')">08 Build vs Connect</div>
   <div class="nav-item" onclick="showSection('pricing')">09 AP Software Costs</div>
+  <div class="nav-item" onclick="showSection('edgecases')">10 Edge Cases (410+)</div>
 </nav>
 
 <!-- 1. WHAT IS AP -->
@@ -1588,6 +1589,226 @@
   </div>
 </section>
 
+<!-- 10. EDGE CASES -->
+<section class="section" id="edgecases">
+  <div class="section-header">
+    <div class="section-tag">The Real Complexity</div>
+    <h2 class="section-title">410+ Edge Cases Every AP System Must Handle</h2>
+    <p class="section-sub">This is what makes AP automation genuinely hard. Not the happy path — the combinatorial explosion of real-world scenarios that break systems. Click each category to expand.</p>
+  </div>
+
+  <div class="numbers-row" style="margin-top:0; margin-bottom:40px;">
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent)">410+</div>
+      <div class="number-label">Specific edge cases cataloged</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent3)">17</div>
+      <div class="number-label">Categories of complexity</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent4)">30–40%</div>
+      <div class="number-label">Industry avg. touchless rate</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent2)">5–10</div>
+      <div class="number-label">Categories hit by a single invoice</div>
+    </div>
+  </div>
+
+  <div class="concepts-grid">
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">📄</div>
+      <div class="concept-name">1. Invoice Ingestion &amp; OCR <span style="font-size:13px; font-weight:400; color:var(--muted);">(43)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Handwritten invoices, multi-page merging, borderless tables, decimal separator ambiguity, RTL languages, mixed-language documents.</div>
+      <div class="concept-full">
+        <strong>Document chaos:</strong> Handwritten invoices, faxed with degraded resolution, photographed with phone cameras at odd angles, password-protected PDFs, carbon copies with bleed-through, watermarks obscuring data, dot matrix printing.<br><br>
+        <strong>Table extraction:</strong> Borderless tables relying on whitespace, merged cells, multi-line descriptions in one row, nested sub-line items, line items wrapping across page breaks, columns with identical headers.<br><br>
+        <strong>Field ambiguity:</strong> Multiple dates (invoice/delivery/due/tax point), currency symbol collision ($ = USD/CAD/AUD/SGD), decimal separator confusion (1.234,56 vs 1,234.56), amounts in words vs digits that don't match, PO number embedded in a sentence rather than a field.<br><br>
+        <strong>Localization:</strong> Non-Latin scripts (CJK, Thai, Devanagari), mixed-language invoices (header in French, line items in English), date format ambiguity (01/02/2025), country-specific address formats.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🔍</div>
+      <div class="concept-name">2. Duplicate Detection <span style="font-size:13px; font-weight:400; color:var(--muted);">(27)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Invoice number normalization failures, vendor identity fragmentation, false positives on recurring invoices and installment payments.</div>
+      <div class="concept-full">
+        <strong>Number normalization:</strong> Leading zeros ("00001234" vs "1234"), prefix inconsistency ("INV-1234" vs "1234"), case sensitivity, OCR misreads (lowercase L vs digit 1), vendor reusing numbers annually or after system migration.<br><br>
+        <strong>Vendor identity:</strong> Same vendor with multiple IDs across plants, trade name vs legal name ("FedEx" vs "Federal Express Corporation"), post-M&amp;A name coexistence, regional office variants.<br><br>
+        <strong>False positives:</strong> Recurring monthly invoices with similar amounts, installment payments on one contract, multiple partial delivery invoices against same PO, credit note + replacement invoice, pro-forma followed by final invoice, same vendor/amount/date but different services, vendor submitting via both email and portal.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">⚖️</div>
+      <div class="concept-name">3. Three-Way / N-Way Matching <span style="font-size:13px; font-weight:400; color:var(--muted);">(52)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Partial deliveries, retroactive price changes, UOM mismatches (cases vs eaches), blanket PO releases, tolerance stacking across lines.</div>
+      <div class="concept-full">
+        <strong>Quantity mismatches:</strong> Partial delivery (PO 1000, received 800, invoiced 800), over-delivery, goods rejected at quality inspection, returns in transit, consignment not "received" until consumed, free samples inflating quantities.<br><br>
+        <strong>Price mismatches:</strong> Retroactive contract renegotiation, volume discount thresholds hit mid-PO, tiered pricing, spot pricing for commodities, fuel surcharges not on PO, minimum order charges, currency conversion between PO and invoice.<br><br>
+        <strong>UOM mismatches:</strong> Cases vs eaches (12x off), metric vs imperial (kg vs lb), hours vs days, pallets vs units vs packs, vendor-specific UOM codes that don't map to buyer's ERP.<br><br>
+        <strong>PO issues:</strong> Wrong PO referenced, PO doesn't exist (verbal auth), PO from different entity, closed/cancelled PO, single invoice referencing multiple POs, blanket PO with no line detail.<br><br>
+        <strong>Tolerance:</strong> Different tolerances per vendor/commodity, line-level vs total tolerance, percentage vs absolute, tolerance stacking (many small discrepancies aggregating), zero-tolerance government contracts.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">📝</div>
+      <div class="concept-name">4. Non-PO &amp; Special Invoice Types <span style="font-size:13px; font-weight:400; color:var(--muted);">(49)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Credit/debit notes, self-billing, consignment, construction progress billing with retention, prepayments, utility bills, emergency purchases.</div>
+      <div class="concept-full">
+        <strong>Non-PO invoices:</strong> Utilities, rent, legal fees, insurance, government licenses, SaaS auto-renewals, emergency purchases before PO created.<br><br>
+        <strong>Credit notes:</strong> Full reversal, partial for returns, credit exceeding original invoice, credit on already-paid invoice, no reference to original, applied across multiple invoices, in different currency, vendor issues credit AND deducts from next invoice (double credit risk).<br><br>
+        <strong>Self-billing (ERS):</strong> Generated at wrong PO price, goods receipt reversed after invoice generated, tax calculation on buyer-generated invoice, vendor disputes the amount.<br><br>
+        <strong>Construction:</strong> Milestone billing with % completion validation, retention/retainage (5-10% withheld until completion), back-charges, change orders re-baselining prior invoices, subcontractor lien waivers.<br><br>
+        <strong>Prepayments:</strong> Asset vs expense recording, partial application against final invoice, FX difference on application, vendor never delivers, tax treatment varies by jurisdiction.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🧮</div>
+      <div class="concept-name">5. Tax Complexity <span style="font-size:13px; font-weight:400; color:var(--muted);">(47)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Reverse charge VAT, US use tax self-assessment, Indian TDS, Brazilian multi-tax withholding, line-level vs header-level rounding.</div>
+      <div class="concept-full">
+        <strong>VAT/GST:</strong> Reverse charge on cross-border B2B, domestic reverse charge for specific sectors, partial exemption, VAT on imports, intra-community supply, multiple rates on one invoice, invoice missing required VAT fields (can't recover input VAT), triangulation (A→B→C, goods ship A→C).<br><br>
+        <strong>US Sales &amp; Use Tax:</strong> Use tax self-assessment when vendor didn't charge, expired exemption certificates, nexus complexity, tax on shipping (varies by state), marketplace facilitator rules, multi-state allocation, manufacturing exemptions, drop-ship scenarios.<br><br>
+        <strong>Withholding Tax:</strong> US backup withholding (24%), 1099 threshold tracking, 1042-S for foreign vendors (30% unless treaty), Indian TDS rates varying by service type/vendor status/PAN availability, Brazilian ISS/PIS/COFINS/CSLL (multiple taxes at different rates), gross-up clauses, WHT on advance payments.<br><br>
+        <strong>Rounding:</strong> Line-level vs header-level tax calculation gives different results, penny differences, tax on tax in some jurisdictions, composite rates, cash vs accrual VAT accounting, vendor applied wrong rate.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">💱</div>
+      <div class="concept-name">6. Currency &amp; FX <span style="font-size:13px; font-weight:400; color:var(--muted);">(20)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Triangular conversion, realized/unrealized FX gains, hyperinflationary currencies, intercompany elimination mismatches.</div>
+      <div class="concept-full">
+        <strong>Multi-currency:</strong> Invoice currency differs from PO currency, payment currency differs from both, exchange rate at invoice date vs payment date vs GR date, rate source disagreement (ECB vs Reuters), fixed-rate contracts overriding live rates, dual-denomination invoices, conversion rounding (sum of converted lines ≠ converted sum).<br><br>
+        <strong>FX impact:</strong> Realized gains/losses at payment (P&amp;L), unrealized at period-end revaluation (balance sheet), hyperinflationary currencies (significant movement between invoice and payment), triangular conversion (CHF→EUR→USD path selection).<br><br>
+        <strong>Multi-entity:</strong> Cross-entity invoices (addressed to A, received by B), intercompany recharges, transfer pricing validation, elimination imbalances from FX, different charts of accounts, different fiscal calendars, different base currencies requiring constant revaluation.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">✅</div>
+      <div class="concept-name">7. Approval Workflows <span style="font-size:13px; font-weight:400; color:var(--muted);">(20)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Circular delegation, committee approval, split-entity approval, early payment discount expiring during approval cycle.</div>
+      <div class="concept-full">
+        <strong>Routing logic:</strong> Amount changes after initial routing (now exceeds threshold), approver terminated, approver on extended leave without delegation, delegation chain (A→B→C, does C have authority?), circular delegation (A→B→A), committee approval (2 of 3 required), conditional approval at exact boundary ($10K), split coding requiring multiple department heads.<br><br>
+        <strong>Context changes:</strong> Cost center changed after approval, retrospective approval months later (approver moved departments), PO already approved — does invoice need separate approval?, auto-approve vendor with abnormally high invoice, budget exceeded.<br><br>
+        <strong>Escalation:</strong> Timer during weekends/holidays, escalation ladder exhausted (everyone on leave), reminder fatigue (50+ pending), discount expiring during cycle, approval recalled after downstream actions taken, system outage during window.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">💳</div>
+      <div class="concept-name">8. Payment Processing <span style="font-size:13px; font-weight:400; color:var(--muted);">(29)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Discount on partial payment, ACH return codes, stale-dated checks, escheatment, payment netting, cross-border intermediary fees.</div>
+      <div class="concept-full">
+        <strong>Terms &amp; discounts:</strong> 2/10 Net 30 — calculated from invoice date, receipt date, or GR date? Discount on partial payment, conflicting terms (PO vs invoice vs master agreement), end-of-month calculation ambiguity, net vs gross method accounting.<br><br>
+        <strong>Execution:</strong> Payment run includes voided invoice, partial payments with balance tracking, wrong bank account (old details), sanctions screening hold, wrong currency sent, file format errors (bad IBAN/SWIFT), duplicate batch submitted to bank, ACH returns (insufficient funds, account closed, unauthorized), wire cutoff times, cross-border intermediary fees reducing received amount, payment netting against AR.<br><br>
+        <strong>Checks:</strong> Stale-dated (uncashed 180+ days), lost in mail, altered payee fraud, positive pay mismatches, escheatment/unclaimed property obligations (dormancy periods vary by state).<br><br>
+        <strong>Prepayment:</strong> Advance exceeds final invoice, multiple prepayments across multiple invoices, tax implications, cross-fiscal-year timing.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">📅</div>
+      <div class="concept-name">9. Period-End &amp; Accounting <span style="font-size:13px; font-weight:400; color:var(--muted);">(18)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Stale GR/IR items, accrual reversal failures, GL miscoding, capitalization thresholds, intercompany timing mismatches.</div>
+      <div class="concept-full">
+        <strong>Accruals:</strong> Invoice received after period close (expense belongs to prior period), accrual posted but invoice never arrives, auto-reversal fails (double-counted), accrual amount doesn't match actual invoice, multiple months of accruals to unwind, year-end reversal shows negative expense before invoice posts.<br><br>
+        <strong>GR/IR:</strong> Clearing account doesn't clear (balance grows monthly), stale items 6+ months old with no invoice (write-off decision), intercompany accrual timing imbalance at consolidation.<br><br>
+        <strong>GL coding:</strong> CAPEX coded as OPEX (audit finding), split allocation across 20+ cost centers with rounding residuals, closed/expired project codes, budget not available, AI suggestion disagrees with historical pattern, capitalization threshold edge ($4,950 item + $100 follow-up = over $5K threshold).
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">👥</div>
+      <div class="concept-name">10. Vendor Master Data <span style="font-size:13px; font-weight:400; color:var(--muted);">(17)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">BEC bank change fraud, post-M&amp;A consolidation, one-time vendors, sanctioned party screening, duplicate vendor records.</div>
+      <div class="concept-full">
+        <strong>Onboarding:</strong> Vendor has multiple legal entities, TIN validation fails, sanctioned country screening, sole proprietor SSN vs EIN, international vendor with no US tax ID (W-8BEN), government entity special terms, bank details in incompatible format, procurement onboarded but AP never notified.<br><br>
+        <strong>Maintenance:</strong> Bank account change (legitimate vs BEC fraud — how to verify?), address change affecting 1099 reporting, vendor merged (consolidate IDs + history), vendor acquired by competitor, inactive vendor with open invoices, duplicate records across departments, master data sync failure between systems, legal form change ("Ltd" to "PLC"), one-time/ad-hoc vendors not in master data.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🛡️</div>
+      <div class="concept-name">11. Fraud &amp; Compliance <span style="font-size:13px; font-weight:400; color:var(--muted);">(19)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Ghost vendors, invoice splitting below thresholds, deepfake CFO calls, SOX segregation of duties, OFAC screening false positives.</div>
+      <div class="concept-full">
+        <strong>Invoice fraud:</strong> Ghost vendor created by insider, billing scheme with kickback, invoice splitting to stay below approval threshold, BEC with spoofed vendor domain requesting bank change, deepfake voice call from "CFO", altered PDF metadata, phantom goods with buyer-vendor collusion, shell company with no physical presence, round-tripping schemes.<br><br>
+        <strong>Compliance:</strong> SOX segregation of duties (approver can't also pay), FCPA/anti-bribery flags for high-risk countries, OFAC/EU/UN sanctions screening, conflict minerals reporting, AML for large payments to new vendors, right-to-audit clause tracking, GDPR/CCPA on vendor personal data, record retention (7-10+ years by jurisdiction), complete audit trail for every change.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🌐</div>
+      <div class="concept-name">12. E-Invoicing &amp; Regulatory <span style="font-size:13px; font-weight:400; color:var(--muted);">(18)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Italy SDI, India GST IRN, Poland KSeF, Peppol routing failures, digital signature verification, cross-border platform conflicts.</div>
+      <div class="concept-full">
+        <strong>Country mandates:</strong> Italy SDI real-time clearance, India GST e-invoicing with IRN, Mexico CFDI digital stamp, Brazil NF-e with state-by-state rules, Saudi ZATCA Phase 2 API, Poland KSeF (Feb 2026), France B2B phased from Sept 2026, Germany mandatory reception (Jan 2025), Belgium B2B (Jan 2026), Israel real-time validation above NIS thresholds.<br><br>
+        <strong>Technical:</strong> Peppol access point downtime, schema validation failures against EN 16931, expired digital signature certificates, e-invoice AND paper invoice for same transaction (duplicate risk), government platform rejects invoice (number is "burned"), cross-border platform conflicts (seller on SDI, buyer on Chorus Pro), 10+ year archiving in specific formats, credit note schema differences.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🔌</div>
+      <div class="concept-name">13. ERP Integration <span style="font-size:13px; font-weight:400; color:var(--muted);">(16)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">SAP blocked invoices, idempotency failures, custom Z-fields, character encoding, ERP migration breaking all integrations.</div>
+      <div class="concept-full">
+        <strong>Data mapping:</strong> Vendor ID format mismatch (alphanumeric vs numeric), GL account hierarchy mapping, tax code translation tables, cost center renumbered in ERP, PO sync lag (invoice arrives before PO visible), currency code format (ISO alpha vs numeric), date format transposition, accented character encoding failures.<br><br>
+        <strong>ERP-specific:</strong> SAP MIRO blocked invoices sitting without visibility, SAP parked vs posted confusion, Oracle Fusion subledger timing gap, NetSuite multi-subsidiary assignment, ERP upgrade (ECC→S/4HANA) requiring full integration rebuild, duplicate API calls creating duplicates (idempotency), rate limiting/throttling, custom Z-fields not supported by standard integration.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🚢</div>
+      <div class="concept-name">14. Landed Costs &amp; Trade <span style="font-size:13px; font-weight:400; color:var(--muted);">(8)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Customs duty allocation, Incoterms, retroactive tariffs, anti-dumping duties, duty drawback, bonded warehouse timing.</div>
+      <div class="concept-full">
+        Customs duty invoices arriving separately from vendor invoice (must allocate across line items), broker fees/port handling/insurance from third parties linked to original PO, Incoterms determining cost allocation (DDP vs EXW vs CIF), tariff rate changes after PO issued with goods in transit, anti-dumping duties applied retroactively, free trade agreement preferential rates requiring certificates of origin, duty drawback tracking for re-exported goods, bonded warehouse timing differences.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🔄</div>
+      <div class="concept-name">15. Rebates &amp; Retrospective Adjustments <span style="font-size:13px; font-weight:400; color:var(--muted);">(7)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Volume rebates, retrospective price reductions across months of invoices, vendor-funded marketing deductions.</div>
+      <div class="concept-full">
+        Volume rebate tracking across all YTD invoices, retrospective price reduction applied to 6 months of history (recalculate + debit notes), monthly rebate accrual vs actual year-end variance, rebate vs discount (different accounting treatment), vendor-funded marketing deductions disputed by vendor, settlement discount recalculation after credit note adjusts invoice, supplier price protection credits on unsold inventory.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🔁</div>
+      <div class="concept-name">16. Recurring &amp; Subscriptions <span style="font-size:13px; font-weight:400; color:var(--muted);">(7)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Unauthorized auto-renewals, true-up invoices, multi-year prepaid amortization, mid-period cancellation credits.</div>
+      <div class="concept-full">
+        Auto-renewed license nobody authorized (dispute/cancellation process), price increase on renewal with no PO for new amount, prorated first invoice for mid-month start, quarterly true-up invoices adjusting estimated monthly usage, cancellation credit for unused portion of period, $120K multi-year prepaid needing amortization (not full expense), license transfer between entities changing invoice coding.
+      </div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🌀</div>
+      <div class="concept-name">17. Long-Tail Edge Cases <span style="font-size:13px; font-weight:400; color:var(--muted);">(15)</span> <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Vendor bankruptcy, deceased sole proprietors, zero-value invoices, retroactive regulatory changes, statute of limitations.</div>
+      <div class="concept-full">
+        Invoice from deceased sole proprietor (estate/executor identification), vendor bankrupt mid-delivery with prepayment made (insolvency claim), natural disaster destroying physical invoices, court order freezing payments to specific vendor, retroactive tax rate changes affecting all invoices in period, dual reporting currency requirements, sanctions added to existing vendor mid-contract (goods in transit), legal hold preserving all vendor documents as evidence, negative invoices (net credit balance in AP aging), zero-value invoices rejected by system ($0.00 warranty replacement), unsolicited goods (legal treatment varies), corporate restructuring making buyer entity defunct, time zone differences at period cutoff, penny test deposits processed as real invoices, statute of limitations on 3-year-old invoice claims.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info-box" style="background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--accent4); margin-top:40px;">
+    <div class="info-box-title">Why This Matters: The Combinatorial Explosion</div>
+    <p>These aren't independent problems — they <strong style="color:var(--text);">combine</strong>. A single invoice can simultaneously involve: multi-page multi-language OCR extraction + potential duplicate + partial delivery against a blanket PO with UOM mismatch + reverse charge VAT plus withholding tax + invoice in EUR, PO in USD, payment in GBP + split approval across three departments + early payment discount about to expire + period-end cutoff + vendor recently changed bank details + e-invoicing mandate compliance + custom ERP fields.</p>
+    <p style="margin-top:10px;">This combinatorial explosion is why the industry average for fully touchless processing is only <strong style="color:var(--accent4);">30–40%</strong>. Reaching 90%+ is considered world-class — and requires handling the majority of these edge cases programmatically.</p>
+  </div>
+</section>
+
 <footer class="sources-footer">
   <h3>Sources &amp; References</h3>
   <ul class="sources-list">
@@ -1605,7 +1826,7 @@
 
 <script>
 // SECTION NAVIGATION
-const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders','strategy','pricing'];
+const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders','strategy','pricing','edgecases'];
 
 
 function showSection(id) {
