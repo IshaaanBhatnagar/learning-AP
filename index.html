@@ -958,6 +958,7 @@
   <div class="nav-item" onclick="showSection('concepts')">05 Key Concepts</div>
   <div class="nav-item" onclick="showSection('markets')">06 Your Markets</div>
   <div class="nav-item" onclick="showSection('stakeholders')">07 Stakeholder Map</div>
+  <div class="nav-item" onclick="showSection('strategy')">08 Build vs Connect</div>
 </nav>
 
 <!-- 1. WHAT IS AP -->
@@ -1440,6 +1441,73 @@
   </div>
 </section>
 
+<!-- 8. BUILD VS CONNECT -->
+<section class="section" id="strategy">
+  <div class="section-header">
+    <div class="section-tag">Product Strategy</div>
+    <h2 class="section-title">Build AP Workflow vs Connect to Existing Solutions</h2>
+    <p class="section-sub">Should you build a full AP workflow from scratch, or build connectors to the AP solutions enterprises already use? The answer shapes everything — go-to-market, pricing, and engineering investment.</p>
+  </div>
+
+  <div class="transform-grid">
+    <div class="transform-col">
+      <div class="transform-col-header before-header">Build Full AP Workflow</div>
+      <div class="transform-item before">Competing head-on with SAP, Oracle, Coupa, Sage — decades of entrenched AP functionality with deep feature sets.</div>
+      <div class="transform-item before">Enterprises won't rip out their ERP's AP module. Switching costs are enormous, and procurement cycles stretch 12–18 months.</div>
+      <div class="transform-item before">The AP workflow itself (receive, match, approve, pay) is well-solved. There's no defensible moat in rebuilding commodity functionality.</div>
+      <div class="transform-item before">Massive engineering investment to reach feature parity before you can even start selling. Years of catch-up.</div>
+    </div>
+
+    <div class="transform-divider">
+      <div class="arrow-cell">vs</div>
+      <div class="arrow-cell">vs</div>
+      <div class="arrow-cell">vs</div>
+      <div class="arrow-cell">vs</div>
+    </div>
+
+    <div class="transform-col">
+      <div class="transform-col-header after-header">Connect to Existing AP Solutions</div>
+      <div class="transform-item after">Zero-friction adoption — "works with your existing ERP" is a fundamentally easier sell than "replace your AP system."</div>
+      <div class="transform-item after">Faster time to market. Build an integration layer, not an entire product. Start generating revenue while competitors are still building.</div>
+      <div class="transform-item after">The eInvoicing compliance mandate is the wedge. You don't need to own the whole AP stack to capture the highest-value parts.</div>
+      <div class="transform-item after">Engineering focused on differentiation — intelligence, compliance, cross-market normalization — not commodity workflow features.</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:var(--surface); border:1px solid var(--border); border-top: 4px solid var(--accent);">
+    <div class="info-box-title">The Recommendation: Intelligent Middleware</div>
+    <p>The connector approach doesn't mean being a dumb pipe. The differentiation is the <strong style="color:var(--accent)">intelligence layer between the eInvoicing network and the ERP</strong> — that's where you own the value:</p>
+  </div>
+
+  <div class="cards-grid" style="margin-top:20px;">
+    <div class="card" style="border-top:3px solid var(--accent)">
+      <div class="card-icon">🧠</div>
+      <div class="card-name">Auto-Matching &amp; Exception Triage</div>
+      <div class="card-desc">AI-powered matching and exception resolution that sits between the eInvoicing network and the ERP. The AP team gets pre-diagnosed exceptions with suggested resolutions — not raw data dumps.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent4)">
+      <div class="card-icon">🛡️</div>
+      <div class="card-name">Duplicate Detection</div>
+      <div class="card-desc">Catch duplicates before they hit the ERP, not after. A pre-processing intelligence layer that prevents problems rather than reporting them downstream.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="card-icon">💡</div>
+      <div class="card-name">Dynamic Discounting Recommendations</div>
+      <div class="card-desc">Surface early payment discount opportunities with ROI context to the treasury team. Only possible when invoices are processed fast enough — which the eInvoicing layer enables.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent2)">
+      <div class="card-icon">🌍</div>
+      <div class="card-name">Cross-Market Compliance Normalization</div>
+      <div class="card-desc">ZATCA clearance, Peppol delivery, KSeF polling, France PDP lifecycle — all abstracted into one clean, normalized feed that the ERP consumes identically regardless of source market.</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:var(--surface2); border:1px solid var(--border);">
+    <div class="info-box-title">The Exception: SMEs</div>
+    <p>The one scenario where building more AP workflow makes sense is for <strong style="color:var(--text)">small and mid-size businesses who don't have a proper AP system at all</strong>. For them, a lightweight, eInvoicing-native AP workflow could be compelling — but that's a different market segment with very different pricing, margins, and go-to-market.</p>
+  </div>
+</section>
+
 <footer class="sources-footer">
   <h3>Sources &amp; References</h3>
   <ul class="sources-list">
@@ -1453,7 +1521,7 @@
 
 <script>
 // SECTION NAVIGATION
-const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders'];
+const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders','strategy'];
 
 function showSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
