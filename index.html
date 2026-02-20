@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accounts Payable × eInvoicing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d12;
+    --surface: #111620;
+    --surface2: #161c28;
+    --border: #1e2535;
+    --accent: #3b82f6;
+    --accent2: #10b981;
+    --accent3: #f59e0b;
+    --accent4: #ef4444;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --muted2: #94a3b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: 100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(59,130,246,0.5);
+  }
+
+  .hero-desc {
+    max-width: 540px;
+    color: var(--muted2);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 4px; }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px; left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 40px; height: 1px;
+    background: var(--muted);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -40px;
+    width: 40px; height: 1px;
+    background: var(--accent);
+    animation: scroll-anim 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-anim {
+    0% { left: -40px; }
+    100% { left: 40px; }
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,13,18,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .nav-item {
+    padding: 16px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    user-select: none;
+  }
+
+  .nav-item:hover { color: var(--text); }
+  .nav-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .section {
+    padding: 100px 60px;
+    border-bottom: 1px solid var(--border);
+    display: none;
+  }
+
+  .section.active { display: block; }
+
+  .section-header { margin-bottom: 60px; }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    color: var(--muted2);
+    font-size: 16px;
+    max-width: 600px;
+  }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: all 0.3s;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .card-icon { font-size: 28px; margin-bottom: 16px; }
+  .card-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card-desc { color: var(--muted2); font-size: 13.5px; line-height: 1.65; }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--border));
+  }
+
+  .timeline-step {
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+
+  .timeline-step:hover {
+    border-color: var(--accent);
+    background: var(--surface2);
+    transform: translateX(4px);
+  }
+
+  .timeline-step.open { border-color: var(--accent); background: var(--surface2); }
+
+  .timeline-step::before {
+    content: '';
+    position: absolute;
+    left: -34px; top: 28px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .step-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .step-toggle {
+    font-size: 18px;
+    color: var(--muted);
+    transition: transform 0.3s;
+  }
+
+  .timeline-step.open .step-toggle { transform: rotate(180deg); }
+
+  .step-body {
+    color: var(--muted2);
+    font-size: 14px;
+    line-height: 1.75;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+
+  .timeline-step.open .step-body {
+    max-height: 400px;
+    padding-top: 14px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .pill-red { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); color: var(--accent4); }
+  .pill-green { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--accent2); }
+
+  /* TRANSFORMATION */
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr;
+    gap: 0;
+  }
+
+  .transform-col { display: flex; flex-direction: column; gap: 2px; }
+
+  .transform-col-header {
+    padding: 14px 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 4px;
+  }
+
+  .before-header { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); color: var(--accent4); }
+  .after-header { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--accent2); }
+
+  .transform-item {
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--muted2);
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+  }
+
+  .transform-item.before { border-left: 3px solid rgba(239,68,68,0.3); }
+  .transform-item.after { border-left: 3px solid rgba(16,185,129,0.3); color: var(--text); }
+
+  .transform-divider {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 52px;
+    gap: 2px;
+  }
+
+  .arrow-cell {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  /* WORKFLOW */
+  .workflow-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .workflow-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .workflow-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .workflow-toggle {
+    display: flex;
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 3px;
+    gap: 2px;
+    border: 1px solid var(--border);
+  }
+
+  .workflow-toggle button {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    color: var(--muted);
+  }
+
+  .workflow-toggle button.active { background: var(--accent); color: white; }
+
+  .workflow-body { padding: 32px; }
+
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  .flow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 12px;
+  }
+
+  .flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    min-width: 90px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .flow-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border: 2px solid var(--border);
+    background: var(--surface2);
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .flow-node:hover .flow-icon,
+  .flow-node.active .flow-icon {
+    border-color: var(--accent);
+    background: rgba(59,130,246,0.1);
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px rgba(59,130,246,0.1);
+  }
+
+  .flow-node.done .flow-icon {
+    border-color: var(--accent2);
+    background: rgba(16,185,129,0.1);
+  }
+
+  .flow-node.done .flow-icon::after {
+    content: '✓';
+    position: absolute;
+    top: -6px; right: -6px;
+    width: 18px; height: 18px;
+    background: var(--accent2);
+    border-radius: 50%;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+  }
+
+  .flow-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    max-width: 80px;
+  }
+
+  .flow-node.active .flow-label { color: var(--accent); font-weight: 600; }
+  .flow-node.done .flow-label { color: var(--accent2); }
+
+  .flow-arrow {
+    flex: 1;
+    height: 2px;
+    min-width: 16px;
+    max-width: 36px;
+    background: var(--border);
+    position: relative;
+    margin-top: 25px;
+    flex-shrink: 0;
+  }
+
+  .flow-arrow.done { background: var(--accent2); }
+  .flow-arrow.active { background: var(--accent); }
+
+  .flow-arrow::after {
+    content: '';
+    position: absolute;
+    right: -1px; top: -4px;
+    border: 5px solid transparent;
+    border-left: 7px solid var(--border);
+  }
+
+  .flow-arrow.done::after { border-left-color: var(--accent2); }
+  .flow-arrow.active::after { border-left-color: var(--accent); }
+
+  .detail-panel {
+    margin-top: 24px;
+    padding: 24px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    border-left: 3px solid var(--accent);
+    animation: fadeIn 0.3s ease;
+    min-height: 110px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .detail-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .detail-body {
+    color: var(--muted2);
+    font-size: 14px;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  .detail-metrics {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .metric {
+    padding: 6px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--muted2);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .metric strong { color: var(--text); font-weight: 600; }
+
+  .step-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center;
+  }
+
+  .btn {
+    padding: 9px 20px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary { background: var(--accent); color: white; }
+  .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
+  .btn-secondary { background: var(--surface); color: var(--muted2); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--muted); color: var(--text); }
+  .btn-reset { background: transparent; color: var(--muted); border: 1px dashed var(--border); margin-left: auto; }
+  .btn-reset:hover { color: var(--accent4); border-color: var(--accent4); }
+
+  /* CONCEPTS */
+  .concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 14px;
+  }
+
+  .concept-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .concept-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .concept-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .concept-card:hover::before { opacity: 1; }
+  .concept-card.open { border-color: var(--accent); }
+  .concept-card.open::before { opacity: 1; }
+
+  .concept-icon { font-size: 24px; margin-bottom: 12px; }
+
+  .concept-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .concept-toggle { font-size: 16px; color: var(--muted); transition: transform 0.3s; }
+  .concept-card.open .concept-toggle { transform: rotate(180deg); }
+
+  .concept-short { color: var(--muted2); font-size: 13px; line-height: 1.6; }
+
+  .concept-full {
+    color: var(--muted2);
+    font-size: 13.5px;
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+
+  .concept-card.open .concept-full { max-height: 400px; padding-top: 12px; border-top: 1px solid var(--border); margin-top: 12px; }
+
+  /* MARKETS */
+  .markets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 14px;
+  }
+
+  .market-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .market-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .market-header {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .market-flag { font-size: 26px; line-height: 1; }
+
+  .market-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .market-sub { font-size: 12px; color: var(--muted); }
+
+  .market-badge {
+    margin-left: auto;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .badge-clearance { background: rgba(245,158,11,0.15); color: var(--accent3); border: 1px solid rgba(245,158,11,0.2); }
+  .badge-peppol { background: rgba(59,130,246,0.15); color: var(--accent); border: 1px solid rgba(59,130,246,0.2); }
+  .badge-reporting { background: rgba(16,185,129,0.15); color: var(--accent2); border: 1px solid rgba(16,185,129,0.2); }
+  .badge-central { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.2); }
+
+  .market-body { padding: 18px 22px; }
+
+  .market-desc { color: var(--muted2); font-size: 13.5px; line-height: 1.65; }
+
+  .market-impact {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: var(--bg);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent2);
+  }
+
+  .market-impact-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .market-impact p { font-size: 13px; color: var(--muted2); line-height: 1.6; }
+
+  /* STAKEHOLDERS */
+  .stk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  .stk-card {
+    padding: 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+
+  .stk-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .stk-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .stk-type {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .type-buyer { background: rgba(245,158,11,0.1); color: var(--accent3); }
+  .type-decision { background: rgba(239,68,68,0.1); color: var(--accent4); }
+  .type-tech { background: rgba(59,130,246,0.1); color: var(--accent); }
+  .type-inf { background: rgba(16,185,129,0.1); color: var(--accent2); }
+
+  .stk-body { color: var(--muted2); font-size: 13.5px; line-height: 1.65; }
+
+  .stk-kpis {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .kpi-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+  }
+
+  /* INFO BOX */
+  .info-box {
+    padding: 28px 32px;
+    border-radius: 12px;
+    margin-top: 40px;
+  }
+
+  .info-box-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .info-box p { color: var(--muted2); font-size: 14.5px; line-height: 1.75; }
+  .info-box p + p { margin-top: 10px; }
+
+  /* NUMBERS ROW */
+  .numbers-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+    margin-top: 40px;
+  }
+
+  .number-box {
+    padding: 20px;
+    background: var(--bg);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .number-big {
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .number-label { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  @media (max-width: 768px) {
+    .hero, .section { padding: 60px 24px; }
+    .nav { padding: 0 16px; }
+    .transform-grid { grid-template-columns: 1fr; }
+    .transform-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-label">Finance Operations · Deep Dive</div>
+  <h1>Accounts<br>Payable <span>×</span><br>eInvoicing</h1>
+  <p class="hero-desc">A complete breakdown of how AP works, how eInvoicing transforms every step, and what it means across your global markets.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">$15</span>
+      <span class="stat-label">Cost per manual invoice</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">85%</span>
+      <span class="stat-label">Touchless rate possible</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">8</span>
+      <span class="stat-label">Steps in AP lifecycle</span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <div class="nav-item active" onclick="showSection('what')">01 What is AP</div>
+  <div class="nav-item" onclick="showSection('traditional')">02 Traditional Flow</div>
+  <div class="nav-item" onclick="showSection('transformation')">03 Transformation</div>
+  <div class="nav-item" onclick="showSection('workflow')">04 Interactive Workflow</div>
+  <div class="nav-item" onclick="showSection('concepts')">05 Key Concepts</div>
+  <div class="nav-item" onclick="showSection('markets')">06 Your Markets</div>
+  <div class="nav-item" onclick="showSection('stakeholders')">07 Stakeholder Map</div>
+</nav>
+
+<!-- 1. WHAT IS AP -->
+<section class="section active" id="what">
+  <div class="section-header">
+    <div class="section-tag">Foundation</div>
+    <h2 class="section-title">What is Accounts Payable?</h2>
+    <p class="section-sub">AP is the money a business owes to suppliers for goods or services received but not yet paid. It's a liability on the balance sheet — and a critical finance function.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card" style="border-top:3px solid var(--accent)">
+      <div class="card-icon">📋</div>
+      <div class="card-name">The Core Definition</div>
+      <div class="card-desc">When a company buys something and hasn't paid yet, that outstanding amount sits in AP. It's the business equivalent of "buy now, pay later" — structured, tracked, and controlled at scale across hundreds of supplier relationships.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent2)">
+      <div class="card-icon">🏢</div>
+      <div class="card-name">Where it Lives</div>
+      <div class="card-desc">AP sits within Finance, under the CFO or Controller. The team's job is ensuring every invoice is legitimate, accurate, and paid on time — no more, no less. Payment timing is a strategic decision, not just an operational one.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent3)">
+      <div class="card-icon">⚖️</div>
+      <div class="card-name">The Timing Balance</div>
+      <div class="card-desc">Paying too early hurts cash flow. Paying too late damages supplier relationships and incurs penalties. AP management is fundamentally about optimizing this tension to maximize working capital while maintaining supplier trust.</div>
+    </div>
+    <div class="card" style="border-top:3px solid #a78bfa">
+      <div class="card-icon">📊</div>
+      <div class="card-name">The Scale Problem</div>
+      <div class="card-desc">Large enterprises process tens of thousands of invoices per month. At $10–15 per invoice to process manually, a company doing 50,000 invoices/month spends $600K–$750K monthly just on AP operations — before any payment is made.</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:var(--surface); border:1px solid var(--border);">
+    <div class="info-box-title">AP vs AR — The Two Sides of Every Transaction</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:16px;">
+      <div>
+        <div style="font-size:11px; color:var(--accent4); font-weight:600; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Accounts Payable (Buyer Side)</div>
+        <p style="color:var(--muted2); font-size:14px; line-height:1.7;">Money you <strong style="color:var(--text)">owe</strong> to suppliers. A liability. You receive invoices, validate them, and pay out. The focus of this entire explainer.</p>
+      </div>
+      <div>
+        <div style="font-size:11px; color:var(--accent2); font-weight:600; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Accounts Receivable (Supplier Side)</div>
+        <p style="color:var(--muted2); font-size:14px; line-height:1.7;">Money <strong style="color:var(--text)">owed to you</strong> by customers. An asset. You issue invoices and wait to be paid. This is the side most eInvoicing mandates start with.</p>
+      </div>
+    </div>
+    <div style="margin-top:16px; padding:14px 18px; background:var(--bg); border-radius:8px;">
+      <p style="font-size:14px; color:var(--muted2);">💡 <strong style="color:var(--text);">eInvoicing insight:</strong> Most mandates begin with the supplier (AR side) — the compliance burden falls on the issuer. But the biggest efficiency gains, automation opportunities, and ROI land on the buyer (AP side). That's where Clear's differentiation lives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. TRADITIONAL FLOW -->
+<section class="section" id="traditional">
+  <div class="section-header">
+    <div class="section-tag">The Old World</div>
+    <h2 class="section-title">Traditional AP Process</h2>
+    <p class="section-sub">8 manual, slow, error-prone steps. Click each step to expand the full detail.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Step 01</div>
+      <div class="step-title">Invoice Receipt <span class="step-toggle">▾</span></div>
+      <div class="step-body">Suppliers send invoices by post, email, or fax. These are completely unstructured — a PDF or scanned image. Every supplier uses their own template, font, layout, and field placement. The AP team's inbox fills up with attachments across dozens of email aliases. Manual routing to the right person begins. There's no automatic categorization, no priority flagging, and no tracking of what arrived when.
+        <span class="pill pill-red">⚠️ No standardization · High variability</span>
+      </div>
+    </div>
+
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Step 02</div>
+      <div class="step-title">Manual Data Capture <span class="step-toggle">▾</span></div>
+      <div class="step-body">An AP clerk reads each invoice and manually types every field into the ERP — invoice number, date, supplier name and tax ID, line items, tax amounts, and total. Even with OCR tools, human verification is still required. OCR accuracy on unstructured invoices sits around 85–90%, meaning roughly 1 in 10 fields contains an error that needs manual correction. This single step accounts for 40–50% of total AP processing cost.
+        <span class="pill pill-red">⚠️ $4–6 per invoice · 10–20 min per invoice</span>
+      </div>
+    </div>
+
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Step 03</div>
+      <div class="step-title">GL Coding &amp; Cost Centre Assignment <span class="step-toggle">▾</span></div>
+      <div class="step-body">The invoice must be assigned to the correct General Ledger (GL) account, cost centre, and department. This requires the AP team to understand the nature of each purchase — is this a capital expenditure or operating expense? Which project does it belong to? Which department ordered it? Without context from the purchase order, this is often guesswork. Miscoding leads to reclassifications at month-end that waste accounting time and distort financial reporting.
+        <span class="pill pill-red">⚠️ Reclassification rate: 8–15% of invoices</span>
+      </div>
+    </div>
+
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Step 04</div>
+      <div class="step-title">3-Way Matching <span class="step-toggle">▾</span></div>
+      <div class="step-body">The AP team manually pulls the original Purchase Order (PO) from the procurement system and the Goods Receipt Note (GRN) from the warehouse system, then compares all three documents line by line. Does the invoice price match the PO? Does the quantity match what was received? Are the payment terms correct? Any discrepancy — even a rounding difference of ₹0.50 — creates an exception that can sit unresolved for days while teams investigate. This is the most labor-intensive step and the biggest source of delays.
+        <span class="pill pill-red">⚠️ Exception rate: 15–30% · Each exception takes 30–60 min</span>
+      </div>
+    </div>
+
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Step 05</div>
+      <div class="step-title">Email-Based Approval Routing <span class="step-toggle">▾</span></div>
+      <div class="step-body">Matched invoices are emailed to department heads for approval, then to finance managers, then to the CFO for amounts above certain thresholds. People go on leave, forget to respond, forward to the wrong person, or reply to the wrong email thread. Following up means more emails, more delays. Average invoice approval time in manual environments is 8–14 days — during which the invoice sits idle, consuming no value for anyone.
+        <span class="pill pill-red">⚠️ Avg. approval cycle: 8–14 days · 3–7 emails per invoice</span>
+      </div>
+    </div>
+
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Step 06</div>
+      <div class="step-title">Payment Scheduling <span class="step-toggle">▾</span></div>
+      <div class="step-body">Once approved, the invoice is scheduled for payment based on payment terms (Net 30, Net 60, etc.). The treasury team decides whether to pay early, on time, or strategically delay. But because the invoice took 14 days just to process and approve, early payment discount windows (typically "pay within 10 days for 2% off") are long closed. Companies using manual AP consistently miss these discounts, leaving significant money on the table.
+        <span class="pill pill-red">⚠️ Early discounts captured: &lt;20% · Cash visibility: Limited</span>
+      </div>
+    </div>
+
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Step 07</div>
+      <div class="step-title">Payment Execution <span class="step-toggle">▾</span></div>
+      <div class="step-body">Payment is executed via bank transfer or cheque. Remittance advice is sent to the supplier so they can reconcile their open receivables. Duplicate payments — paying the same invoice twice — are a real risk when upstream data quality is poor. Industry estimates suggest 0.1–0.5% of total spend is duplicated annually, which on a $100M AP portfolio means $100K–$500K per year in duplicate payments, only some of which are ever recovered.
+        <span class="pill pill-red">⚠️ Duplicate payment risk: 0.1–0.5% of total spend</span>
+      </div>
+    </div>
+
+    <div class="timeline-step" onclick="toggleStep(this)">
+      <div class="step-num">Step 08</div>
+      <div class="step-title">Archival &amp; Audit Readiness <span class="step-toggle">▾</span></div>
+      <div class="step-body">Invoices are stored in physical folders or scattered across shared drives and email archives. Tax authorities can request invoices going back 7–10 years depending on jurisdiction. Retrieving a specific invoice during a tax audit can take hours or days. "Find all invoices from supplier X between January and March 2022 for SKU Y" becomes a fire drill that consumes days of the finance team's time — often right before financial close or board presentations.
+        <span class="pill pill-red">⚠️ Retrieval time: hours to days · Audit prep: extremely high effort</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:36px; padding:22px 26px; background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.2); border-radius:12px;">
+    <strong style="color:var(--accent4); font-size:15px;">Total Real Cost: $10–15 per invoice</strong>
+    <p style="color:var(--muted2); font-size:14px; margin-top:6px;">For a company processing 50,000 invoices/month → <strong style="color:var(--text);">$600K–$750K per month</strong> in AP operational cost. That's <strong style="color:var(--text);">$7.2M–$9M annually</strong> — just to receive and process invoices. No payment included.</p>
+  </div>
+</section>
+
+<!-- 3. TRANSFORMATION -->
+<section class="section" id="transformation">
+  <div class="section-header">
+    <div class="section-tag">The Impact</div>
+    <h2 class="section-title">How eInvoicing Transforms AP</h2>
+    <p class="section-sub">Side by side — what the old world looks like vs. what eInvoicing enables, step by step.</p>
+  </div>
+
+  <div class="transform-grid">
+    <div class="transform-col">
+      <div class="transform-col-header before-header">❌ Without eInvoicing</div>
+      <div class="transform-item before">PDF / paper invoice arrives in email. No structure, no standard format. Manual routing required.</div>
+      <div class="transform-item before">AP clerk manually keys all data into ERP. Error-prone, time-consuming, expensive.</div>
+      <div class="transform-item before">Manual GL coding with limited context. Frequent reclassifications at month-end close.</div>
+      <div class="transform-item before">Human manually cross-checks PO, GRN, and Invoice. 15–30% exception rate, each requiring investigation.</div>
+      <div class="transform-item before">Email approval chains averaging 8–14 days. Forgotten, forwarded, lost in inboxes.</div>
+      <div class="transform-item before">Invoice takes 14+ days to process. Early payment discount windows are long closed.</div>
+      <div class="transform-item before">Duplicate payment risk with poor upstream data quality. Manual reconciliation required.</div>
+      <div class="transform-item before">Invoices scattered across drives and inboxes. Retrieval during audits takes hours or days.</div>
+    </div>
+
+    <div class="transform-divider">
+      <div class="arrow-cell">→</div>
+      <div class="arrow-cell">→</div>
+      <div class="arrow-cell">→</div>
+      <div class="arrow-cell">→</div>
+      <div class="arrow-cell">→</div>
+      <div class="arrow-cell">→</div>
+      <div class="arrow-cell">→</div>
+      <div class="arrow-cell">→</div>
+    </div>
+
+    <div class="transform-col">
+      <div class="transform-col-header after-header">✅ With eInvoicing</div>
+      <div class="transform-item after">Structured XML (UBL/CII) delivered directly to ERP via Peppol network or clearance API. Zero inbox management, zero manual routing.</div>
+      <div class="transform-item after">All fields auto-populated from structured data. Zero manual entry. Error rate drops to near zero. Cost per invoice falls below $2.</div>
+      <div class="transform-item after">ML models trained on history auto-assign GL codes and cost centres. First-time invoices suggested; recurring suppliers auto-applied.</div>
+      <div class="transform-item after">Automated matching happens in milliseconds. 70–85% of invoices auto-approve with zero human touch. Only genuine exceptions escalate.</div>
+      <div class="transform-item after">Rule-based approval routing. Configurable thresholds and approver hierarchies. Average cycle drops to same-day or next-day.</div>
+      <div class="transform-item after">Invoices processed in hours. Early payment windows consistently reachable. Dynamic discounting becomes a viable treasury strategy.</div>
+      <div class="transform-item after">Duplicate detection automated before payment execution. Status responses fed back through eInvoicing network (France PDP model).</div>
+      <div class="transform-item after">Tamper-proof structured archive with full audit trail. Instant search across millions of documents. Clearance model: government holds a certified copy.</div>
+    </div>
+  </div>
+
+  <div class="numbers-row">
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent2)">85%</div>
+      <div class="number-label">Touchless processing rate (best-in-class)</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent)">90%</div>
+      <div class="number-label">Reduction in per-invoice processing cost</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent3)">14×</div>
+      <div class="number-label">Faster invoice approval cycle</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:#a78bfa">36%</div>
+      <div class="number-label">Annualized return from captured early payment discounts</div>
+    </div>
+    <div class="number-box">
+      <div class="number-big" style="color:var(--accent2)">~0%</div>
+      <div class="number-label">Duplicate payment rate with automated detection</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. INTERACTIVE WORKFLOW -->
+<section class="section" id="workflow">
+  <div class="section-header">
+    <div class="section-tag">Interactive</div>
+    <h2 class="section-title">AP Invoice Lifecycle</h2>
+    <p class="section-sub">Walk through the invoice journey step by step. Toggle between Traditional and eInvoicing to see exactly what changes at each stage.</p>
+  </div>
+
+  <div class="workflow-container">
+    <div class="workflow-header">
+      <div class="workflow-title">Invoice Processing Journey</div>
+      <div class="workflow-toggle">
+        <button class="active" id="btn-manual" onclick="setMode('manual')">Traditional AP</button>
+        <button id="btn-einvoice" onclick="setMode('einvoice')">eInvoicing AP</button>
+      </div>
+    </div>
+    <div class="workflow-body">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="flow" id="flow-steps"></div>
+      <div class="detail-panel" id="detail-panel">
+        <div class="detail-title" id="detail-title">👆 Select a step to explore</div>
+        <div class="detail-body" id="detail-body">Click any node in the flow above, or use the Next button to walk through the invoice lifecycle step by step. Toggle between Traditional and eInvoicing modes to compare what changes.</div>
+        <div class="detail-metrics" id="detail-metrics"></div>
+      </div>
+      <div class="step-controls">
+        <button class="btn btn-secondary" onclick="prevStep()">← Prev</button>
+        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        <button class="btn btn-reset" onclick="resetWorkflow()">↺ Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. KEY CONCEPTS -->
+<section class="section" id="concepts">
+  <div class="section-header">
+    <div class="section-tag">Glossary</div>
+    <h2 class="section-title">Key AP Concepts</h2>
+    <p class="section-sub">The terms you'll encounter in customer conversations, product specs, and market mandates. Click each card to expand the full explanation.</p>
+  </div>
+
+  <div class="concepts-grid">
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🔄</div>
+      <div class="concept-name">3-Way Matching <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Validating an invoice against its Purchase Order and Goods Receipt Note.</div>
+      <div class="concept-full">Compares three documents: the Purchase Order (what was agreed), the Goods Receipt Note (what was actually delivered), and the Invoice (what the supplier is charging). All three must align within defined tolerances for auto-approval. Any discrepancy creates an exception requiring human investigation. Automating this step is the single biggest lever for improving touchless processing rates — the core ROI of AP automation.</div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">⏱️</div>
+      <div class="concept-name">Days Payable Outstanding (DPO) <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">How long a company takes on average to pay its suppliers after receiving an invoice.</div>
+      <div class="concept-full">Formula: (AP Balance ÷ Cost of Goods Sold) × Number of Days. Higher DPO = holding cash longer = better working capital, but risks supplier friction. eInvoicing compresses processing time without forcing companies to pay earlier — it gives finance more control and flexibility over the timing decision. Best-in-class companies use this to pay early selectively (when discounts justify it) and stretch strategically when cash is constrained.</div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">⚡</div>
+      <div class="concept-name">Exception Handling <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">The workflow for invoices that fail automated processing and need human review.</div>
+      <div class="concept-full">Exceptions include price mismatches, missing PO numbers, duplicate invoices, wrong tax rates, unregistered suppliers, and quantity discrepancies. Even with good eInvoicing, exception rates of 5–15% are common. Each exception requires investigation, supplier communication, and re-processing. This is the largest remaining cost driver in eInvoicing-enabled AP — and the most compelling AI opportunity: auto-diagnosing root causes, suggesting resolutions, and routing to the right person without manual triage.</div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">📝</div>
+      <div class="concept-name">Credit Notes &amp; Debit Notes <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Documents that adjust or reverse an invoice after it's been issued.</div>
+      <div class="concept-full">A credit note is issued by the supplier to reduce the amount owed — for returned goods, pricing errors, or overpayments. A debit note is issued by the buyer to claim a reduction. In eInvoicing mandates like ZATCA, credit notes must go through the same clearance flow as original invoices, adding workflow complexity. AP systems must treat these as first-class documents, with full matching and reconciliation logic. Poor credit note handling is a leading cause of balance sheet discrepancies.</div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">💸</div>
+      <div class="concept-name">Dynamic Discounting <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Variable early payment discounts based on exactly how early payment is made.</div>
+      <div class="concept-full">Traditional terms like "2/10 Net 30" offer a fixed 2% discount for paying 20 days early. Dynamic discounting uses a sliding scale — the earlier the payment, the larger the discount. This is only viable when invoices are processed fast enough to create a meaningful early payment window. eInvoicing compresses processing from weeks to hours, making these windows consistently accessible. The annualized return on capital deployed for dynamic discounting can exceed 36%, making it a major treasury value driver.</div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🎯</div>
+      <div class="concept-name">Touchless Processing Rate <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">The percentage of invoices processed without any human intervention.</div>
+      <div class="concept-full">The gold KPI for AP automation. An invoice is "touchless" if it goes from receipt to payment approval without a single human action. Industry average sits around 40–50%. Best-in-class eInvoicing implementations achieve 70–85%. Moving from 40% to 80% touchless on 50,000 monthly invoices means 20,000 fewer manual interventions per month — at $8–10 of labor per manual touch, that's $160K–$200K saved monthly just from this one metric improvement.</div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">🏭</div>
+      <div class="concept-name">Self-Billing <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">The buyer generates the invoice on behalf of the supplier.</div>
+      <div class="concept-full">Common in automotive, retail, and large-scale procurement where the buyer controls PO and receipt data more accurately than the supplier does. The buyer creates a self-billed invoice and sends it for supplier acceptance. Tax authorities require formal self-billing agreements, and in some jurisdictions every self-billed invoice needs explicit supplier acknowledgment. eInvoicing platforms must support this reverse flow natively — it's not a niche use case, particularly in manufacturing-heavy markets.</div>
+    </div>
+
+    <div class="concept-card" onclick="toggleConcept(this)">
+      <div class="concept-icon">📂</div>
+      <div class="concept-name">Invoice Archival &amp; Audit Trail <span class="concept-toggle">▾</span></div>
+      <div class="concept-short">Legal-grade storage and instant retrieval of all processed invoices.</div>
+      <div class="concept-full">Most jurisdictions require invoice retention for 7–10 years. Tax audits require instant retrieval of specific invoices by supplier, date, amount, or SKU. In clearance-model countries (ZATCA, India), the government already holds a certified copy, dramatically simplifying audits. In reporting-model countries, archival responsibility stays with the company. eInvoicing platforms must provide tamper-proof storage with full audit trails: who touched the invoice, when, what action was taken, and what the outcome was.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. MARKETS -->
+<section class="section" id="markets">
+  <div class="section-header">
+    <div class="section-tag">Global Context</div>
+    <h2 class="section-title">Your Markets &amp; Their AP Impact</h2>
+    <p class="section-sub">Each mandate has a different model — clearance, reporting, or centralized — and each creates different obligations and integration requirements on the buyer's AP side.</p>
+  </div>
+
+  <div class="markets-grid">
+    <div class="market-card">
+      <div class="market-header">
+        <div class="market-flag">🇸🇦</div>
+        <div>
+          <div class="market-name">Saudi Arabia — ZATCA</div>
+          <div class="market-sub">Clearance model · Phase 2 live</div>
+        </div>
+        <div class="market-badge badge-clearance">Clearance</div>
+      </div>
+      <div class="market-body">
+        <div class="market-desc">Invoice goes to ZATCA's Fatoora platform first, gets cryptographically signed and assigned a UUID and QR code, then flows to the buyer. The buyer receives a government-stamped, legally cleared invoice.</div>
+        <div class="market-impact">
+          <div class="market-impact-label">AP Side Impact</div>
+          <p>AP systems must validate the ZATCA stamp before processing. Duplicate detection is critical — if a supplier submits the same invoice twice and both clear, the buyer is the last line of defense. Credit notes must also go through clearance, adding workflow complexity.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-header">
+        <div class="market-flag">🇧🇪</div>
+        <div>
+          <div class="market-name">Belgium</div>
+          <div class="market-sub">Peppol network · B2G mandatory</div>
+        </div>
+        <div class="market-badge badge-peppol">Peppol</div>
+      </div>
+      <div class="market-body">
+        <div class="market-desc">Structured UBL invoices exchanged via Peppol 4-corner model. B2G is fully mandatory; B2B adoption growing with clear government direction toward full mandate.</div>
+        <div class="market-impact">
+          <div class="market-impact-label">AP Side Impact</div>
+          <p>Buyers need an active Peppol access point and registered Peppol ID to receive invoices. Your onboarding story must address buyer readiness, not just supplier compliance. Buyers not registered on Peppol simply cannot receive eInvoices.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-header">
+        <div class="market-flag">🇲🇾</div>
+        <div>
+          <div class="market-name">Malaysia — MyInvois</div>
+          <div class="market-sub">Clearance + Peppol · Phased rollout</div>
+        </div>
+        <div class="market-badge badge-clearance">Clearance</div>
+      </div>
+      <div class="market-body">
+        <div class="market-desc">LHDN's MyInvois platform operates a clearance model with Peppol as the recommended transmission protocol. Large taxpayers are live; SMEs onboarding progressively through 2025.</div>
+        <div class="market-impact">
+          <div class="market-impact-label">AP Side Impact</div>
+          <p>Buyer AP systems receive pre-validated invoices via MyInvois or Peppol. The clearance layer removes the need for buyers to independently verify invoice authenticity — government has already done it, simplifying the AP validation step.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-header">
+        <div class="market-flag">🇫🇷</div>
+        <div>
+          <div class="market-name">France</div>
+          <div class="market-sub">PDP model · B2B mandate upcoming</div>
+        </div>
+        <div class="market-badge badge-reporting">Reporting</div>
+      </div>
+      <div class="market-body">
+        <div class="market-desc">France uses Plateformes de Dématérialisation Partenaire (PDP) — registered private platforms — as the exchange infrastructure, with reporting to the government's PPF portal.</div>
+        <div class="market-impact">
+          <div class="market-impact-label">AP Side Impact</div>
+          <p>The richest AP obligations of any mandate: buyers must acknowledge receipt, signal acceptance or rejection, and report payment status back through the PDP network. The AP lifecycle becomes part of the compliance workflow — lifecycle status responses are mandatory, not optional.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-header">
+        <div class="market-flag">🇵🇱</div>
+        <div>
+          <div class="market-name">Poland — KSeF</div>
+          <div class="market-sub">Central repository · National platform</div>
+        </div>
+        <div class="market-badge badge-central">Centralized</div>
+      </div>
+      <div class="market-body">
+        <div class="market-desc">KSeF is a national invoice repository. Every B2B invoice in Poland must be submitted to KSeF. Buyers access invoices directly from the government system rather than receiving them from suppliers.</div>
+        <div class="market-impact">
+          <div class="market-impact-label">AP Side Impact</div>
+          <p>Fundamentally different AP integration model — you pull invoices from a government API rather than receiving a push. AP systems need active KSeF polling integration. Completely different architecture from Peppol push delivery.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-header">
+        <div class="market-flag">🇭🇷</div>
+        <div>
+          <div class="market-name">Croatia</div>
+          <div class="market-sub">Peppol · B2G live · B2B expanding</div>
+        </div>
+        <div class="market-badge badge-peppol">Peppol</div>
+      </div>
+      <div class="market-body">
+        <div class="market-desc">Croatia uses Peppol for B2G eInvoicing and is expanding to B2B. The Croatian Financial Agency (FINA) acts as a local validation hub alongside standard Peppol routing.</div>
+        <div class="market-impact">
+          <div class="market-impact-label">AP Side Impact</div>
+          <p>Peppol access point registration required for buyers. FINA integration adds a local validation layer on top of standard Peppol. Buyers receiving from government suppliers need both Peppol readiness and FINA compatibility simultaneously.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. STAKEHOLDERS -->
+<section class="section" id="stakeholders">
+  <div class="section-header">
+    <div class="section-tag">Sales &amp; Product Strategy</div>
+    <h2 class="section-title">The AP Stakeholder Map</h2>
+    <p class="section-sub">eInvoicing is sold as a compliance mandate but the real economic buyer lives in the AP/Finance organization. Knowing who you're talking to determines how you pitch, what you build, and how you price.</p>
+  </div>
+
+  <div class="stk-grid">
+    <div class="stk-card">
+      <div class="stk-role">AP Manager / Director <span class="stk-type type-buyer">Day-to-day user</span></div>
+      <div class="stk-body">Feels the daily pain most acutely. Measures success in invoices processed per FTE, exception rates, and time spent on manual tasks. Cares about automation rates, how many exceptions land on the team's desk, and how easy it is to onboard new suppliers to the eInvoicing workflow.</div>
+      <div class="stk-kpis">
+        <span class="kpi-tag">Touchless rate</span>
+        <span class="kpi-tag">Exception volume</span>
+        <span class="kpi-tag">Cycle time</span>
+        <span class="kpi-tag">FTE efficiency</span>
+      </div>
+    </div>
+
+    <div class="stk-card">
+      <div class="stk-role">CFO / Finance Director <span class="stk-type type-decision">Decision maker</span></div>
+      <div class="stk-body">Cares about cash flow visibility, working capital optimization, compliance risk mitigation, and DPO management. Needs board-level ROI: what's the cost reduction, what's the compliance assurance, what's the financial risk exposure without it? The ROI justification for eInvoicing investment lands here.</div>
+      <div class="stk-kpis">
+        <span class="kpi-tag">DPO optimization</span>
+        <span class="kpi-tag">Cash visibility</span>
+        <span class="kpi-tag">Compliance risk</span>
+        <span class="kpi-tag">Cost savings ROI</span>
+      </div>
+    </div>
+
+    <div class="stk-card">
+      <div class="stk-role">IT / ERP Team <span class="stk-type type-tech">Technical gatekeeper</span></div>
+      <div class="stk-body">Cares about integration depth, implementation complexity, and ongoing maintenance. How cleanly does the platform connect to SAP, Oracle, or Dynamics? What's the API architecture? What's the implementation timeline? They don't block deals directly but can slow down or accelerate procurement decisions significantly.</div>
+      <div class="stk-kpis">
+        <span class="kpi-tag">ERP connectors</span>
+        <span class="kpi-tag">API quality</span>
+        <span class="kpi-tag">Implementation effort</span>
+        <span class="kpi-tag">Maintenance load</span>
+      </div>
+    </div>
+
+    <div class="stk-card">
+      <div class="stk-role">Procurement / Supply Chain <span class="stk-type type-inf">Influencer</span></div>
+      <div class="stk-body">Cares about supplier relationships and the onboarding experience for vendors. If the eInvoicing platform makes it difficult for small or international suppliers to submit invoices, it becomes a procurement problem that can block adoption. Supplier adoption rate is their proxy KPI for platform success.</div>
+      <div class="stk-kpis">
+        <span class="kpi-tag">Supplier adoption %</span>
+        <span class="kpi-tag">Onboarding ease</span>
+        <span class="kpi-tag">Supplier satisfaction</span>
+        <span class="kpi-tag">PO compliance</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box" style="background:var(--surface); border:1px solid var(--border); border-top: 4px solid var(--accent2);">
+    <div class="info-box-title">The Strategic Insight for Clear</div>
+    <p>eInvoicing is often positioned as a <strong style="color:var(--accent4)">supplier-side compliance problem</strong> — the mandate forces suppliers to e-invoice. But the biggest commercial opportunity, the stickiest retention, and the highest willingness-to-pay all sit on the <strong style="color:var(--accent2)">buyer / AP side</strong>, through automation, exception reduction, and financial intelligence.</p>
+    <p style="margin-top:12px">The compliance mandate gets you in the door. The AP transformation — touchless processing, dynamic discounting, AI-powered exception handling — is what justifies premium pricing and builds long-term lock-in. <strong style="color:var(--text)">This is exactly the Pillar 6 (AI → eInvoice++) story:</strong> you're not selling compliance, you're selling a smarter AP operation.</p>
+  </div>
+</section>
+
+<script>
+// SECTION NAVIGATION
+const sectionIds = ['what','traditional','transformation','workflow','concepts','markets','stakeholders'];
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-item')[sectionIds.indexOf(id)].classList.add('active');
+  document.getElementById('main-nav').scrollIntoView({ behavior: 'smooth' });
+}
+
+// TIMELINE
+function toggleStep(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.timeline-step').forEach(s => s.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+// CONCEPTS
+function toggleConcept(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.concept-card').forEach(c => c.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+// WORKFLOW DATA
+const workflows = {
+  manual: [
+    { icon:'📧', label:'Receive', title:'Invoice Receipt', body:'A PDF or paper invoice arrives in the AP team\'s email inbox. No standardization — every supplier uses their own template and layout. Manual routing to the right processor begins. Multiple email aliases, no priority tracking, no automatic categorization. On high-volume days, invoices sit unseen for hours.', metrics:[{v:'PDF / Paper',l:'format'},{v:'2–4 hrs',l:'routing time'},{v:'High',l:'error risk'}] },
+    { icon:'⌨️', label:'Enter Data', title:'Manual Data Capture', body:'An AP clerk reads each invoice and manually types every field into the ERP — invoice number, date, supplier name and tax ID, line items, tax amounts, total. OCR tools help but still require human verification at ~85–90% accuracy. This single step accounts for 40–50% of total AP processing cost.', metrics:[{v:'10–20 min',l:'per invoice'},{v:'$4–6',l:'cost per invoice'},{v:'1–5%',l:'data error rate'}] },
+    { icon:'🏷️', label:'GL Code', title:'GL Coding & Cost Centre', body:'The invoice must be assigned to the right General Ledger account, cost centre, and department. Without context from the PO, the AP team often guesses. Miscodings lead to reclassifications at month-end that waste accounting time and distort financial reporting.', metrics:[{v:'8–15%',l:'reclassification rate'},{v:'5–10 min',l:'per invoice'}] },
+    { icon:'🔍', label:'3-Way Match', title:'Manual 3-Way Matching', body:'The AP team pulls the Purchase Order from procurement and the Goods Receipt Note from the warehouse system, then manually compares all three line by line. Any discrepancy — even a ₹0.50 rounding difference — creates an exception. Each exception requires investigation, supplier contact, and re-processing. This is the biggest labor bottleneck.', metrics:[{v:'15–30%',l:'exception rate'},{v:'30–60 min',l:'per exception'}] },
+    { icon:'✉️', label:'Approve', title:'Email Approval Chains', body:'Matched invoices are emailed through an approval hierarchy. Department heads, finance managers, CFO for large amounts. People go on leave, forget, forward to the wrong person. Average invoice approval time: 8–14 days. During that time, the invoice sits idle — generating no value for either party.', metrics:[{v:'8–14 days',l:'avg. approval time'},{v:'3–7 emails',l:'per invoice'}] },
+    { icon:'📅', label:'Schedule', title:'Payment Scheduling', body:'Once approved, the invoice is scheduled based on payment terms (Net 30, Net 60). Because processing took 14 days, all early payment discount windows are closed. Finance has limited visibility into what\'s due when, making cash flow forecasting difficult.', metrics:[{v:'< 20%',l:'discounts captured'},{v:'Limited',l:'cash visibility'}] },
+    { icon:'💳', label:'Pay', title:'Payment Execution', body:'Payment is executed via bank transfer or cheque. Remittance advice is sent to the supplier. Duplicate payments — paying the same invoice twice — are a real risk when upstream data quality is poor. Industry estimates: 0.1–0.5% of total spend is duplicated annually.', metrics:[{v:'0.1–0.5%',l:'duplicate risk'},{v:'Hours',l:'reconciliation time'}] },
+    { icon:'🗄️', label:'Archive', title:'Manual Archival', body:'Invoices are stored in physical folders or scattered across shared drives and email archives. Retrieving a specific invoice during a tax audit can take hours or days. Audit prep is a recurring fire drill that pulls the finance team away from productive work.', metrics:[{v:'Hours–Days',l:'retrieval time'},{v:'Very High',l:'audit prep effort'}] }
+  ],
+  einvoice: [
+    { icon:'🔗', label:'Receive', title:'Structured eInvoice Delivery', body:'A standardized XML invoice (UBL 2.1, CII, or EDIFACT) arrives directly in the ERP or AP platform via Peppol network or clearance API. In ZATCA, the invoice arrives pre-stamped by the government. Zero inbox management, zero manual routing, zero email handling.', metrics:[{v:'XML / UBL',l:'format'},{v:'Real-time',l:'delivery'},{v:'Near zero',l:'error risk'}] },
+    { icon:'🤖', label:'Auto-Ingest', title:'Zero-Touch Data Capture', body:'All invoice fields are auto-populated into the ERP from the structured XML. No manual typing, no OCR verification. Invoice number, supplier tax ID, line items, tax breakdown, totals — all read programmatically in seconds. Processing cost drops from $15 to under $2 per invoice.', metrics:[{v:'0',l:'manual fields entered'},{v:'< $2',l:'cost per invoice'},{v:'Seconds',l:'processing time'}] },
+    { icon:'🧠', label:'Auto-Code', title:'AI-Assisted GL Coding', body:'ML models trained on historical coding patterns auto-assign GL accounts, cost centres, and project codes. Recurring suppliers are auto-coded; first-time invoices get AI-suggested codes. The model gets smarter with every invoice processed. Finance only reviews genuine edge cases.', metrics:[{v:'80–95%',l:'auto-code rate'},{v:'< 2%',l:'reclassification rate'}] },
+    { icon:'⚡', label:'3-Way Match', title:'Automated 3-Way Matching', body:'The platform programmatically compares Invoice ↔ PO ↔ GRN across all fields in milliseconds. Invoices within tolerance auto-approve immediately with zero human involvement. Only genuine discrepancies escalate as exceptions — pre-diagnosed with root cause context so the AP team spends time solving, not finding.', metrics:[{v:'70–85%',l:'touchless rate'},{v:'Milliseconds',l:'match time'},{v:'5–15%',l:'exception rate'}] },
+    { icon:'✅', label:'Approve', title:'Rule-Based Approvals', body:'Approval workflows are driven by configurable business rules. Invoices under threshold from pre-approved vendors auto-approve. Those above threshold route to specific approvers with all context pre-loaded and one-click actions available. No email chains, no chasing, no ambiguity.', metrics:[{v:'Same day',l:'avg. approval time'},{v:'60–80%',l:'auto-approval rate'}] },
+    { icon:'💡', label:'Optimize', title:'Dynamic Discounting', body:'With invoices processed in hours, early payment windows are accessible. Finance evaluates each invoice against cash position: pay early for a discount, pay standard, or stretch. Dynamic discounting at 2/10 Net 30 yields a 36%+ annualized return on capital deployed — a major treasury value driver that didn\'t exist in the manual world.', metrics:[{v:'> 80%',l:'discounts captured'},{v:'36%+',l:'annualized return'},{v:'Real-time',l:'cash visibility'}] },
+    { icon:'💳', label:'Pay', title:'Optimized Payment Execution', body:'Automated duplicate detection blocks double payments before execution. Payment status can be reported back through the eInvoicing network — required in France\'s PDP model. Supplier remittance is automated. Finance has full, real-time cash flow visibility across the entire AP portfolio.', metrics:[{v:'99.9%+',l:'duplicate prevention'},{v:'Automated',l:'reconciliation'}] },
+    { icon:'☁️', label:'Archive', title:'Compliant Digital Archive', body:'Structured invoices stored tamper-proof with full audit trails — who touched it, when, what action, what outcome. Instant search across millions of documents by any field. In clearance markets (ZATCA, India), the government holds a certified copy, dramatically simplifying tax audits. Retrieval in seconds.', metrics:[{v:'Seconds',l:'retrieval time'},{v:'Minimal',l:'audit prep effort'},{v:'7–10 yrs',l:'automated retention'}] }
+  ]
+};
+
+let currentMode = 'manual';
+let currentStep = -1;
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-manual').classList.toggle('active', mode === 'manual');
+  document.getElementById('btn-einvoice').classList.toggle('active', mode === 'einvoice');
+  currentStep = -1;
+  renderFlow();
+}
+
+function renderFlow() {
+  const steps = workflows[currentMode];
+  const container = document.getElementById('flow-steps');
+  container.innerHTML = '';
+
+  steps.forEach((step, i) => {
+    const node = document.createElement('div');
+    node.className = 'flow-node' +
+      (i < currentStep ? ' done' : '') +
+      (i === currentStep ? ' active' : '');
+    node.innerHTML = `<div class="flow-icon">${step.icon}</div><div class="flow-label">${step.label}</div>`;
+    node.onclick = () => { currentStep = i; renderFlow(); };
+    container.appendChild(node);
+
+    if (i < steps.length - 1) {
+      const arrow = document.createElement('div');
+      arrow.className = 'flow-arrow' +
+        (i < currentStep ? ' done' : '') +
+        (i === currentStep ? ' active' : '');
+      container.appendChild(arrow);
+    }
+  });
+
+  updateDetail();
+  updateProgress();
+}
+
+function updateDetail() {
+  const panel = document.getElementById('detail-panel');
+  const titleEl = document.getElementById('detail-title');
+  const bodyEl = document.getElementById('detail-body');
+  const metricsEl = document.getElementById('detail-metrics');
+
+  panel.style.borderLeftColor = currentMode === 'manual' ? 'var(--accent4)' : 'var(--accent2)';
+
+  if (currentStep === -1) {
+    titleEl.textContent = '👆 Select a step to explore';
+    bodyEl.textContent = 'Click any node in the flow above, or use the buttons to walk through the invoice lifecycle. Toggle between Traditional and eInvoicing modes to compare.';
+    metricsEl.innerHTML = '';
+    return;
+  }
+
+  const step = workflows[currentMode][currentStep];
+  titleEl.innerHTML = `${step.icon} ${step.title}`;
+  bodyEl.textContent = step.body;
+  metricsEl.innerHTML = step.metrics.map(m =>
+    `<div class="metric"><strong>${m.v}</strong> ${m.l}</div>`
+  ).join('');
+
+  // Re-trigger animation
+  panel.style.animation = 'none';
+  panel.offsetHeight;
+  panel.style.animation = 'fadeIn 0.3s ease';
+}
+
+function updateProgress() {
+  const total = workflows[currentMode].length;
+  const pct = currentStep === -1 ? 0 : ((currentStep + 1) / total) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+function nextStep() {
+  const max = workflows[currentMode].length - 1;
+  if (currentStep < max) { currentStep++; renderFlow(); }
+}
+
+function prevStep() {
+  if (currentStep > 0) { currentStep--; renderFlow(); }
+  else if (currentStep === 0) { currentStep = -1; renderFlow(); }
+}
+
+function resetWorkflow() {
+  currentStep = -1;
+  renderFlow();
+}
+
+// Initialize
+renderFlow();
+</script>
+</body>
+</html>
